@@ -6,7 +6,7 @@ export const ResourceNode = ({ data, isConnectable }) => {
         <Handle type="source" position={Position.Right} isConnectable={true} id="1s" />
         <div>
           <div className="inline-block align-middle">
-            Common Ore
+            {data.name}
           </div>
         </div>
       </div>

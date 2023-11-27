@@ -45,7 +45,6 @@ export const OverviewFlow = () => {
       edges={edges}
       nodeTypes={nodeTypes}
       onInit={onInit}
-      onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView

@@ -6,8 +6,8 @@ export const ShipyardNode = ({ data, isConnectable }) => {
       <Handle type="target" position={Position.Left} isConnectable={true} id="3t" />
 
       <div>
-        <div className="inline-block align-middle">
-          Shipyard Node
+        <div className="text-center text-sm">
+          {data.name}
         </div>
         <div className="inline-block text-left text-xs text-green-600">
           +1 Corvette

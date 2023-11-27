@@ -1,28 +1,36 @@
-import React from "react";
-import { MarkerType } from "reactflow";
-
 export const nodes = [
   {
     id: "1",
     type: "resourceNode",
     data: {
-      label: (
-        <>
-          Welcome to <strong>React Flow!</strong>
-        </>
-      )
+      name: "Common Ore"
     },
     position: { x: 0, y: 100 }
   },
   {
     id: "2",
     type: 'factoryNode',
+    data: {
+      name: "Smelter",
+      input: {
+        commonOre: 2
+      },
+      output: {
+        corvetteHull: 1
+      }
+    },
     position: { x: 250, y: 100 }
   },
   {
     id: "3",
     type: 'shipyardNode',
     position: { x: 500, y: 100 },
+    data: {
+      name: "Shipyard",
+      output: {
+        corvette: 1
+      }
+    }
   }
 ];
 

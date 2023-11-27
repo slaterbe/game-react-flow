@@ -7,8 +7,8 @@ export const FactoryNode = ({ data, isConnectable }) => {
         <Handle type="source" position={Position.Right} isConnectable={true} id="2s" />
 
         <div>
-          <div className="inline-block text-center text-sm">
-            Factory Node
+          <div className="text-center text-sm">
+            {data.name}
           </div>
           <div className="inline-block text-left text-xs text-red-600">
             - 2 Common Ore
