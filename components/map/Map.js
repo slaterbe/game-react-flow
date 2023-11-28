@@ -16,6 +16,8 @@ import { gameState as gameStateRaw } from "../../game/initial-state";
 import { viewModelMapper } from "../../game/view-model-mapper";
 import { gameTick } from "../../game/game-tick";
 
+import { QuestLog } from '../QuestLog.js';
+
 gameTick(gameStateRaw);
 
 const {
@@ -30,6 +32,8 @@ export const Map = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [gameState, setGameState] = useState(gameStateRaw);
+
+  const [questLogOpen, setQuestLogOpen] = useState(false);
 
   const { globalResources } = gameState;
 
@@ -64,6 +68,10 @@ export const Map = () => {
         <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
           {globalResources.destroyer} Destroyer
         </div>
+      </div>
+      {questLogOpen && <QuestLog close={() => setQuestLogOpen(false)} />}
+      <div className="w-16 h-16 absolute bg-blue-400 z-10 bottom-0 right-0 cursor-pointer" onClick={() => setQuestLogOpen(true)}>
+        Quest
       </div>
       <div className="w-full h-full">
         <ReactFlow
