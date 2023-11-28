@@ -3,7 +3,7 @@ import { MarkerType } from "@reactflow/core";
 export const viewModelMapper = ({ nodes, edges, factories, shipyards }) => {
     const vmResourceNodes = nodes
         .filter(n => n.type === "resourceNode")
-        .map((node, index) => ({
+        .map((node) => ({
             ...node,
             data: {
                 name: node.resourceType,
@@ -13,7 +13,7 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards }) => {
 
     const vmFactoryNodes = nodes
         .filter(n => n.type === "factoryNode")
-        .map((node, index) => ({
+        .map((node) => ({
             ...node,
             data: {
                 ...factories[node.factoryType],
@@ -23,7 +23,7 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards }) => {
 
     const vmShipyardNodes = nodes
         .filter(n => n.type === "shipyardNode")
-        .map((node, index) => ({
+        .map((node) => ({
             ...node,
             data: {
                 name: "Shipyard",

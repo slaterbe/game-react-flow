@@ -1,86 +1,51 @@
 "use client"
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ReactFlow, {
-  addEdge,
   Controls,
   Background,
-  useNodesState,
-  useEdgesState
 } from "reactflow";
 import "reactflow/dist/style.css";
 
+import { useSelector, useDispatch } from 'react-redux'
+import { tick } from '../../redux/gameStateReducer/gameStateReducer';
+
 import { nodeTypes } from '../nodes/NodeTypes';
 
-import { gameState as gameStateRaw } from "../../game/initial-state";
-import { viewModelMapper } from "../../game/view-model-mapper";
-import { gameTick } from "../../game/game-tick";
+import { viewModelMapper } from "./view-model-mapper";
 
-import { QuestLog } from '../QuestLog.js';
-
-gameTick(gameStateRaw);
-
-const {
-  nodes: initialNodes,
-  edges: initialEdges
-} = viewModelMapper(gameStateRaw);
+import { Overlay } from '../Overlay';
 
 const onInit = (reactFlowInstance) =>
   console.log("flow loaded:", reactFlowInstance);
 
 export const Map = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const [gameState, setGameState] = useState(gameStateRaw);
+  const gameState = useSelector((state) => state.gameState)
+  const dispatch = useDispatch()
 
-  const [questLogOpen, setQuestLogOpen] = useState(false);
+  const { nodes, edges } = viewModelMapper(gameState);
 
   const { globalResources } = gameState;
 
   useEffect(() => {
     const interval = setInterval(() => {
-      gameTick(gameState);
-      setGameState(gameState);
-
-      const { nodes, edges } = viewModelMapper(gameState);
-      setNodes(nodes);
-      setEdges(edges);
-
+      dispatch(tick())
     }, 1000);
-
 
     return () => {
       clearInterval(interval);
     };
   }, []);
 
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
-  );
-
   return (
     <div className="w-full h-full">
-      <div className="w-full h-16 absolute bg-blue-400 z-10">
-        <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-          {globalResources.corvette} Corvette
-        </div>
-        <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-          {globalResources.destroyer} Destroyer
-        </div>
-      </div>
-      {questLogOpen && <QuestLog close={() => setQuestLogOpen(false)} />}
-      <div className="w-16 h-16 absolute bg-blue-400 z-10 bottom-0 right-0 cursor-pointer" onClick={() => setQuestLogOpen(true)}>
-        Quest
-      </div>
+      <Overlay globalResources={globalResources} />
       <div className="w-full h-full">
         <ReactFlow
           nodes={nodes}
           edges={edges}
           nodeTypes={nodeTypes}
           onInit={onInit}
-          onEdgesChange={onEdgesChange}
-          onConnect={onConnect}
           fitView
           attributionPosition="top-right"
         >

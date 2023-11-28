@@ -1,9 +1,9 @@
-import { Map } from '../components/map/Map'
+import { GameContainer } from '../components/GameContainer'
 
 export default function Home() {
   return (
     <main className="h-screen">
-        <Map />
+        <GameContainer />
     </main>
   )
 }
