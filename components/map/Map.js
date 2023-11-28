@@ -1,9 +1,8 @@
 "use client"
 
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import ReactFlow, {
   addEdge,
-  MiniMap,
   Controls,
   Background,
   useNodesState,
@@ -11,20 +10,16 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 
-import {
-  nodes as initialNodes,
-  edges as initialEdges
-} from "./initial-elements";
+import { nodeTypes } from '../nodes/NodeTypes';
 
-import { ResourceNode } from '../nodes/ResourceNode';
-import { FactoryNode } from '../nodes/FactoryNode';
-import { ShipyardNode } from '../nodes/ShipyardNode';
+import { gameState } from "../../game/initial-state";
 
-const nodeTypes = {
-  resourceNode: ResourceNode,
-  factoryNode: FactoryNode,
-  shipyardNode: ShipyardNode
-};
+import { viewModelMapper } from "../../game/view-model-mapper";
+
+const {
+  nodes: initialNodes,
+  edges: initialEdges
+} = viewModelMapper(gameState);
 
 const onInit = (reactFlowInstance) =>
   console.log("flow loaded:", reactFlowInstance);
@@ -37,11 +32,9 @@ export const Map = () => {
     [setEdges]
   );
 
-  console.log(edges);
-
   return (
     <div className="w-full h-full">
-      <div className="w-full h-8 absolute bg-blue-400">
+      <div className="w-full h-16 absolute bg-blue-400">
         Toolbar
       </div>
       <div className="w-full h-full">
