@@ -6,7 +6,8 @@ export const viewModelMapper = ({ nodes, edges, factories }) => {
         .map((node, index) => ({
             ...node,
             data: {
-                name: node.resourceType
+                name: node.resourceType,
+                isActive: node.isActive
             }
         }));
 
@@ -14,7 +15,10 @@ export const viewModelMapper = ({ nodes, edges, factories }) => {
         .filter(n => n.type === "factoryNode")
         .map((node, index) => ({
             ...node,
-            data: factories[node.factoryType]
+            data: {
+                ...factories[node.factoryType],
+                isActive: node.isActive
+            }
         }));
 
     const vmShipyardNodes = nodes
@@ -23,6 +27,7 @@ export const viewModelMapper = ({ nodes, edges, factories }) => {
             ...node,
             data: {
                 name: "Shipyard",
+                isActive: node.isActive,
                 input: {
                     corvetteHull: 1
                 },
@@ -35,12 +40,14 @@ export const viewModelMapper = ({ nodes, edges, factories }) => {
     const vmEdges = edges.map(e => ({
         ...e,
         id: `e${e.source}-${e.target}`,
-        animated: true,
+        animated: e.isActive,
         markerEnd: { type: MarkerType.ArrowClosed },
         style: {
             strokeWidth: 3
         }
     }));
+
+    console.log(vmEdges);
 
     return {
         nodes: [
