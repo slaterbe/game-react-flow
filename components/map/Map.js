@@ -20,7 +20,7 @@ import { ResourceNode } from '../nodes/ResourceNode';
 import { FactoryNode } from '../nodes/FactoryNode';
 import { ShipyardNode } from '../nodes/ShipyardNode';
 
-const nodeTypes = { 
+const nodeTypes = {
   resourceNode: ResourceNode,
   factoryNode: FactoryNode,
   shipyardNode: ShipyardNode
@@ -40,18 +40,25 @@ export const Map = () => {
   console.log(edges);
 
   return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      nodeTypes={nodeTypes}
-      onInit={onInit}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      fitView
-      attributionPosition="top-right"
-    >
-      <Controls />
-      <Background color="#aaa" gap={16} />
-    </ReactFlow>
+    <div className="w-full h-full">
+      <div className="w-full h-8 absolute bg-blue-400">
+        Toolbar
+      </div>
+      <div className="w-full h-full">
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={nodeTypes}
+          onInit={onInit}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          fitView
+          attributionPosition="top-right"
+        >
+          <Controls />
+          <Background color="#aaa" gap={16} />
+        </ReactFlow>
+      </div>
+    </div>
   );
 };
