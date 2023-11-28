@@ -1,9 +1,9 @@
-import { OverviewFlow } from '../components/flow/Flow'
+import { Map } from '../components/map/Map'
 
 export default function Home() {
   return (
     <main className="h-screen">
-        <OverviewFlow />
+        <Map />
     </main>
   )
 }

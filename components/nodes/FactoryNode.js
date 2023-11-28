@@ -1,4 +1,5 @@
 import { Handle, Position } from 'reactflow';
+import { ResourceDetail } from '../resource/ResourceDetail';
 
 export const FactoryNode = ({ data, isConnectable }) => { 
     return (
@@ -10,12 +11,8 @@ export const FactoryNode = ({ data, isConnectable }) => {
           <div className="text-center text-sm">
             {data.name}
           </div>
-          <div className="inline-block text-left text-xs text-red-600">
-            - 2 Common Ore
-          </div>
-          <div className="inline-block text-left text-xs text-green-600">
-            + 1 Corvette Hull
-          </div>
+          <ResourceDetail resource={data.input} />
+          <ResourceDetail resource={data.output} positive={true} />
         </div>
       </div>
     );

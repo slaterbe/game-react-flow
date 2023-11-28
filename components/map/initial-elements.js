@@ -1,3 +1,5 @@
+import { MarkerType } from "@reactflow/core";
+
 export const nodes = [
   {
     id: "1",
@@ -27,6 +29,9 @@ export const nodes = [
     position: { x: 500, y: 100 },
     data: {
       name: "Shipyard",
+      input: {
+        corvetteHull: 1
+      },
       output: {
         corvette: 1
       }
@@ -35,6 +40,6 @@ export const nodes = [
 ];
 
 export const edges = [
-  { id: "e1-2", source: "1", target: "2", label: "this is an edge label" },
-  { id: "e2-3", source: "2", target: "3" },
+  { id: "e1-2", source: "1", target: "2", animated: true, markerEnd: { type: MarkerType.ArrowClosed }, style: { strokeWidth: 3 } },
+  { id: "e2-3", source: "2", target: "3", animated: true, markerEnd: { type: MarkerType.ArrowClosed }, style: { strokeWidth: 3 } },
 ];
