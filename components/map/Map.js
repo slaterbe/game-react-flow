@@ -13,8 +13,10 @@ import "reactflow/dist/style.css";
 import { nodeTypes } from '../nodes/NodeTypes';
 
 import { gameState } from "../../game/initial-state";
-
 import { viewModelMapper } from "../../game/view-model-mapper";
+import { gameTick } from "../../game/game-tick";
+
+gameTick(gameState);
 
 const {
   nodes: initialNodes,

@@ -77,7 +77,7 @@ const nodes = [
     type: 'factoryNode',
     position: { x: 2 * spacing, y: 2 * spacing },
     factoryType: 'empty',
-    isActive: true
+    isActive: false
   },
   {
     id: "10",
