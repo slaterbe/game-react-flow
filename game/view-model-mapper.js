@@ -1,6 +1,6 @@
 import { MarkerType } from "@reactflow/core";
 
-export const viewModelMapper = ({ nodes, edges, factories }) => {
+export const viewModelMapper = ({ nodes, edges, factories, shipyards }) => {
     const vmResourceNodes = nodes
         .filter(n => n.type === "resourceNode")
         .map((node, index) => ({
@@ -28,12 +28,7 @@ export const viewModelMapper = ({ nodes, edges, factories }) => {
             data: {
                 name: "Shipyard",
                 isActive: node.isActive,
-                input: {
-                    corvetteHull: 1
-                },
-                output: {
-                    corvette: 1
-                }
+                ...shipyards[node.shipyardType]
             }
         }));
 
@@ -46,8 +41,6 @@ export const viewModelMapper = ({ nodes, edges, factories }) => {
             strokeWidth: 3
         }
     }));
-
-    console.log(vmEdges);
 
     return {
         nodes: [

@@ -15,6 +15,18 @@ const factories = {
   }
 }
 
+const shipyards = {
+  corvetteShipyard: {
+    name: "Corvette Shipyard",
+    input: {
+      corvetteHull: 1
+    },
+    output: {
+      corvette: 1
+    }
+  }
+}
+
 const spacing = 350;
 
 const nodes = [
@@ -22,7 +34,7 @@ const nodes = [
     id: "1",
     type: "factoryNode",
     position: { x: 1 * spacing, y: 0 * spacing },
-    factoryType: 'smelter',
+    factoryType: 'empty',
     isActive: false
   },
   {
@@ -36,7 +48,7 @@ const nodes = [
     id: "3",
     type: 'factoryNode',
     position: { x: 0 * spacing, y: 1 * spacing },
-    factoryType: 'empty',
+    factoryType: 'smelter',
     isActive: true
   },
   {
@@ -64,13 +76,15 @@ const nodes = [
     id: "7",
     type: 'shipyardNode',
     position: { x: 4 * spacing, y: 1 * spacing },
-    isActive: true
+    isActive: false,
+    shipyardType: "corvetteShipyard"
   },
   {
     id: "8",
     type: 'shipyardNode',
     position: { x: 0 * spacing, y: 2 * spacing },
-    isActive: false
+    isActive: true,
+    shipyardType: "corvetteShipyard"
   },
   {
     id: "9",
@@ -97,7 +111,8 @@ const nodes = [
     id: "12",
     type: 'shipyardNode',
     position: { x: 3 * spacing, y: 3 * spacing },
-    isActive: true
+    isActive: false,
+    shipyardType: "corvetteShipyard"
   }
 ];
 
@@ -123,8 +138,15 @@ const edges = [
   { source: "11", target: "12", sourceHandle: "sb", targetHandle: "tr", isActive: true },
 ];
 
+const globalResources = {
+  corvette: 3,
+  destroyer: 1
+};
+
 export const gameState = {
   factories,
+  shipyards,
   nodes,
-  edges
+  edges,
+  globalResources
 }
