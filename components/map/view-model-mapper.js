@@ -6,9 +6,9 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
         .map((node) => ({
             ...node,
             data: {
-                name: node.resourceType,
+                ...resourceNodes[node.resourceType],
                 isActive: node.isActive,
-                ...resourceNodes[node.resourceType]
+                isVisible: node.isVisible,
             }
         }));
 
@@ -18,6 +18,7 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
             ...node,
             data: {
                 ...factories[node.factoryType],
+                isVisible: node.isVisible,
                 isActive: node.isActive
             }
         }));
@@ -27,9 +28,9 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
         .map((node) => ({
             ...node,
             data: {
-                name: "Shipyard",
-                isActive: node.isActive,
-                ...shipyards[node.shipyardType]
+                ...shipyards[node.shipyardType],
+                isVisible: node.isVisible,
+                isActive: node.isActive
             }
         }));
 

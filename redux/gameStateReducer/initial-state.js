@@ -50,84 +50,96 @@ const nodes = [
     type: "factoryNode",
     position: { x: 1 * spacing, y: 0 * spacing },
     factoryType: 'empty',
-    isActive: false
+    isActive: false,
+    isVisible: true
   },
   {
     id: "2",
     type: 'factoryNode',
     position: { x: 3 * spacing, y: 0 * spacing },
     factoryType: 'empty',
-    isActive: false
+    isActive: false,
+    isVisible: true
   },
   {
     id: "3",
     type: 'factoryNode',
     position: { x: 0 * spacing, y: 1 * spacing },
     factoryType: 'smelter',
-    isActive: true
+    isActive: true,
+    isVisible: true
   },
   {
     id: "4",
     type: 'resourceNode',
     position: { x: 1 * spacing, y: 1 * spacing },
     resourceType: "commonOre",
-    isActive: true
+    isActive: true,
+    isVisible: true
   },
   {
     id: "5",
     type: 'factoryNode',
     position: { x: 2 * spacing, y: 1 * spacing },
     factoryType: 'empty',
-    isActive: true
+    isActive: true,
+    isVisible: true
   },
   {
     id: "6",
     type: 'factoryNode',
     position: { x: 3 * spacing, y: 1 * spacing },
     factoryType: 'empty',
-    isActive: true
+    isActive: true,
+    isVisible: true
   },
   {
     id: "7",
     type: 'shipyardNode',
     position: { x: 4 * spacing, y: 1 * spacing },
     isActive: false,
-    shipyardType: "corvetteShipyard"
+    shipyardType: "corvetteShipyard",
+    isVisible: true
   },
   {
     id: "8",
     type: 'shipyardNode',
     position: { x: 0 * spacing, y: 2 * spacing },
     isActive: true,
-    shipyardType: "corvetteShipyard"
+    shipyardType: "corvetteShipyard",
+    isVisible: true
   },
   {
     id: "9",
     type: 'factoryNode',
     position: { x: 2 * spacing, y: 2 * spacing },
     factoryType: 'empty',
-    isActive: false
+    isActive: false,
+    isVisible: true
   },
   {
     id: "10",
     type: 'resourceNode',
     position: { x: 3 * spacing, y: 2 * spacing },
     resourceType: "rareOre",
-    isActive: true
+    isActive: true,
+    isVisible: true
   },
   {
     id: "11",
     type: 'factoryNode',
     position: { x: 4 * spacing, y: 2 * spacing },
     factoryType: 'empty',
-    isActive: true
+    isActive: true,
+    isVisible: true
   },
   {
     id: "12",
     type: 'shipyardNode',
     position: { x: 3 * spacing, y: 3 * spacing },
     isActive: false,
-    shipyardType: "corvetteShipyard"
+    shipyardType: "corvetteShipyard",
+    isVisible: false
   }
 ];
 

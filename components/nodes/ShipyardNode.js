@@ -2,11 +2,12 @@ import { Handle, Position } from 'reactflow';
 import { ResourceDetail } from '../resource/ResourceDetail';
 
 export const ShipyardNode = ({ data, isConnectable, id }) => {
-  const { isActive } = data;
+  const { isActive, isVisible } = data;
 
   return (
     <div className={`w-32 h-32 background bg-blue-800 p-2 rounded-md border-4 
-      ${isActive ? "border-green-300" : "border-red-600"}`}>
+      ${isActive ? "border-green-300" : "border-red-600"}
+      ${isVisible ? "" : "hidden"}`}>
       <Handle type="target" position={Position.Right} isConnectable={true} id="tr" />
       <Handle type="target" position={Position.Left} isConnectable={true} id="tl" />
       <Handle type="target" position={Position.Top} isConnectable={true} id="tt" />
