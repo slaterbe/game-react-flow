@@ -155,6 +155,7 @@ const edges = [
 
 const globalResources = {
   corvette: 3,
+  frigate: 0,
   destroyer: 1,
   cruiser: 2
 };
