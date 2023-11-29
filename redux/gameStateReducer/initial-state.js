@@ -140,13 +140,17 @@ const edges = [
 
 const globalResources = {
   corvette: 3,
-  destroyer: 1
+  destroyer: 1,
+  cruiser: 2
 };
+
+const tickCounter = 0;
 
 export const gameState = {
   factories,
   shipyards,
   nodes,
   edges,
+  tickCounter,
   globalResources
 }

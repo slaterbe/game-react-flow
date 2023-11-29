@@ -15,6 +15,8 @@ export const gameStateReducer = createSlice({
       disableNodesProcessor(state);
       edgeActiveProcessor(state);
       addShipProcessor(state);
+
+      state.tickCounter = state.tickCounter + 1;
     },
     toggleFactoryIsActive: state => {
 

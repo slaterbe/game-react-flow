@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 
-export const Overlay = ({ globalResources }) => {
+export const Overlay = ({ globalResources, tickCounter }) => {
     const [questLogOpen, setQuestLogOpen] = useState(false);
 
     return (
         <>
-            <div className="w-full h-16 absolute bg-blue-400 z-10">
-                <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                    {globalResources.corvette} Corvette
+            <div className="w-full h-16 absolute bg-blue-400 z-10 flex justify-between">
+                <div>
+                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
+                        {globalResources.corvette} Corvette
+                    </div>
+                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
+                        {globalResources.destroyer} Destroyer
+                    </div>
                 </div>
-                <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                    {globalResources.destroyer} Destroyer
+                <div>
+                    <div className="inline-block text-right text-lg text-black p-4 font-medium">
+                        Tick: {tickCounter}
+                    </div>
                 </div>
             </div>
             {questLogOpen && <QuestLog close={() => setQuestLogOpen(false)} />}

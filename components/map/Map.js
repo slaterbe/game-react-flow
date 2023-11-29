@@ -25,7 +25,7 @@ export const Map = () => {
 
   const { nodes, edges } = viewModelMapper(gameState);
 
-  const { globalResources } = gameState;
+  const { globalResources, tickCounter } = gameState;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,7 +39,7 @@ export const Map = () => {
 
   return (
     <div className="w-full h-full">
-      <Overlay globalResources={globalResources} />
+      <Overlay globalResources={globalResources} tickCounter={tickCounter} />
       <div className="w-full h-full">
         <ReactFlow
           nodes={nodes}
