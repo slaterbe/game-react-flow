@@ -1,13 +1,14 @@
 import { MarkerType } from "@reactflow/core";
 
-export const viewModelMapper = ({ nodes, edges, factories, shipyards }) => {
+export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNodes }) => {
     const vmResourceNodes = nodes
         .filter(n => n.type === "resourceNode")
         .map((node) => ({
             ...node,
             data: {
                 name: node.resourceType,
-                isActive: node.isActive
+                isActive: node.isActive,
+                ...resourceNodes[node.resourceType]
             }
         }));
 

@@ -27,6 +27,21 @@ const shipyards = {
   }
 }
 
+const resourceNodes = {
+  commonOre: {
+    name: "Common Ore",
+    output: {
+      commonOre: 5
+    }
+  },
+  rareOre: {
+    name: "Rare Ore",
+    output: {
+      rareOre: 5
+    }
+  }
+}
+
 const spacing = 350;
 
 const nodes = [
@@ -55,7 +70,7 @@ const nodes = [
     id: "4",
     type: 'resourceNode',
     position: { x: 1 * spacing, y: 1 * spacing },
-    resourceType: "Common Ore",
+    resourceType: "commonOre",
     isActive: true
   },
   {
@@ -97,7 +112,7 @@ const nodes = [
     id: "10",
     type: 'resourceNode',
     position: { x: 3 * spacing, y: 2 * spacing },
-    resourceType: "Common Ore",
+    resourceType: "rareOre",
     isActive: true
   },
   {
@@ -149,6 +164,7 @@ const tickCounter = 0;
 export const gameState = {
   factories,
   shipyards,
+  resourceNodes,
   nodes,
   edges,
   tickCounter,
