@@ -19,7 +19,7 @@ export const gameStateReducer = createSlice({
       state.tickCounter = state.tickCounter + 1;
     },
     toggleFactoryIsActive: state => {
-
+      console.log('test');
     }
   },
 })

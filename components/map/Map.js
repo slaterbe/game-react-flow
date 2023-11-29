@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { tick } from '../../redux/gameStateReducer/gameStateReducer';
 
 import { nodeTypes } from '../nodes/NodeTypes';
+import { edgeTypes } from '../edges/edgeTypes';
 
 import { viewModelMapper } from "./view-model-mapper";
 
@@ -18,6 +19,8 @@ import { Overlay } from '../Overlay';
 
 const onInit = (reactFlowInstance) =>
   console.log("flow loaded:", reactFlowInstance);
+
+  console.log('test', edgeTypes);
 
 export const Map = () => {
   const gameState = useSelector((state) => state.gameState)
@@ -45,6 +48,7 @@ export const Map = () => {
           nodes={nodes}
           edges={edges}
           nodeTypes={nodeTypes}
+          edgeTypes={edgeTypes}
           onInit={onInit}
           fitView
           attributionPosition="top-right"

@@ -23,7 +23,8 @@ const shipyards = {
     },
     output: {
       corvette: 1
-    }
+    },  
+    usage: {}
   }
 }
 
@@ -139,7 +140,7 @@ const nodes = [
     position: { x: 3 * spacing, y: 3 * spacing },
     isActive: false,
     shipyardType: "corvetteShipyard",
-    isVisible: false
+    isVisible: true
   }
 ];
 

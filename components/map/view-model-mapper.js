@@ -39,8 +39,14 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
         id: `e${e.source}-${e.target}`,
         animated: e.isActive,
         markerEnd: { type: MarkerType.ArrowClosed },
+        type: 'edgeLabel',
         style: {
             strokeWidth: 3
+        },
+        data: {
+            input: {
+                commonOre: 2
+            }
         }
     }));
 
