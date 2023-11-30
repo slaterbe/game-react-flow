@@ -21,7 +21,7 @@ export const EdgeLabel = ({ id, data, ...props }) => {
           }}
           className="nodrag nopan"
         >
-          <ResourceDetail resource={data.input} positive/>
+          <ResourceDetail resource={data.input}/>
         </div>
       </EdgeLabelRenderer>
     </>

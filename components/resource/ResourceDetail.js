@@ -1,11 +1,26 @@
-import { Handle, Position } from 'reactflow';
+const getOperator = positive => {
+    if(positive === undefined) return '';
+
+    if(positive) return '+';
+
+    return '-';
+}
+
+const isGreenText = positive => {
+    if(positive === undefined) return true;
+
+    if(positive) return true;
+
+    return false;
+}
 
 export const ResourceDetail = ({ resource, positive }) => {
-    const operator = positive ? '+' : '-'
+    const operator = getOperator(positive);
+    const isGreen = isGreenText(positive);
 
     return (
         <div>
-            <div className={`inline-block text-left text-xs ${positive ? 'text-green-600' : 'text-red-600'}`}>
+            <div className={`inline-block text-left text-xs ${isGreen ? 'text-green-600' : 'text-red-600'}`}>
                 {resource["commonOre"] && <div> {operator} {resource["commonOre"]} Common Ore</div>}
                 {resource["rareOre"] && <div> {operator} {resource["rareOre"]} Rare Ore</div>}
                 {resource["corvetteHull"] && <div> {operator} {resource["corvetteHull"]} Corvette Hull</div>}

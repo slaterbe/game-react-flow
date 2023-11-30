@@ -17,7 +17,7 @@ export const ShipyardNode = ({ data, isConnectable, id }) => {
         <div className="text-center text-sm">
           {data.name} {id}
         </div>
-        <ResourceDetail resource={data.input} />
+        <ResourceDetail resource={data.input} positive={false}/>
         <ResourceDetail resource={data.output} positive={true} />
       </div>
     </div>

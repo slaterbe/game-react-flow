@@ -20,8 +20,6 @@ import { Overlay } from '../Overlay';
 const onInit = (reactFlowInstance) =>
   console.log("flow loaded:", reactFlowInstance);
 
-  console.log('test', edgeTypes);
-
 export const Map = () => {
   const gameState = useSelector((state) => state.gameState)
   const dispatch = useDispatch()
