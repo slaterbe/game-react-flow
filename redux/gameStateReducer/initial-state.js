@@ -50,6 +50,7 @@ const nodes = [
     id: "1",
     type: "factoryNode",
     position: { x: 1 * spacing, y: 0 * spacing },
+    modifiedInputs: {},
     factoryType: 'empty',
     isActive: false,
     isVisible: true
@@ -58,6 +59,7 @@ const nodes = [
     id: "2",
     type: 'factoryNode',
     position: { x: 3 * spacing, y: 0 * spacing },
+    modifiedInputs: {},
     factoryType: 'empty',
     isActive: false,
     isVisible: true
@@ -66,6 +68,7 @@ const nodes = [
     id: "3",
     type: 'factoryNode',
     position: { x: 0 * spacing, y: 1 * spacing },
+    modifiedInputs: {},
     factoryType: 'smelter',
     isActive: true,
     isVisible: true
@@ -74,6 +77,7 @@ const nodes = [
     id: "4",
     type: 'resourceNode',
     position: { x: 1 * spacing, y: 1 * spacing },
+    modifiedInputs: {},
     resourceType: "commonOre",
     isActive: true,
     isVisible: true
@@ -82,6 +86,7 @@ const nodes = [
     id: "5",
     type: 'factoryNode',
     position: { x: 2 * spacing, y: 1 * spacing },
+    modifiedInputs: {},
     factoryType: 'empty',
     isActive: true,
     isVisible: true
@@ -90,6 +95,7 @@ const nodes = [
     id: "6",
     type: 'factoryNode',
     position: { x: 3 * spacing, y: 1 * spacing },
+    modifiedInputs: {},
     factoryType: 'empty',
     isActive: true,
     isVisible: true
@@ -114,6 +120,7 @@ const nodes = [
     id: "9",
     type: 'factoryNode',
     position: { x: 2 * spacing, y: 2 * spacing },
+    modifiedInputs: {},
     factoryType: 'empty',
     isActive: false,
     isVisible: true
@@ -122,6 +129,7 @@ const nodes = [
     id: "10",
     type: 'resourceNode',
     position: { x: 3 * spacing, y: 2 * spacing },
+    modifiedInputs: {},
     resourceType: "rareOre",
     isActive: true,
     isVisible: true
@@ -130,6 +138,7 @@ const nodes = [
     id: "11",
     type: 'factoryNode',
     position: { x: 4 * spacing, y: 2 * spacing },
+    modifiedInputs: {},
     factoryType: 'empty',
     isActive: true,
     isVisible: true
