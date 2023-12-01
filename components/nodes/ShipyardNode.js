@@ -15,6 +15,7 @@ export const ShipyardNode = ({ data, isConnectable, id }) => {
 
   const { input, output, name, nodeState } = data;
   const isVisible = nodeState !== "hidden";
+  const isToggleDisabled = nodeState === 'invalid';
   const isActive = nodeState === "active";
 
   return (
@@ -33,7 +34,10 @@ export const ShipyardNode = ({ data, isConnectable, id }) => {
         <ResourceDetail resource={input} positive={false}/>
         <ResourceDetail resource={output} positive={true} />
         
-        <Toggle isToggle={isActive} toggle={()=> dispatch(toggleFactory(id))}/>
+        <Toggle 
+          isToggle={isActive} 
+          toggle={()=> dispatch(toggleFactory(id))}
+          disabled={isToggleDisabled}/>
       </div>
     </div>
   );

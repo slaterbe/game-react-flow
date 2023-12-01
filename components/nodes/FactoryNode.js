@@ -16,7 +16,8 @@ export const FactoryNode = ({ data, isConnectable, id }) => {
   const { name, input, output, nodeState, factoryType } = data;
   const isVisible = nodeState !== "hidden";
   const isActive = nodeState === "active";
-  const isEmpty = factoryType === 'empty';
+  const isToggleDisabled = nodeState === 'invalid';
+  const isEmpty = factoryType === 'empty'
 
   return (
     <div className={`w-32 h-32 background bg-blue-800 p-2 rounded-md border-4 
@@ -39,7 +40,10 @@ export const FactoryNode = ({ data, isConnectable, id }) => {
         <ResourceDetail resource={input} positive={false} />
         <ResourceDetail resource={output} positive={true} />
 
-        {!isEmpty && <Toggle isToggle={isActive} toggle={()=> dispatch(toggleFactory(id))} />}
+        {!isEmpty && <Toggle 
+          isToggle={
+            isActive} toggle={()=> dispatch(toggleFactory(id))} 
+            disabled={isToggleDisabled} />}
       </div>
     </div>
   );

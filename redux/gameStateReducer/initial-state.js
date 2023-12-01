@@ -23,7 +23,7 @@ const shipyards = {
     },
     output: {
       corvette: 1
-    },  
+    },
     usage: {}
   }
 }
@@ -133,25 +133,25 @@ const nodes = [
 ];
 
 const edges = [
-  { source: "1", target: "2", sourceHandle: "sr", targetHandle: "tl", isActive: false },
-  { source: "1", target: "5", sourceHandle: "sr", targetHandle: "tt", isActive: false },
-  { source: "1", target: "3", sourceHandle: "sl", targetHandle: "tt", isActive: false },
-  { source: "2", target: "7", sourceHandle: "sr", targetHandle: "tl", isActive: true },
-  { source: "3", target: "8", sourceHandle: "sb", targetHandle: "tt", isActive: true },
-  { source: "4", target: "1", sourceHandle: "st", targetHandle: "tb", isActive: true },
-  { source: "4", target: "3", sourceHandle: "sl", targetHandle: "tr", isActive: true },
-  { source: "4", target: "5", sourceHandle: "sr", targetHandle: "tl", isActive: true },
-  { source: "4", target: "9", sourceHandle: "sb", targetHandle: "tt", isActive: true },
-  { source: "5", target: "2", sourceHandle: "sr", targetHandle: "tb", isActive: true },
-  { source: "5", target: "6", sourceHandle: "sr", targetHandle: "tl", isActive: true },
-  { source: "6", target: "7", sourceHandle: "sr", targetHandle: "tl", isActive: true },
-  { source: "9", target: "8", sourceHandle: "sl", targetHandle: "tr", isActive: true },
-  { source: "9", target: "12", sourceHandle: "sb", targetHandle: "tl", isActive: true },
-  { source: "10", target: "6", sourceHandle: "st", targetHandle: "tb", isActive: true },
-  { source: "10", target: "9", sourceHandle: "sl", targetHandle: "tr", isActive: true },
-  { source: "10", target: "11", sourceHandle: "sr", targetHandle: "tl", isActive: true },
-  { source: "11", target: "7", sourceHandle: "st", targetHandle: "tb", isActive: true },
-  { source: "11", target: "12", sourceHandle: "sb", targetHandle: "tr", isActive: true },
+  { source: "1", target: "2", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: {} },
+  { source: "1", target: "5", sourceHandle: "sr", targetHandle: "tt", isActive: false, input: {} },
+  { source: "1", target: "3", sourceHandle: "sl", targetHandle: "tt", isActive: false, input: {} },
+  { source: "2", target: "7", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: {} },
+  { source: "3", target: "8", sourceHandle: "sb", targetHandle: "tt", isActive: true, input: {} },
+  { source: "4", target: "1", sourceHandle: "st", targetHandle: "tb", isActive: true, input: {} },
+  { source: "4", target: "3", sourceHandle: "sl", targetHandle: "tr", isActive: true, input: {} },
+  { source: "4", target: "5", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: {} },
+  { source: "4", target: "9", sourceHandle: "sb", targetHandle: "tt", isActive: true, input: {} },
+  { source: "5", target: "2", sourceHandle: "sr", targetHandle: "tb", isActive: true, input: {} },
+  { source: "5", target: "6", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: {} },
+  { source: "6", target: "7", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: {} },
+  { source: "9", target: "8", sourceHandle: "sl", targetHandle: "tr", isActive: true, input: {} },
+  { source: "9", target: "12", sourceHandle: "sb", targetHandle: "tl", isActive: true, input: {} },
+  { source: "10", target: "6", sourceHandle: "st", targetHandle: "tb", isActive: true, input: {} },
+  { source: "10", target: "9", sourceHandle: "sl", targetHandle: "tr", isActive: true, input: {} },
+  { source: "10", target: "11", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: {} },
+  { source: "11", target: "7", sourceHandle: "st", targetHandle: "tb", isActive: true, input: {} },
+  { source: "11", target: "12", sourceHandle: "sb", targetHandle: "tr", isActive: true, input: {} },
 ];
 
 const globalResources = {

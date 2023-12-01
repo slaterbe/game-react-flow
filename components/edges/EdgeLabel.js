@@ -3,6 +3,7 @@ import { getBezierPath, EdgeLabelRenderer, BaseEdge } from 'reactflow';
 import { ResourceDetail } from '../resource/ResourceDetail';
  
 export const EdgeLabel = ({ id, data, ...props }) => {
+  const { input } = data;
   const [edgePath, labelX, labelY] = getBezierPath(props);
  
   return (

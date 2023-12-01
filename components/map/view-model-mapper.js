@@ -42,9 +42,7 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
             strokeWidth: 3
         },
         data: {
-            input: {
-                commonOre: 2
-            }
+            input: e.input
         }
     }));
 

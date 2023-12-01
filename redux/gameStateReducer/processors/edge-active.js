@@ -4,6 +4,6 @@ export const edgeActiveProcessor = (gameState) => {
     gameState.edges.forEach(edge => {
         const sourceNode = nodes.find(n => n.id === edge.source);
 
-        edge.isActive = sourceNode.isActive;
+        edge.isActive = sourceNode.nodeState === "active";
     });
 }
