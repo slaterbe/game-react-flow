@@ -1,45 +1,46 @@
-const factories = {
+import { buildResourceObject } from '../util';
+
+export const factories = {
   smelter: {
     name: "Smelter",
-    input: {
+    input: buildResourceObject({
       commonOre: 2
-    },
-    output: {
+    }),
+    output: buildResourceObject({
       corvetteHull: 1
-    }
+    })
   },
   empty: {
     name: "",
-    input: {},
-    output: {}
+    input: buildResourceObject(),
+    output: buildResourceObject()
   }
 }
 
-const shipyards = {
+export const shipyards = {
   corvetteShipyard: {
     name: "Corvette Shipyard",
-    input: {
+    input: buildResourceObject({
       corvetteHull: 1
-    },
-    output: {
+    }),
+    output: buildResourceObject({
       corvette: 1
-    },
-    usage: {}
+    })
   }
 }
 
-const resourceNodes = {
+export const resourceNodes = {
   commonOre: {
     name: "Common Ore",
-    output: {
+    output: buildResourceObject({
       commonOre: 5
-    }
+    })
   },
   rareOre: {
     name: "Rare Ore",
-    output: {
+    output: buildResourceObject({
       rareOre: 5
-    }
+    })
   }
 }
 
@@ -100,7 +101,7 @@ const nodes = [
     type: 'shipyardNode',
     position: { x: 0 * spacing, y: 2 * spacing },
     shipyardType: "corvetteShipyard",
-    nodeState: 'active'
+    nodeState: 'valid'
   },
   {
     id: "9",
@@ -133,25 +134,25 @@ const nodes = [
 ];
 
 const edges = [
-  { source: "1", target: "2", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: {} },
-  { source: "1", target: "5", sourceHandle: "sr", targetHandle: "tt", isActive: false, input: {} },
-  { source: "1", target: "3", sourceHandle: "sl", targetHandle: "tt", isActive: false, input: {} },
-  { source: "2", target: "7", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: {} },
-  { source: "3", target: "8", sourceHandle: "sb", targetHandle: "tt", isActive: true, input: {} },
-  { source: "4", target: "1", sourceHandle: "st", targetHandle: "tb", isActive: true, input: {} },
-  { source: "4", target: "3", sourceHandle: "sl", targetHandle: "tr", isActive: true, input: {} },
-  { source: "4", target: "5", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: {} },
-  { source: "4", target: "9", sourceHandle: "sb", targetHandle: "tt", isActive: true, input: {} },
-  { source: "5", target: "2", sourceHandle: "sr", targetHandle: "tb", isActive: true, input: {} },
-  { source: "5", target: "6", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: {} },
-  { source: "6", target: "7", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: {} },
-  { source: "9", target: "8", sourceHandle: "sl", targetHandle: "tr", isActive: true, input: {} },
-  { source: "9", target: "12", sourceHandle: "sb", targetHandle: "tl", isActive: true, input: {} },
-  { source: "10", target: "6", sourceHandle: "st", targetHandle: "tb", isActive: true, input: {} },
-  { source: "10", target: "9", sourceHandle: "sl", targetHandle: "tr", isActive: true, input: {} },
-  { source: "10", target: "11", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: {} },
-  { source: "11", target: "7", sourceHandle: "st", targetHandle: "tb", isActive: true, input: {} },
-  { source: "11", target: "12", sourceHandle: "sb", targetHandle: "tr", isActive: true, input: {} },
+  { source: "1", target: "2", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: buildResourceObject() },
+  { source: "1", target: "5", sourceHandle: "sr", targetHandle: "tt", isActive: false, input: buildResourceObject() },
+  { source: "1", target: "3", sourceHandle: "sl", targetHandle: "tt", isActive: false, input: buildResourceObject() },
+  { source: "2", target: "7", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: buildResourceObject() },
+  { source: "3", target: "8", sourceHandle: "sb", targetHandle: "tt", isActive: true, input: buildResourceObject() },
+  { source: "4", target: "1", sourceHandle: "st", targetHandle: "tb", isActive: true, input: buildResourceObject() },
+  { source: "4", target: "3", sourceHandle: "sl", targetHandle: "tr", isActive: true, input: buildResourceObject() },
+  { source: "4", target: "5", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: buildResourceObject() },
+  { source: "4", target: "9", sourceHandle: "sb", targetHandle: "tt", isActive: true, input: buildResourceObject() },
+  { source: "5", target: "2", sourceHandle: "sr", targetHandle: "tb", isActive: true, input: buildResourceObject() },
+  { source: "5", target: "6", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: buildResourceObject() },
+  { source: "6", target: "7", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: buildResourceObject() },
+  { source: "9", target: "8", sourceHandle: "sl", targetHandle: "tr", isActive: true, input: buildResourceObject() },
+  { source: "9", target: "12", sourceHandle: "sb", targetHandle: "tl", isActive: true, input: buildResourceObject() },
+  { source: "10", target: "6", sourceHandle: "st", targetHandle: "tb", isActive: true, input: buildResourceObject() },
+  { source: "10", target: "9", sourceHandle: "sl", targetHandle: "tr", isActive: true, input: buildResourceObject() },
+  { source: "10", target: "11", sourceHandle: "sr", targetHandle: "tl", isActive: true, input: buildResourceObject() },
+  { source: "11", target: "7", sourceHandle: "st", targetHandle: "tb", isActive: true, input: buildResourceObject() },
+  { source: "11", target: "12", sourceHandle: "sb", targetHandle: "tr", isActive: true, input: buildResourceObject() },
 ];
 
 const globalResources = {
