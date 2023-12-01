@@ -1,15 +1,31 @@
-import { activateNode } from '../../util';
+import { activateNode, buildResourceObject } from '../../util';
 
 const handleDeactivatingNode = (state, node) => {
     const { nodes, edges } = state;
 
-    const relevantNodes = edges.filter(e => e.sourceId === node.id && e.isActive)
-        .map(e => nodes.find(n => n.id === e.target))
+    const downstreamEdges = edges.filter(e => e.target === node.id && e.isActive);
 
-    relevantNodes.foreach(n => {
-        n.nodeState = 'invalid';
-        handleDeactivatingNode(state, node);
+    const upstreamEdges = edges.filter(e => e.source === node.id && e.isActive);
+    const upstreamNodes = upstreamEdges
+        .map(e => nodes.find(n => n.id === e.target))
+        .filter(n => n.nodeState === "active");
+
+    downstreamEdges.forEach(e => {
+        e.input = buildResourceObject(),
+        e.isActive = false;
     });
+
+    upstreamEdges.forEach(e => {
+        e.input = buildResourceObject();
+        e.isActive = false;
+    });
+
+    upstreamNodes.forEach(n => {
+        n.nodeState = 'invalid';
+        handleDeactivatingNode(state, n);
+    });
+
+    node.nodeState = "valid";
 }
 
 const handleActivatingNode = (state, node) => {
@@ -22,7 +38,7 @@ const handleActivatingNode = (state, node) => {
 export const toggleFactory = (gameState, item) => {
     const { nodes } = gameState;
     const nodeId = item.payload;
-    const node = nodes.filter(n => n.id === nodeId)[0];
+    const node = nodes.find(n => n.id === nodeId);
 
     if(node.nodeState === 'active')
         handleDeactivatingNode(gameState, node);
