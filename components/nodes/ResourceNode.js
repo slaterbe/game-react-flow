@@ -2,7 +2,9 @@ import { Handle, Position } from 'reactflow';
 import { ResourceDetail } from '../resource/ResourceDetail';
 
 export const ResourceNode = ({ data, isConnectable, id }) => {
-  const { isVisible } = data;
+  const { name, output, nodeState } = data;
+
+  const isVisible = nodeState !== "hidden";
 
   return (
     <div className={`w-32 h-32 background bg-blue-800 p-2 rounded-md border-4 border-green-300
@@ -13,9 +15,9 @@ export const ResourceNode = ({ data, isConnectable, id }) => {
       <Handle type="source" position={Position.Bottom} isConnectable={true} id="sb" />
       <div>
         <div className="text-center text-sm">
-          {data.name} {id}
+          {name} {id}
         </div>
-        <ResourceDetail resource={data.output} positive={true} />
+        <ResourceDetail resource={output} positive={true} />
       </div>
     </div>
   );

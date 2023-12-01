@@ -7,12 +7,14 @@ const handleDeactivatingNode = (state, node) => {
     // 4. Use recursive call to keep cancelling nodes
 }
 
-export const toggleFactory = (gameState, payload) => {
-    const nodeId = payload.id;
-    const node = null;
+export const toggleFactory = (gameState, item) => {
+    const { nodes, edges } = gameState;
+    const nodeId = item.payload;
+    const node = nodes.filter(n => n.id === nodeId)[0];
 
     if(node.nodeState === 'active')
-        handleDeactivatingNode(state, node);
-    else
         node.nodeState = 'valid';
+        // handleDeactivatingNode(state, node);
+    else
+        node.nodeState = 'active';
 }

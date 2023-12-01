@@ -1,12 +1,25 @@
 import { Handle, Position } from 'reactflow';
+import { useDispatch } from 'react-redux';
+import { toggleFactory } from '../../redux/gameStateReducer/gameStateReducer'
 import { ResourceDetail } from '../resource/ResourceDetail';
+import { Toggle } from '../Toggle';
+
+const getNodeStateStyles = (nodeState) => {
+  if(nodeState === 'active') return 'border-green-300'
+  else if(nodeState === 'valid') return 'border-red-600'
+  else return 'border-gray-300'
+}
 
 export const ShipyardNode = ({ data, isConnectable, id }) => {
-  const { isActive, isVisible } = data;
+  const dispatch = useDispatch()
+
+  const { input, output, name, nodeState } = data;
+  const isVisible = nodeState !== "hidden";
+  const isActive = nodeState === "active";
 
   return (
     <div className={`w-32 h-32 background bg-blue-800 p-2 rounded-md border-4 
-      ${isActive ? "border-green-300" : "border-red-600"}
+      ${getNodeStateStyles(nodeState)}
       ${isVisible ? "" : "hidden"}`}>
       <Handle type="target" position={Position.Right} isConnectable={true} id="tr" />
       <Handle type="target" position={Position.Left} isConnectable={true} id="tl" />
@@ -15,10 +28,12 @@ export const ShipyardNode = ({ data, isConnectable, id }) => {
 
       <div>
         <div className="text-center text-sm">
-          {data.name} {id}
+          {name} {id}
         </div>
-        <ResourceDetail resource={data.input} positive={false}/>
-        <ResourceDetail resource={data.output} positive={true} />
+        <ResourceDetail resource={input} positive={false}/>
+        <ResourceDetail resource={output} positive={true} />
+        
+        <Toggle isToggle={isActive} toggle={()=> dispatch(toggleFactory(id))}/>
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ const nodes = [
     type: 'factoryNode',
     position: { x: 0 * spacing, y: 1 * spacing },
     factoryType: 'smelter',
-    nodeState: 'invalid'
+    nodeState: 'valid'
   },
   {
     id: "4",
@@ -100,7 +100,7 @@ const nodes = [
     type: 'shipyardNode',
     position: { x: 0 * spacing, y: 2 * spacing },
     shipyardType: "corvetteShipyard",
-    nodeState: 'invalid'
+    nodeState: 'active'
   },
   {
     id: "9",
