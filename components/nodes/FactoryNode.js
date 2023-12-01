@@ -1,5 +1,6 @@
 import { Handle, Position } from 'reactflow';
 import { ResourceDetail } from '../resource/ResourceDetail';
+import { Toggle } from '../Toggle';
 
 export const FactoryNode = ({ data, isConnectable, id }) => {
   const { isActive, isVisible } = data;
@@ -24,6 +25,8 @@ export const FactoryNode = ({ data, isConnectable, id }) => {
         </div>
         <ResourceDetail resource={data.input} positive={false} />
         <ResourceDetail resource={data.output} positive={true} />
+
+        <Toggle />
       </div>
     </div>
   );

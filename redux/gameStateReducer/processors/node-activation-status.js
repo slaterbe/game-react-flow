@@ -1,11 +1,4 @@
-const baseValue = {
-    corvette: 0,
-    frigate: 0,
-    destroyer: 0,
-    cruiser: 0
-}
-
-export const addShipProcessor = (gameState) => {
+export const nodeActivationStatus = (gameState) => {
     const { shipyards } = gameState;
 
     const newShips = gameState.nodes
@@ -15,7 +8,7 @@ export const addShipProcessor = (gameState) => {
             frigate: (previous.frigate ?? 0) + (shipyards[currentValue.shipyardType].output.frigate ?? 0),
             destroyer: (previous.destroyer ?? 0) + (shipyards[currentValue.shipyardType].output.destroyer ?? 0),
             cruiser: (previous.cruiser ?? 0) + (shipyards[currentValue.shipyardType].output.cruiser ?? 0)
-        }), baseValue);
+        }), {});
 
     gameState.globalResources.corvette += newShips.corvette;
     gameState.globalResources.frigate += newShips.frigate;

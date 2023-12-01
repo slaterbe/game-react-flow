@@ -5,6 +5,8 @@ import { disableNodesProcessor } from './processors/disable-nodes';
 import { edgeActiveProcessor } from './processors/edge-active';
 import { addShipProcessor } from './processors/add-ships';
 
+import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
+
 const initialState = gameState;
 
 export const gameStateReducer = createSlice({
@@ -18,13 +20,11 @@ export const gameStateReducer = createSlice({
 
       state.tickCounter = state.tickCounter + 1;
     },
-    toggleFactoryIsActive: state => {
-      console.log('test');
-    }
+    toggleFactory: toggleFactoryAction
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { tick, toggleFactoryIsActive } = gameStateReducer.actions
+export const { tick, toggleFactory } = gameStateReducer.actions
 
 export default gameStateReducer.reducer
