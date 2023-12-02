@@ -66,6 +66,18 @@ const subtractResources = (resource1, resource2) => ({
     corvetteHull: resource1.corvetteHull - resource2.corvetteHull,
 })
 
+const addResources = (resource1, resource2) => ({
+    commonOre: resource1.commonOre + resource2.commonOre,
+    rareOre: resource1.rareOre + resource2.rareOre,
+    corvetteHull: resource1.corvetteHull + resource2.corvetteHull,
+})
+
+const isResourcesGreater = (resource1, resource2) => {
+    return resource1.commonOre >= resource2.commonOre
+        && resource1.rareOre >= resource2.rareOre
+        && resource1.corvetteHull >= resource2.corvetteHull    
+}
+
 const updateEdge = (requiredInput, edge, adjustedOutput) => {
     const newEdgeInput = calculateDelta(requiredInput, adjustedOutput);
     edge.input = newEdgeInput;
@@ -92,4 +104,34 @@ export const activateNode = (node, nodes, edges) => {
     downstreamNodes.reduce((accum, current) =>
         updateEdge(accum, current.edge, current.adjustedOutput),
         requiredInput)
+}
+
+export const canActivateNode = (node, nodes, edges) => {
+    const requiredInput = getRequiredInput(node);
+
+    const downstreamNodes = edges
+        .filter(e => e.target === node.id)
+        .filter(e => e.isActive)
+        .map(e => ({
+            edge: e,
+            node: nodes.find(n => n.id === e.source),
+            rawOutput: getRequiredOutput(nodes.find(n => n.id === e.source))
+        }))
+        .map(n => ({
+            ...n,
+            adjustedOutput: calculateAdjustedOutput(n.rawOutput, n.node.id, edges)
+        }));
+
+    const summedResources = downstreamNodes.reduce((accum, current) =>
+        addResources(accum, current.adjustedOutput),
+        buildResourceObject())
+
+    console.log(requiredInput);
+    console.log(summedResources);
+
+    const isGreater = isResourcesGreater(summedResources, requiredInput);
+
+    console.log(isGreater);
+
+    return isGreater;
 }
