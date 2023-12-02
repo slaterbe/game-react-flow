@@ -1,4 +1,4 @@
-import { buildResourceObject } from '../util';
+import { buildResourceObject } from '../../util';
 
 export const factories = {
   smelter: {
@@ -164,6 +164,16 @@ const globalResources = {
 
 const tickCounter = 0;
 
+const tasks = [
+  { title: 'Complete 1 Corvettes', requirement: { corvette: 1 }, claimed: true },
+  { title: 'Complete 20 Corvettes', requirement: { corvette: 20 }, claimed: false },
+  { title: 'Complete 100 Corvettes', requirement: { corvette: 100 }, claimed: false },
+  { title: 'Complete 20 Frigates', requirement: { frigate: 20 }, claimed: false },
+  { title: 'Complete 100 Frigates', requirement: { frigate: 100 }, claimed: false },
+  { title: 'Complete 50 Destroyer', requirement: { destroyer: 50 }, claimed: false },
+  { title: 'Complete 50 Cruisers', requirement: { cruiser: 50 }, claimed: false }
+]
+
 export const gameState = {
   factories,
   shipyards,
@@ -171,5 +181,6 @@ export const gameState = {
   nodes,
   edges,
   tickCounter,
+  tasks,
   globalResources
 }

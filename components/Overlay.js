@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { QuestLog } from "./QuestLog";
+import { useSelector, useDispatch } from 'react-redux';
+import { TaskLog } from "./TaskLog";
+
 
 export const Overlay = ({ globalResources, tickCounter }) => {
-    const [questLogOpen, setQuestLogOpen] = useState(false);
+    const [taskLogOpen, setTaskLogOpen] = useState(false);
+
+    const tasks = useSelector(state => state.gameState.tasks);
 
     return (
         <>
@@ -27,14 +31,15 @@ export const Overlay = ({ globalResources, tickCounter }) => {
                     </div>
                 </div>
             </div>
-            {questLogOpen && <QuestLog close={() => setQuestLogOpen(false)} />}
+            {taskLogOpen && <TaskLog close={() => setTaskLogOpen(false)} tasks={tasks} />}
             <div className="absolute bottom-0 right-0 z-10">
-                <div className="w-16 h-16 text-xs p-2 m-4 bg-blue-400 cursor-pointer" onClick={() => setQuestLogOpen(true)}>
-                    Quest
+                <div className="w-16 h-16 text-xs p-2 m-4 bg-blue-400 cursor-pointer" onClick={() => setTaskLogOpen(true)}>
+                    Task Log
                 </div>
 
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqAQgFYNl7mrZuojFdmNwm8jrvdQSxTzH6Zdli875E6AeJvg/viewform?usp=pp_url"
-                    className="w-16 h-16 text-xs block p-2 m-4 bg-blue-400 cursor-pointer">
+                    className="w-16 h-16 text-xs block p-2 m-4 bg-blue-400 cursor-pointer"
+                    target="_blank">
                     Feedback
                 </a>
             </div>

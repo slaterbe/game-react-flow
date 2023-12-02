@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { gameState } from './initial-state';
+import { gameState } from './gameStateFactories/sandbox';
 
-import { disableNodesProcessor } from './processors/disableNodes';
 import { edgeActiveProcessor } from './processors/edgeActive';
 import { addShipProcessor } from './processors/addShips';
 import { nodeStatusUpdater } from './processors/nodeStatusUpdater'
+import { taskProcessor } from './processors/taskProcessor';
 
 import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
 
@@ -15,10 +15,10 @@ export const gameStateReducer = createSlice({
   initialState,
   reducers: {
     tick: (state) => {
-      disableNodesProcessor(state);
       edgeActiveProcessor(state);
       addShipProcessor(state);
       nodeStatusUpdater(state);
+      taskProcessor(state);
 
       state.tickCounter = state.tickCounter + 1;
     },

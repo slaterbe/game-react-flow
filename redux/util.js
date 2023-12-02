@@ -1,4 +1,4 @@
-import { factories, resourceNodes, shipyards } from './gameStateReducer/initial-state';
+import { factories, resourceNodes, shipyards } from './gameStateReducer/gameStateFactories/sandbox';
 
 export const hasResource = (resources) => {
     return !!resources.commonOre
@@ -103,7 +103,7 @@ export const activateNode = (node, nodes, edges) => {
 
     downstreamNodes.reduce((accum, current) =>
         updateEdge(accum, current.edge, current.adjustedOutput),
-        requiredInput)
+        requiredInput);
 }
 
 export const canActivateNode = (node, nodes, edges) => {
@@ -124,14 +124,9 @@ export const canActivateNode = (node, nodes, edges) => {
 
     const summedResources = downstreamNodes.reduce((accum, current) =>
         addResources(accum, current.adjustedOutput),
-        buildResourceObject())
-
-    console.log(requiredInput);
-    console.log(summedResources);
+        buildResourceObject());
 
     const isGreater = isResourcesGreater(summedResources, requiredInput);
-
-    console.log(isGreater);
 
     return isGreater;
 }
