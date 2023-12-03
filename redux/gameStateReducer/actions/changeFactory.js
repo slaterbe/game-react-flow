@@ -2,7 +2,8 @@ import { handleDeactivatingNode } from '../../util';
 
 export const changeFactory = (gameState, item) => {
     const { nodes } = gameState;
-    const newFactoryType = item.payload;
+    const { factorySelector } = gameState.ui;
+    const { nodeId, newFactoryType } = item.payload;
     const node = nodes.find(n => n.id === nodeId);
 
     if(node.factoryType === 'active'){
@@ -12,4 +13,7 @@ export const changeFactory = (gameState, item) => {
     else{
         node.factoryType = newFactoryType;
     }
+
+    factorySelector.isOpen = false;
+    factorySelector.nodeId = null;
 }

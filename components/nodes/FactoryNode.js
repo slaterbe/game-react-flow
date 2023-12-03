@@ -41,13 +41,13 @@ export const FactoryNode = ({ data, isConnectable, id }) => {
         <ResourceDetail resource={input} positive={false} />
         <ResourceDetail resource={output} positive={true} />
 
-        {!isEmpty && <div className="my-2 flex justify-between">
-          <Toggle
+        <div className="my-2 flex justify-between">
+          {!isEmpty && <Toggle
             isToggle={
               isActive} toggle={() => dispatch(toggleFactory(id))}
-            disabled={isToggleDisabled} />
+            disabled={isToggleDisabled} />}
           <Cog6ToothIcon className="h-6 w-6  text-green-500 inline-flex cursor-pointer" onClick={() => dispatch(openFactoryDialog(id))} />
-        </div>}
+        </div>
       </div>
     </div>
   );
