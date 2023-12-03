@@ -1,5 +1,5 @@
 export const Toggle = ({ isToggle, toggle, disabled }) => (
-    <label className="relative inline-flex items-center mb-5 cursor-pointer">
+    <label className="relative inline-flex items-center cursor-pointer">
         <input 
             checked={isToggle} 
             onChange={toggle} 

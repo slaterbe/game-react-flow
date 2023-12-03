@@ -20,7 +20,7 @@ export const ResourceDetail = ({ resource, positive }) => {
 
     return (
         <div>
-            <div className={`inline-block text-left text-xs ${isGreen ? 'text-green-600' : 'text-red-600'}`}>
+            <div className={`inline-block text-left text-xs ${isGreen ? 'text-green-400' : 'text-red-600'}`}>
                 {resource["commonOre"] !== 0 && <div> {operator} {resource["commonOre"]} Common Ore</div>}
                 {resource["rareOre"] !== 0 && <div> {operator} {resource["rareOre"]} Rare Ore</div>}
                 {resource["corvetteHull"] !== 0 && <div> {operator} {resource["corvetteHull"]} Corvette Hull</div>}

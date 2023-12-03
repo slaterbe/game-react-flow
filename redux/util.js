@@ -106,6 +106,34 @@ export const activateNode = (node, nodes, edges) => {
         requiredInput);
 }
 
+export const handleDeactivatingNode = (state, node) => {
+    const { nodes, edges } = state;
+
+    const downstreamEdges = edges.filter(e => e.target === node.id && e.isActive);
+
+    const upstreamEdges = edges.filter(e => e.source === node.id && e.isActive);
+    const upstreamNodes = upstreamEdges
+        .map(e => nodes.find(n => n.id === e.target))
+        .filter(n => n.nodeState === "active");
+
+    downstreamEdges.forEach(e => {
+        e.input = buildResourceObject(),
+        e.isActive = false;
+    });
+
+    upstreamEdges.forEach(e => {
+        e.input = buildResourceObject();
+        e.isActive = false;
+    });
+
+    upstreamNodes.forEach(n => {
+        n.nodeState = 'invalid';
+        handleDeactivatingNode(state, n);
+    });
+
+    node.nodeState = "valid";
+}
+
 export const canActivateNode = (node, nodes, edges) => {
     const requiredInput = getRequiredInput(node);
 

@@ -7,6 +7,7 @@ import { nodeStatusUpdater } from './processors/nodeStatusUpdater'
 import { taskProcessor } from './processors/taskProcessor';
 
 import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
+import { changeFactory } from './actions/changeFactory';
 
 const initialState = gameState;
 
@@ -22,11 +23,19 @@ export const gameStateReducer = createSlice({
 
       state.tickCounter = state.tickCounter + 1;
     },
-    toggleFactory: toggleFactoryAction
+    openFactoryDialog: (state, item) => {
+      state.ui.factorySelector.isOpen = true;
+      state.ui.factorySelector.nodeId = item.payload;
+    },
+    closeFactoryDialog: (state) => {
+      state.ui.factorySelector.isOpen = false;
+    },
+    toggleFactory: toggleFactoryAction,
+    changeFactory: changeFactory
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { tick, toggleFactory } = gameStateReducer.actions
+export const { tick, toggleFactory, openFactoryDialog, closeFactoryDialog } = gameStateReducer.actions
 
 export default gameStateReducer.reducer

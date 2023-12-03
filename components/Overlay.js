@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { TaskLog } from "./TaskLog";
-
+import { FactorySelector } from './FactorySelector/FactorySelector';
+import { closeFactoryDialog } from '../redux/gameStateReducer/gameStateReducer';
 
 export const Overlay = ({ globalResources, tickCounter }) => {
     const [taskLogOpen, setTaskLogOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const tasks = useSelector(state => state.gameState.tasks);
+
+    const factorySelector = useSelector(state => state.gameState.ui.factorySelector);
+    const factories = useSelector(state => state.gameState.factories);
 
     return (
         <>
@@ -31,7 +36,10 @@ export const Overlay = ({ globalResources, tickCounter }) => {
                     </div>
                 </div>
             </div>
+            
+            {factorySelector.isOpen && <FactorySelector close={() => dispatch(closeFactoryDialog())} nodeId={factorySelector.nodeId} factories={factories} />}
             {taskLogOpen && <TaskLog close={() => setTaskLogOpen(false)} tasks={tasks} />}
+
             <div className="absolute bottom-0 right-0 z-10">
                 <div className="w-16 h-16 text-xs p-2 m-4 bg-blue-400 cursor-pointer" onClick={() => setTaskLogOpen(true)}>
                     Task Log

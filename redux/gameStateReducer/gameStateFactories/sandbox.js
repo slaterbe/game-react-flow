@@ -10,6 +10,16 @@ export const factories = {
       corvetteHull: 1
     })
   },
+  plateAlloyer: {
+    name: "Plate Alloyer",
+    input: buildResourceObject({
+      commonOre: 2,
+      rareOre: 3
+    }),
+    output: buildResourceObject({
+      corvetteHull: 1
+    })
+  },
   empty: {
     name: "",
     input: buildResourceObject(),
@@ -174,6 +184,13 @@ const tasks = [
   { title: 'Complete 50 Cruisers', requirement: { cruiser: 50 }, claimed: false }
 ]
 
+const ui = {
+  factorySelector: {
+    isOpen: false,
+    nodeId: 1
+  }
+}
+
 export const gameState = {
   factories,
   shipyards,
@@ -182,5 +199,6 @@ export const gameState = {
   edges,
   tickCounter,
   tasks,
-  globalResources
+  globalResources,
+  ui
 }
