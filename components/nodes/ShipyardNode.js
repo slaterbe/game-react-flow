@@ -5,9 +5,9 @@ import { ResourceDetail } from '../resource/ResourceDetail';
 import { Toggle } from '../Toggle';
 
 const getNodeStateStyles = (nodeState) => {
-  if(nodeState === 'active') return 'border-green-300'
-  else if(nodeState === 'valid') return 'border-red-600'
-  else return 'border-gray-300'
+  if (nodeState === 'active') return 'bg-green-900'
+  else if (nodeState === 'valid') return 'bg-red-900'
+  else return 'bg-gray-600'
 }
 
 const validToggleStates = ['active', 'valid'];
@@ -21,7 +21,7 @@ export const ShipyardNode = ({ data, isConnectable, id }) => {
   const isActive = nodeState === "active";
 
   return (
-    <div className={`w-32 h-32 background bg-blue-800 p-2 rounded-md border-4 
+    <div className={`w-32 h-32 background border-blue-800 p-2 rounded-md border-4 
       ${getNodeStateStyles(nodeState)}
       ${isVisible ? "" : "hidden"}`}>
       <Handle type="target" position={Position.Right} isConnectable={true} id="tr" />

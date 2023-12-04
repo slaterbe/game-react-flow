@@ -1,4 +1,4 @@
-import { canActivateNode } from '../../util';
+import { canActivateNode } from '../../util/node';
 
 export const nodeStatusUpdater = (gameState) => {
     const { nodes, edges } = gameState;

@@ -1,4 +1,4 @@
-import { buildResourceObject } from '../../util';
+import { buildResourceObject } from '../../util/resource';
 
 export const factories = {
   smelter: {

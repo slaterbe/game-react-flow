@@ -5,10 +5,11 @@ import { toggleFactory, openFactoryDialog } from '../../redux/gameStateReducer/g
 import { ResourceDetail } from '../resource/ResourceDetail';
 import { Toggle } from '../Toggle';
 
-const getNodeStateStyles = (nodeState) => {
-  if (nodeState === 'active') return 'border-green-300'
-  else if (nodeState === 'valid') return 'border-red-600'
-  else return 'border-gray-300'
+const getNodeStateStyles = (nodeState, factoryType) => {
+  if (nodeState === 'active') return 'bg-green-900'
+  else if (factoryType === 'empty') return 'bg-gray-600'
+  else if (nodeState === 'valid') return 'bg-red-900'
+  else return 'bg-gray-600'
 }
 
 const validToggleStates = ['active', 'valid'];
@@ -23,8 +24,8 @@ export const FactoryNode = ({ data, isConnectable, id }) => {
   const isEmpty = factoryType === 'empty'
 
   return (
-    <div className={`w-32 h-32 background bg-blue-800 p-2 rounded-md border-4 
-      ${getNodeStateStyles(nodeState)}
+    <div className={`w-32 h-32 background border-blue-800 p-2 rounded-md border-4 
+      ${getNodeStateStyles(nodeState, factoryType)}
       ${isVisible ? "" : "hidden"}`}>
       <Handle type="source" position={Position.Right} isConnectable={true} id="sr" />
       <Handle type="source" position={Position.Left} isConnectable={true} id="sl" />

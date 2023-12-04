@@ -1,3 +1,5 @@
+import { resourceNames } from '../../redux/util/resource';
+
 const getOperator = positive => {
     if(positive === undefined) return '';
 
@@ -21,10 +23,11 @@ export const ResourceDetail = ({ resource, positive }) => {
     return (
         <div>
             <div className={`inline-block text-left text-xs ${isGreen ? 'text-green-400' : 'text-red-400'}`}>
-                {resource["commonOre"] !== 0 && <div> {operator} {resource["commonOre"]} Common Ore</div>}
-                {resource["rareOre"] !== 0 && <div> {operator} {resource["rareOre"]} Rare Ore</div>}
-                {resource["corvetteHull"] !== 0 && <div> {operator} {resource["corvetteHull"]} Corvette Hull</div>}
-                {resource["corvette"] !== 0 && <div> {operator} {resource["corvette"]} Corvette</div>}
+                {resourceNames
+                    .filter(resourceConfig => resource[resourceConfig.id] !== 0)
+                    .map((resourceConfig, index) => (
+                        <div key={index}> {operator} {resource[resourceConfig.id]} {resourceConfig.name}</div>
+                    ))}
             </div>
         </div>
     );

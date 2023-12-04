@@ -7,7 +7,7 @@ export const ResourceNode = ({ data, isConnectable, id }) => {
   const isVisible = nodeState !== "hidden";
 
   return (
-    <div className={`w-32 h-32 background bg-blue-800 p-2 rounded-md border-4 border-green-300
+    <div className={`w-32 h-32 background bg-green-900 p-2 rounded-md border-4 border-blue-800
     ${isVisible ? "" : "hidden"}`}>
       <Handle type="source" position={Position.Right} isConnectable={true} id="sr" />
       <Handle type="source" position={Position.Left} isConnectable={true} id="sl" />
