@@ -1,4 +1,4 @@
-import { resourceNames } from '../../redux/util/resource';
+import { resourceConfigs } from '../../redux/util/resource';
 
 const getOperator = positive => {
     if(positive === undefined) return '';
@@ -23,7 +23,7 @@ export const ResourceDetail = ({ resource, positive }) => {
     return (
         <div>
             <div className={`inline-block text-left text-xs ${isGreen ? 'text-green-400' : 'text-red-400'}`}>
-                {resourceNames
+                {resourceConfigs
                     .filter(resourceConfig => resource[resourceConfig.id] !== 0)
                     .map((resourceConfig, index) => (
                         <div key={index}> {operator} {resource[resourceConfig.id]} {resourceConfig.name}</div>

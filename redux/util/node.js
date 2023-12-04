@@ -27,15 +27,11 @@ export const getRequiredOutput = (node) => {
 
 export const calculateAdjustedOutput = (rawOutput, nodeId, edges) => {
     return edges.filter(e => e.sourceId == nodeId)
-        .reduce((accum, currentValue) => ({
-            commonOre: accum.commonOre - currentValue.commonOre,
-            rareOre: accum.rareOre - currentValue.rareOre,
-            corvetteHull: accum.corvetteHull - currentValue.corvetteHull,
-        }), rawOutput)
+        .reduce((accum, currentValue) => subtractResources(accum, currentValue), rawOutput);
 }
 
 const updateEdge = (requiredInput, edge, adjustedOutput) => {
-    const newEdgeInput = calculateDelta(requiredInput, adjustedOutput);
+    const newEdgeInput = calculateDelta(adjustedOutput, requiredInput);
     edge.input = newEdgeInput;
 
     return subtractResources(requiredInput, newEdgeInput);
