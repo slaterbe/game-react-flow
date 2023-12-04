@@ -16,8 +16,8 @@ export const gameStateReducer = createSlice({
   initialState,
   reducers: {
     tick: (state) => {
-      edgeActiveProcessor(state);
       addShipProcessor(state);
+      edgeActiveProcessor(state);
       nodeStatusUpdater(state);
       taskProcessor(state);
 

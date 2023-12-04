@@ -4,8 +4,7 @@ export const nodeStatusUpdater = (gameState) => {
     const { nodes, edges } = gameState;
 
     const relevantNodes = nodes.filter(n => n.type !== 'resourceNode')
-        .filter(n => n.nodeState === 'valid' || n.nodeState === 'invalid')
-        .filter(n => n.id === '8');
+        .filter(n => n.nodeState === 'valid' || n.nodeState === 'invalid');
 
     relevantNodes.forEach(n => {
         const canActivate = canActivateNode(n, nodes, edges);

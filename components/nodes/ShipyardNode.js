@@ -10,6 +10,8 @@ const getNodeStateStyles = (nodeState) => {
   else return 'border-gray-300'
 }
 
+const validToggleStates = ['active', 'valid'];
+
 export const ShipyardNode = ({ data, isConnectable, id }) => {
   const dispatch = useDispatch()
 
@@ -34,10 +36,10 @@ export const ShipyardNode = ({ data, isConnectable, id }) => {
         <ResourceDetail resource={input} positive={false}/>
         <ResourceDetail resource={output} positive={true} />
         
-        <Toggle 
+        {validToggleStates.includes(nodeState) && <Toggle 
           isToggle={isActive} 
           toggle={()=> dispatch(toggleFactory(id))}
-          disabled={isToggleDisabled}/>
+          disabled={isToggleDisabled}/>}
       </div>
     </div>
   );

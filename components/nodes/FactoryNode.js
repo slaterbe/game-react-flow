@@ -11,6 +11,8 @@ const getNodeStateStyles = (nodeState) => {
   else return 'border-gray-300'
 }
 
+const validToggleStates = ['active', 'valid'];
+
 export const FactoryNode = ({ data, isConnectable, id }) => {
   const dispatch = useDispatch()
 
@@ -38,11 +40,12 @@ export const FactoryNode = ({ data, isConnectable, id }) => {
         <div className="text-center text-sm">
           {name} {id}
         </div>
+
         <ResourceDetail resource={input} positive={false} />
         <ResourceDetail resource={output} positive={true} />
 
         <div className="my-2 flex justify-between">
-          {!isEmpty && <Toggle
+          {!isEmpty && validToggleStates.includes(nodeState) && <Toggle
             isToggle={
               isActive} toggle={() => dispatch(toggleFactory(id))}
             disabled={isToggleDisabled} />}

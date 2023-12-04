@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { tick } from '../../redux/gameStateReducer/gameStateReducer';
 
 import { nodeTypes } from '../nodes/NodeTypes';
-import { edgeTypes } from '../edges/edgeTypes';
+import { edgeTypes } from '../edges/EdgeTypes';
 
 import { viewModelMapper } from "./view-model-mapper";
 

@@ -45,9 +45,9 @@ export const FactorySelector = ({ close, select, factories, node }) => (
                                         <ResourceDetail resource={value.output} positive={true} />
                                     </td>
                                     <td>
-                                        <button 
+                                        {key !== node.factoryType && <button 
                                             className="text-xs rounded-l bg-green-500 p-1 inline-block mx-4"
-                                            onClick={() => select({ nodeId: node.id, newFactoryType: key })}>Activate</button>
+                                            onClick={() => select({ nodeId: node.id, newFactoryType: key })}>Activate</button>}
                                     </td>
                                 </tr>
                             ))}
