@@ -46,7 +46,7 @@ export const FactorySelector = ({ close, select, factories, node }) => (
                                     </td>
                                     <td>
                                         {key !== node.factoryType && <button 
-                                            className="text-xs rounded-l bg-green-500 p-1 inline-block mx-4"
+                                            className="text-xs rounded bg-green-500 p-1 inline-block mx-4"
                                             onClick={() => select({ nodeId: node.id, newFactoryType: key })}>Activate</button>}
                                     </td>
                                 </tr>
