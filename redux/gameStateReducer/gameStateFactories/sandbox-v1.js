@@ -10,14 +10,52 @@ export const factories = {
       corvetteHull: 1
     })
   },
+  commonForge: {
+    name: "Common Forge",
+    input: buildResourceObject({
+      commonOre: 2
+    }),
+    output: buildResourceObject({
+      commonPlate: 3
+    })
+  },
+  commonForgev2: {
+    name: "Common Forge v2",
+    input: buildResourceObject({
+      commonOre: 2,
+      commonPlate: 3
+    }),
+    output: buildResourceObject({
+      commonPlate: 6
+    })
+  },
   plateAlloyer: {
     name: "Plate Alloyer",
     input: buildResourceObject({
-      commonOre: 2,
+      commonPlate: 2,
       rareOre: 3
     }),
     output: buildResourceObject({
       corvetteHull: 1
+    })
+  },
+  partManufacteur: {
+    name: "Part Manufacturer",
+    input: buildResourceObject({
+      commonOre: 2
+    }),
+    output: buildResourceObject({
+      commonShipPart: 2
+    })
+  },
+  enhancedManufacteur: {
+    name: "Enhanced Manufacturer",
+    input: buildResourceObject({
+      commonShipPart: 1,
+      silicon: 2
+    }),
+    output: buildResourceObject({
+      enhancedShipPart: 2
     })
   },
   empty: {
@@ -36,7 +74,34 @@ export const shipyards = {
     output: buildResourceObject({
       corvette: 1
     })
-  }
+  },
+  frigateShipyard: {
+    name: "Frigate Shipyard",
+    input: buildResourceObject({
+      frigateHull: 1
+    }),
+    output: buildResourceObject({
+      frigate: 1
+    }),
+  },
+  destroyerShipyard: {
+    name: "Destroyer Shipyard",
+    input: buildResourceObject({
+      destroyerHull: 1
+    }),
+    output: buildResourceObject({
+      destroyer: 1
+    }),
+  },
+  cruiserShipyard: {
+    name: "Cruiser Shipyard",
+    input: buildResourceObject({
+      cruiserHull: 1
+    }),
+    output: buildResourceObject({
+      cruiser: 1
+    }),
+  },
 }
 
 export const resourceNodes = {
@@ -49,7 +114,14 @@ export const resourceNodes = {
   rareOre: {
     name: "Rare Ore",
     output: buildResourceObject({
-      rareOre: 5
+      rareOre: 5,
+      silicon: 3
+    })
+  },
+  silicon: {
+    name: "Silicon Deposit",
+    output: buildResourceObject({
+      silicon: 5
     })
   }
 }

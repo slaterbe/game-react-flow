@@ -1,10 +1,4 @@
-export const resourceConfigs = [
-    { id: "commonOre", name: "Common Ore" },
-    { id: "rareOre", name: "Rare Ore" },
-    { id: "commonPlate", name: "Common Plate" },
-    { id: "corvetteHull", name: "Corvette Hull" },
-    { id: "corvette", name: "Corvette" }
-];
+import { resourceConfigs } from './resourceConfigs';
 
 const defaultEmptyObject = resourceConfigs
     .reduce((accum, current) => {
