@@ -154,7 +154,7 @@ export const resourceNodes = {
   commonOre: {
     name: "commonOre",
     output: buildResourceObject({
-      commonOre: 10
+      commonOre: 15
     })
   },
   rareOre: {
