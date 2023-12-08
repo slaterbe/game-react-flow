@@ -26,7 +26,8 @@ export const getRequiredOutput = (node) => {
 }
 
 export const calculateAdjustedOutput = (rawOutput, nodeId, edges) => {
-    return edges.filter(e => e.sourceId == nodeId)
+    return edges.filter(e => e.source == nodeId)
+        .map(e => e.input)
         .reduce((accum, currentValue) => subtractResources(accum, currentValue), rawOutput);
 }
 
@@ -55,7 +56,17 @@ export const activateNode = (node, nodes, edges) => {
 
     downstreamNodes.reduce((accum, current) =>
         updateEdge(accum, current.edge, current.adjustedOutput),
-        requiredInput);
+        requiredInput);    
+
+    const test = downstreamNodes
+        .map(n => n.node)
+        .flatMap(n => edges.filter(e => e.source === n.id))
+        .map(e => e.target)
+        .map(targetNode => nodes.find(n => n.id === targetNode))
+        .filter(n => n.nodeState === "valid")    
+        .forEach(node => {
+            updateNodeState(node, nodes, edges);
+        });
 }
 
 export const handleDeactivatingNode = (state, node) => {
@@ -86,7 +97,7 @@ export const handleDeactivatingNode = (state, node) => {
     node.nodeState = "valid";
 }
 
-export const canActivateNode = (node, nodes, edges) => {
+export const updateNodeState = (node, nodes, edges) => {
     const requiredInput = getRequiredInput(node);
 
     const downstreamNodes = edges
@@ -108,5 +119,6 @@ export const canActivateNode = (node, nodes, edges) => {
 
     const isGreater = isResourcesGreater(summedResources, requiredInput);
 
-    return isGreater;
+    const newState = isGreater ? 'valid' : 'invalid';
+    node.nodeState = newState;
 }

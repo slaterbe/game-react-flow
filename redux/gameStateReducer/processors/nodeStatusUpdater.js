@@ -1,4 +1,4 @@
-import { canActivateNode } from '../../util/node';
+import { updateNodeState  } from '../../util/node';
 
 export const nodeStatusUpdater = (gameState) => {
     const { nodes, edges } = gameState;
@@ -7,10 +7,6 @@ export const nodeStatusUpdater = (gameState) => {
         .filter(n => n.nodeState === 'valid' || n.nodeState === 'invalid');
 
     relevantNodes.forEach(n => {
-        const canActivate = canActivateNode(n, nodes, edges);
-
-        const newState = canActivate ? 'valid' : 'invalid';
-
-        n.nodeState = newState;        
+        updateNodeState(n, nodes, edges);
     })   
 }
