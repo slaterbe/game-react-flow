@@ -4,7 +4,7 @@ export const factories = {
   smelter: {
     name: "Smelter",
     input: buildResourceObject({
-      commonOre: 2
+      commonOre: 10
     }),
     output: buildResourceObject({
       corvetteHull: 1
@@ -13,7 +13,7 @@ export const factories = {
   commonForge: {
     name: "Common Forge",
     input: buildResourceObject({
-      commonOre: 2
+      commonOre: 4
     }),
     output: buildResourceObject({
       commonPlate: 3
@@ -29,33 +29,79 @@ export const factories = {
       commonPlate: 6
     })
   },
-  plateAlloyer: {
-    name: "Plate Alloyer",
+  refinery: {
+    name: "Refinery",
     input: buildResourceObject({
-      commonPlate: 2,
-      rareOre: 3
+      commonOre: 4
+    }),
+    output: buildResourceObject({
+      rareOre: 2
+    })
+  },
+  basicHullv1: {
+    name: "Basic Hull v1",
+    input: buildResourceObject({
+      commonOre: 4,
+      commonShipPart: 2
+    }),
+    output: buildResourceObject({
+      corvetteHull: 2
+    })
+  },
+  basicHullv2: {
+    name: "Basic Hull v2",
+    input: buildResourceObject({
+      commonPlate: 5
     }),
     output: buildResourceObject({
       corvetteHull: 1
     })
   },
-  partManufacteur: {
-    name: "Part Manufacturer",
+  shipPartFactory: {
+    name: "Ship Part Factory",
     input: buildResourceObject({
-      commonOre: 2
+      commonPlate: 2
     }),
     output: buildResourceObject({
-      commonShipPart: 2
+      commonShipPart: 3
     })
   },
-  enhancedManufacteur: {
-    name: "Enhanced Manufacturer",
+  frigateHull: {
+    name: "Frigate Hull Factory",
     input: buildResourceObject({
-      commonShipPart: 1,
-      silicon: 2
+      corvetteHull: 1,
+      enhancedPlate: 3
     }),
     output: buildResourceObject({
-      enhancedShipPart: 2
+      frigateHull: 1
+    })
+  },
+  enhancedPlateAlloyer: {
+    name: "Enhanced Plate Alloyer",
+    input: buildResourceObject({
+      commonPlate: 3,
+      rareOre: 3
+    }),
+    output: buildResourceObject({
+      enhancedPlate: 3
+    })
+  },
+  commonOreTransport: {
+    name: "Common Ore Transport",
+    input: buildResourceObject({
+      commonOre: 10,
+    }),
+    output: buildResourceObject({
+      commonOre: 10
+    })
+  },
+  rareOreTransport: {
+    name: "Rare Ore Transport",
+    input: buildResourceObject({
+      rareOre: 10,
+    }),
+    output: buildResourceObject({
+      rareOre: 10
     })
   },
   empty: {
@@ -108,14 +154,13 @@ export const resourceNodes = {
   commonOre: {
     name: "commonOre",
     output: buildResourceObject({
-      commonOre: 5
+      commonOre: 50
     })
   },
   rareOre: {
     name: "Rare Ore",
     output: buildResourceObject({
-      rareOre: 5,
-      silicon: 3
+      rareOre: 20
     })
   },
   silicon: {
@@ -258,16 +303,16 @@ const edges = [
   { source: "4", target: "9", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },
   { source: "5", target: "4", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },
   { source: "5", target: "10", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },
-  { source: "5", target: "11", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },
   { source: "6", target: "3", sourceHandle: "st", targetHandle: "tb", isActive: false, input: buildResourceObject() },  
   { source: "6", target: "5", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
   { source: "6", target: "7", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: buildResourceObject() },  
   { source: "6", target: "11", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },  
-  { source: "6", target: "12", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },  
+  { source: "7", target: "12", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },  
   { source: "7", target: "8", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: buildResourceObject() },  
   { source: "9", target: "14", sourceHandle: "sl", targetHandle: "tt", isActive: false, input: buildResourceObject() },  
   { source: "10", target: "9", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
   { source: "10", target: "15", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },  
+  { source: "11", target: "10", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
   { source: "11", target: "15", sourceHandle: "sb", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
   { source: "12", target: "11", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
   { source: "13", target: "8", sourceHandle: "st", targetHandle: "tb", isActive: false, input: buildResourceObject() },  
@@ -292,9 +337,6 @@ const tasks = [
   { title: 'Complete 20 Corvettes', requirement: { corvette: 20 }, claimed: false },
   { title: 'Complete 100 Corvettes', requirement: { corvette: 100 }, claimed: false },
   { title: 'Complete 20 Frigates', requirement: { frigate: 20 }, claimed: false },
-  { title: 'Complete 100 Frigates', requirement: { frigate: 100 }, claimed: false },
-  { title: 'Complete 50 Destroyer', requirement: { destroyer: 50 }, claimed: false },
-  { title: 'Complete 50 Cruisers', requirement: { cruiser: 50 }, claimed: false }
 ]
 
 const ui = {
