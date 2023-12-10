@@ -1,11 +1,11 @@
-import { factories, resourceNodes, shipyards } from '../gameStateReducer/gameStateFactories/sandbox-v2';
+import { factories, resourceNodes, shipyards } from '../../gameStateReducer/gameStateFactories/sandbox-v2';
 import { 
     buildResourceObject, 
     calculateDelta, 
     subtractResources, 
     addResources, 
     isResourcesGreater  
-} from './resource';
+} from '../resource';
 
 const getRequiredInput = (node) => {
     if (node.factoryType)
