@@ -7,7 +7,7 @@ import {
     isResourcesGreater  
 } from './resource';
 
-export const getRequiredInput = (node) => {
+const getRequiredInput = (node) => {
     if (node.factoryType)
         return { ...factories[node.factoryType].input };
     else if (node.shipyardType)
@@ -16,7 +16,7 @@ export const getRequiredInput = (node) => {
     return null;
 }
 
-export const getRequiredOutput = (node) => {
+const getRequiredOutput = (node) => {
     if (node.factoryType)
         return { ...factories[node.factoryType].output };
     else if (node.resourceType)
@@ -25,7 +25,7 @@ export const getRequiredOutput = (node) => {
     return null;
 }
 
-export const calculateAdjustedOutput = (rawOutput, nodeId, edges) => {
+const calculateAdjustedOutput = (rawOutput, nodeId, edges) => {
     return edges.filter(e => e.source == nodeId)
         .map(e => e.input)
         .reduce((accum, currentValue) => subtractResources(accum, currentValue), rawOutput);

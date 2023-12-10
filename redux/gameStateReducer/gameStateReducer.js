@@ -8,6 +8,7 @@ import { taskProcessor } from './processors/taskProcessor';
 
 import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
 import { changeFactory as changeFactoryAction } from './actions/changeFactory';
+import { addEdge as addEdgeAction } from'./actions/addEdge';
 
 const initialState = gameState;
 
@@ -31,7 +32,8 @@ export const gameStateReducer = createSlice({
       state.ui.factorySelector.isOpen = false;
     },
     toggleFactory: toggleFactoryAction,
-    changeFactory: changeFactoryAction
+    changeFactory: changeFactoryAction,
+    addEdge: addEdgeAction
   },
 })
 
@@ -40,6 +42,7 @@ export const {
   tick, 
   changeFactory, 
   toggleFactory, 
+  addEdge,
   openFactoryDialog, 
   closeFactoryDialog 
 } = gameStateReducer.actions
