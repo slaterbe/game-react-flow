@@ -89,19 +89,19 @@ export const factories = {
   commonOreTransport: {
     name: "Common Ore Transport",
     input: buildResourceObject({
-      commonOre: 10,
+      commonOre: 5,
     }),
     output: buildResourceObject({
-      commonOre: 10
+      commonOre: 5
     })
   },
   rareOreTransport: {
     name: "Rare Ore Transport",
     input: buildResourceObject({
-      rareOre: 10,
+      rareOre: 5,
     }),
     output: buildResourceObject({
-      rareOre: 10
+      rareOre: 5
     })
   },
   empty: {
