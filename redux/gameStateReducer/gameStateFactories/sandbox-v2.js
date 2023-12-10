@@ -296,31 +296,8 @@ const nodes = [
 ];
 
 const edges = [
-  { source: "2", target: "4", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },
-  { source: "3", target: "2", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },
-  { source: "3", target: "5", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },
-  { source: "4", target: "1", sourceHandle: "sl", targetHandle: "tb", isActive: false, input: buildResourceObject() },
-  { source: "4", target: "9", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },
-  { source: "5", target: "4", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },
-  { source: "5", target: "10", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },
   { source: "6", target: "3", sourceHandle: "st", targetHandle: "tb", isActive: false, input: buildResourceObject() },  
-  { source: "6", target: "5", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
-  { source: "6", target: "7", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: buildResourceObject() },  
-  { source: "6", target: "11", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },  
-  { source: "7", target: "12", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },  
-  { source: "7", target: "8", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: buildResourceObject() },  
-  { source: "9", target: "14", sourceHandle: "sl", targetHandle: "tt", isActive: false, input: buildResourceObject() },  
-  { source: "10", target: "9", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
-  { source: "10", target: "15", sourceHandle: "sb", targetHandle: "tt", isActive: false, input: buildResourceObject() },  
-  { source: "11", target: "10", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
-  { source: "11", target: "15", sourceHandle: "sb", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
-  { source: "12", target: "11", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
-  { source: "13", target: "8", sourceHandle: "st", targetHandle: "tb", isActive: false, input: buildResourceObject() },  
-  { source: "13", target: "12", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
-  { source: "13", target: "16", sourceHandle: "sb", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
-  { source: "15", target: "14", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() },  
-  { source: "15", target: "17", sourceHandle: "sl", targetHandle: "tt", isActive: false, input: buildResourceObject() },  
-  { source: "16", target: "11", sourceHandle: "sl", targetHandle: "tb", isActive: false, input: buildResourceObject() },  
+  { source: "6", target: "5", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() }, 
 ];
 
 const globalResources = {

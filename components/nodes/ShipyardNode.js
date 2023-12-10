@@ -24,22 +24,22 @@ export const ShipyardNode = ({ data, isConnectable, id }) => {
     <div className={`w-32 h-32 background border-blue-800 p-2 rounded-md border-4 
       ${getNodeStateStyles(nodeState)}
       ${isVisible ? "" : "hidden"}`}>
-      <Handle type="target" position={Position.Right} isConnectable={true} id="tr" />
-      <Handle type="target" position={Position.Left} isConnectable={true} id="tl" />
-      <Handle type="target" position={Position.Top} isConnectable={true} id="tt" />
-      <Handle type="target" position={Position.Bottom} isConnectable={true} id="tb" />
+      <Handle type="target" position={Position.Right} isConnectable={true} id="tr" style={{ padding: 10, background: "rgb(30 64 175)" }} />
+      <Handle type="target" position={Position.Left} isConnectable={true} id="tl" style={{ padding: 10, background: "rgb(30 64 175)" }} />
+      <Handle type="target" position={Position.Top} isConnectable={true} id="tt" style={{ padding: 10, background: "rgb(30 64 175)" }} />
+      <Handle type="target" position={Position.Bottom} isConnectable={true} id="tb" style={{ padding: 10, background: "rgb(30 64 175)" }} />
 
       <div>
         <div className="text-center text-sm">
           {name} {id}
         </div>
-        <ResourceDetail resource={input} positive={false}/>
+        <ResourceDetail resource={input} positive={false} />
         <ResourceDetail resource={output} positive={true} />
-        
-        {validToggleStates.includes(nodeState) && <Toggle 
-          isToggle={isActive} 
-          toggle={()=> dispatch(toggleFactory(id))}
-          disabled={isToggleDisabled}/>}
+
+        {validToggleStates.includes(nodeState) && <Toggle
+          isToggle={isActive}
+          toggle={() => dispatch(toggleFactory(id))}
+          disabled={isToggleDisabled} />}
       </div>
     </div>
   );

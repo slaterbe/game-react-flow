@@ -50,6 +50,7 @@ export const Map = () => {
           onConnect={onConnect}
           nodeTypes={nodeTypes}
           edgeTypes={edgeTypes}
+          connectionMode="loose"
           onInit={onInit}
           fitView
           attributionPosition="top-right"
