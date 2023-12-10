@@ -171,125 +171,123 @@ export const resourceNodes = {
   }
 }
 
-const spacing = 350;
-
 const nodes = [
   {
     id: "1",
     type: "shipyardNode",
-    position: { x: 0 * spacing, y: 0 * spacing },
+    position: { x: 0, y: 0 },
     shipyardType: 'corvetteShipyard',
     nodeState: 'invalid'
   },
   {
     id: "2",
     type: 'factoryNode',
-    position: { x: 1 * spacing, y: 0 * spacing },
+    position: { x: 1, y: 0 },
     factoryType: 'empty',
     nodeState: 'invalid'
   },
   {
     id: "3",
     type: 'factoryNode',
-    position: { x: 3 * spacing, y: 0 * spacing },
+    position: { x: 3, y: 0 },
     factoryType: 'empty',
     nodeState: 'invalid'
   },
   {
     id: "4",
     type: 'factoryNode',
-    position: { x: 1 * spacing, y: 1 * spacing },
+    position: { x: 1, y: 1 },
     factoryType: "empty",
     nodeState: 'invalid'
   },
   {
     id: "5",
     type: 'factoryNode',
-    position: { x: 2 * spacing, y: 1 * spacing },
+    position: { x: 2, y: 1 },
     factoryType: 'empty',
     nodeState: 'invalid'
   },
   {
     id: "6",
     type: 'resourceNode',
-    position: { x: 3 * spacing, y: 1 * spacing },
+    position: { x: 3, y: 1 },
     resourceType: 'commonOre',
     nodeState: 'active'
   },
   {
     id: "7",
     type: 'factoryNode',
-    position: { x: 4 * spacing, y: 1 * spacing },
+    position: { x: 4, y: 1 },
     factoryType: 'empty',
     nodeState: 'invalid'
   },
   {
     id: "8",
     type: 'factoryNode',
-    position: { x: 5 * spacing, y: 1 * spacing },
+    position: { x: 5, y: 1 },
     factoryType: 'empty',
     nodeState: 'valid'
   },
   {
     id: "9",
     type: 'factoryNode',
-    position: { x: 1 * spacing, y: 2 * spacing },
+    position: { x: 1, y: 2 },
     factoryType: 'empty',
     nodeState: 'invalid'
   },
   {
     id: "10",
     type: 'factoryNode',
-    position: { x: 2 * spacing, y: 2 * spacing },
+    position: { x: 2, y: 2 },
     factoryType: "empty",
     nodeState: 'invalid'
   },
   {
     id: "11",
     type: 'factoryNode',
-    position: { x: 3 * spacing, y: 2 * spacing },
+    position: { x: 3, y: 2 },
     factoryType: 'empty',
     nodeState: 'invalid'
   },
   {
     id: "12",
     type: 'factoryNode',
-    position: { x: 4 * spacing, y: 2 * spacing },
+    position: { x: 4, y: 2 },
     factoryType: 'empty',
     nodeState: 'invalid'
   },
   {
     id: "13",
     type: 'resourceNode',
-    position: { x: 5 * spacing, y: 2 * spacing },
+    position: { x: 5, y: 2 },
     resourceType: 'rareOre',
     nodeState: 'active'
   },
   {
     id: "14",
     type: 'shipyardNode',
-    position: { x: 0 * spacing, y: 3 * spacing },
+    position: { x: 0, y: 3 },
     shipyardType: "corvetteShipyard",
     nodeState: 'invalid'
   },
   {
     id: "15",
     type: 'factoryNode',
-    position: { x: 2 * spacing, y: 3 * spacing },
+    position: { x: 2, y: 3 },
     factoryType: 'empty',
     nodeState: 'invalid'
   },
   {
     id: "16",
     type: 'factoryNode',
-    position: { x: 4 * spacing, y: 3 * spacing },
+    position: { x: 4, y: 3 },
     factoryType: 'empty',
     nodeState: 'invalid'
   },
   {
     id: "17",
     type: 'shipyardNode',
-    position: { x: 1 * spacing, y: 4 * spacing },
+    position: { x: 1, y: 4 },
     shipyardType: "frigateShipyard",
     nodeState: 'invalid'
   }

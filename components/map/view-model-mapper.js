@@ -1,10 +1,18 @@
 import { MarkerType } from "@reactflow/core";
 
+const SPACING = 350;
+
+const buildPosition = (node) => ({ 
+    x: node.position.x * SPACING, 
+    y: node.position.y * SPACING 
+})
+
 export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNodes }) => {
     const vmResourceNodes = nodes
         .filter(n => n.type === "resourceNode")
         .map((node) => ({
             ...node,
+            position: buildPosition(node),
             data: {
                 ...resourceNodes[node.resourceType],
                 nodeState: node.nodeState
@@ -15,6 +23,7 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
         .filter(n => n.type === "factoryNode")
         .map((node) => ({
             ...node,
+            position: buildPosition(node),
             data: {
                 ...factories[node.factoryType],
                 nodeState: node.nodeState,
@@ -26,6 +35,7 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
         .filter(n => n.type === "shipyardNode")
         .map((node) => ({
             ...node,
+            position: buildPosition(node),
             data: {
                 ...shipyards[node.shipyardType],
                 nodeState: node.nodeState
