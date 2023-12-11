@@ -28,15 +28,15 @@ const getAllDownStreamNodes = (originId, edges) => {
     return uniqueNodes;
 }
 
-export const isEdgeValid = (newEdge, edges, nodes) => {
+export const getEdgeValidErrorMessage = (newEdge, edges, nodes) => {
     //1. Just going back on an existing edge
     const conflictingEdge = edges.find(e => e.source === newEdge.target && e.target === newEdge.source);
 
-    if(conflictingEdge) return false;
+    if(conflictingEdge) return 'Circular reference with nodes';
 
     //2. Target is a resource node
     const targetNode = nodes.find(n => n.id === newEdge.target);
-    if(targetNode.type === "resourceNode") return false;
+    if(targetNode.type === "resourceNode") return 'Can not connect TO resource node';
 
     //3. Some overlap in node tree graph
     const upstreamNodes = getAllUpStreamNodes(newEdge.target, edges);
@@ -44,5 +44,7 @@ export const isEdgeValid = (newEdge, edges, nodes) => {
 
     const intersectedNodes = intersection(upstreamNodes, downstreamNodes);
 
-    return intersectedNodes.length === 0;
+    if(intersectedNodes.length !== 0) return 'Circular reference with nodes';
+
+    return null;
 }
