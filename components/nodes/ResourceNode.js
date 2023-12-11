@@ -1,7 +1,7 @@
 import { Handle, Position } from 'reactflow';
 import { ResourceDetail } from '../resource/ResourceDetail';
 
-export const ResourceNode = ({ data, isConnectable, id }) => {
+export const ResourceNode = ({ data, id }) => {
   const { name, output, nodeState } = data;
 
   const isVisible = nodeState !== "hidden";
