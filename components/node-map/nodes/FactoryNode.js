@@ -1,9 +1,9 @@
 import { Handle, Position } from 'reactflow';
 import { useDispatch } from 'react-redux';
 import { Cog6ToothIcon } from '@heroicons/react/24/solid'
-import { toggleFactory, openFactoryDialog } from '../../redux/gameStateReducer/gameStateReducer'
-import { ResourceDetail } from '../resource/ResourceDetail';
-import { Toggle } from '../Toggle';
+import { toggleFactory, openFactoryDialog } from '../../../redux/gameStateReducer/gameStateReducer'
+import { ResourceDetail } from '../../resource/ResourceDetail';
+import { Toggle } from '../../Toggle';
 
 const getNodeStateStyles = (nodeState, factoryType) => {
   if (nodeState === 'active') return 'bg-green-900'

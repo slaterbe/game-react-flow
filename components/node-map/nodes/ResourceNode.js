@@ -1,5 +1,5 @@
 import { Handle, Position } from 'reactflow';
-import { ResourceDetail } from '../resource/ResourceDetail';
+import { ResourceDetail } from '../../resource/ResourceDetail';
 
 export const ResourceNode = ({ data, id }) => {
   const { name, output, nodeState } = data;

@@ -1,8 +1,8 @@
 import { Handle, Position } from 'reactflow';
 import { useDispatch } from 'react-redux';
-import { toggleFactory } from '../../redux/gameStateReducer/gameStateReducer'
-import { ResourceDetail } from '../resource/ResourceDetail';
-import { Toggle } from '../Toggle';
+import { toggleFactory } from '../../../redux/gameStateReducer/gameStateReducer'
+import { ResourceDetail } from '../../resource/ResourceDetail';
+import { Toggle } from '../../Toggle';
 
 const getNodeStateStyles = (nodeState) => {
   if (nodeState === 'active') return 'bg-green-900'

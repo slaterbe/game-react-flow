@@ -10,8 +10,8 @@ import "reactflow/dist/style.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { tick, addEdge } from '../../redux/gameStateReducer/gameStateReducer';
 
-import { nodeTypes } from '../nodes/NodeTypes';
-import { edgeTypes } from '../edges/EdgeTypes';
+import { nodeTypes } from './nodes/NodeTypes';
+import { edgeTypes } from './edges/EdgeTypes';
 
 import { viewModelMapper } from "./view-model-mapper";
 

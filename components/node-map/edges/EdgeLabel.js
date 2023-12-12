@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { getBezierPath, EdgeLabelRenderer, BaseEdge } from 'reactflow';
-import { ResourceDetail } from '../resource/ResourceDetail';
-import { deleteEdge } from '../../redux/gameStateReducer/gameStateReducer'
+import { ResourceDetail } from '../../resource/ResourceDetail';
+import { deleteEdge } from '../../../redux/gameStateReducer/gameStateReducer'
  
 export const EdgeLabel = ({ id, data, source, target, ...props }) => {
   const [edgePath, labelX, labelY] = getBezierPath(props);

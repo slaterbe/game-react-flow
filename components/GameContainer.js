@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux'
 import { store } from '../redux/store'
 
-import { Map } from './map/Map';
+import { Map } from './node-map/Map';
 
 export const GameContainer = () => {
 

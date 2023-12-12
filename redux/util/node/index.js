@@ -1,4 +1,4 @@
-import { factories, resourceNodes, shipyards } from '../../gameStateReducer/gameStateFactories/sandbox-v2';
+import { factories, resourceNodes, shipyards } from '../../gameStateReducer/gameStateFactories/sandbox-v3';
 import { 
     buildResourceObject, 
     calculateDelta, 
