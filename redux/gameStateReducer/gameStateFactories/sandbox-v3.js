@@ -104,6 +104,26 @@ export const factories = {
       rareOre: 5
     })
   },
+  laserModuleFactory: {
+    name: "Laser Module Factory",
+    input: buildResourceObject({
+      silicon: 3,
+      commonPlate: 2
+    }),
+    output: buildResourceObject({
+      laserModule: 1
+    })
+  },
+  laserModuleFactoryv2: {
+    name: "Laser Module Factory v2",
+    input: buildResourceObject({
+      silicon: 3,
+      enhancedPlate: 2
+    }),
+    output: buildResourceObject({
+      laserModule: 3
+    })
+  },
   empty: {
     name: "",
     input: buildResourceObject(),
@@ -113,7 +133,7 @@ export const factories = {
 
 export const shipyards = {
   corvetteShipyard: {
-    name: "Corvette Shipyard",
+    name: "Standard Corvette",
     input: buildResourceObject({
       corvetteHull: 1
     }),
@@ -121,8 +141,18 @@ export const shipyards = {
       corvette: 1
     })
   },
+  laserCorvetteShipyard: {
+    name: "Laser Corvette",
+    input: buildResourceObject({
+      corvetteHull: 1,
+      laserModule: 1,
+    }),
+    output: buildResourceObject({
+      laserCorvette: 1
+    }),
+  },
   frigateShipyard: {
-    name: "Frigate Shipyard",
+    name: "Standard Frigate",
     input: buildResourceObject({
       frigateHull: 1
     }),
@@ -130,24 +160,16 @@ export const shipyards = {
       frigate: 1
     }),
   },
-  destroyerShipyard: {
-    name: "Destroyer Shipyard",
+  laserFrigateShipyard: {
+    name: "Laser Frigate",
     input: buildResourceObject({
-      destroyerHull: 1
+      frigateHull: 1,
+      laserModule: 3,
     }),
     output: buildResourceObject({
-      destroyer: 1
+      laserFrigate: 1
     }),
-  },
-  cruiserShipyard: {
-    name: "Cruiser Shipyard",
-    input: buildResourceObject({
-      cruiserHull: 1
-    }),
-    output: buildResourceObject({
-      cruiser: 1
-    }),
-  },
+  }
 }
 
 export const resourceNodes = {
@@ -258,10 +280,10 @@ const nodes = [
   },
   {
     id: "13",
-    type: 'factoryNode',
+    type: 'resourceNode',
     position: { x: 1, y: 4 },
-    factoryType: 'empty',
-    nodeState: 'invalid'
+    resourceType: 'silicon',
+    nodeState: 'active'
   },
   {
     id: "14",
@@ -308,15 +330,15 @@ const nodes = [
 ];
 
 const edges = [
-  { source: "1", target: "2", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: buildResourceObject() },  
-  { source: "1", target: "5", sourceHandle: "sb", targetHandle: "tl", isActive: false, input: buildResourceObject() }, 
+  { source: "1", target: "2", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: buildResourceObject() },
+  { source: "1", target: "5", sourceHandle: "sb", targetHandle: "tl", isActive: false, input: buildResourceObject() },
 ];
 
 const globalResources = {
   corvette: 3,
+  laserCorvette: 0,
   frigate: 0,
-  destroyer: 1,
-  cruiser: 2
+  laserFrigate: 0
 };
 
 const tickCounter = 0;

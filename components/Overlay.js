@@ -29,13 +29,13 @@ export const Overlay = ({ globalResources, tickCounter }) => {
                         {globalResources.corvette} Corvette
                     </div>
                     <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
+                        {globalResources.laserCorvette} Laser Corvette
+                    </div>
+                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
                         {globalResources.frigate} Frigate
                     </div>
                     <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                        {globalResources.destroyer} Destroyer
-                    </div>
-                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                        {globalResources.cruiser} Cruiser
+                        {globalResources.laserFrigate} Laser Frigate
                     </div>
                 </div>
                 <div>
