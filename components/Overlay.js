@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { TaskLog } from "./TaskLog";
 import { FactorySelector } from './FactorySelector/FactorySelector';
+import { ShipyardSelector } from './ShipyardSelector/ShipyardSelector';
 import { closeFactoryDialog, changeFactory } from '../redux/gameStateReducer/gameStateReducer';
+import { closeShipyardDialog, changeShipyard } from '../redux/gameStateReducer/gameStateReducer';
 
 export const Overlay = ({ globalResources, tickCounter }) => {
     const [taskLogOpen, setTaskLogOpen] = useState(false);
@@ -11,10 +13,13 @@ export const Overlay = ({ globalResources, tickCounter }) => {
     const tasks = useSelector(state => state.gameState.tasks);
 
     const factorySelector = useSelector(state => state.gameState.ui.factorySelector);
+    const shipyardSelector = useSelector(state => state.gameState.ui.shipyardSelector);
     const factories = useSelector(state => state.gameState.factories);
+    const shipyards = useSelector(state => state.gameState.shipyards);
     const nodes = useSelector(state => state.gameState.nodes);
 
-    const selectedNode = nodes.find(n => n.id === factorySelector.nodeId);
+    const factorySelectedNode = nodes.find(n => n.id === factorySelector.nodeId);
+    const shipyardSelectedNode = nodes.find(n => n.id === shipyardSelector.nodeId);
 
     return (
         <>
@@ -39,17 +44,25 @@ export const Overlay = ({ globalResources, tickCounter }) => {
                     </div>
                 </div>
             </div>
-            
-            {factorySelector.isOpen && 
-                <FactorySelector 
-                    close={() => dispatch(closeFactoryDialog())} 
+
+            {factorySelector.isOpen &&
+                <FactorySelector
+                    close={() => dispatch(closeFactoryDialog())}
                     select={(payload) => dispatch(changeFactory(payload))}
-                    node={selectedNode} 
+                    node={factorySelectedNode}
                     factories={factories} />}
+
+            {shipyardSelector.isOpen &&
+                <ShipyardSelector
+                    close={() => dispatch(closeShipyardDialog())}
+                    select={(payload) => dispatch(changeShipyard(payload))}
+                    node={shipyardSelectedNode}
+                    shipyards={shipyards} />}
+
             {taskLogOpen && <TaskLog close={() => setTaskLogOpen(false)} tasks={tasks} />}
 
             <div className="absolute bottom-0 right-0 z-10">
-                <div className="w-16 h-16 text-xs p-2 m-4 bg-blue-400 cursor-pointer" 
+                <div className="w-16 h-16 text-xs p-2 m-4 bg-blue-400 cursor-pointer"
                     onClick={() => setTaskLogOpen(true)}>
                     Task Log
                 </div>

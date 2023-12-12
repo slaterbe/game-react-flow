@@ -1,6 +1,7 @@
 import { Handle, Position } from 'reactflow';
 import { useDispatch } from 'react-redux';
-import { toggleFactory } from '../../../redux/gameStateReducer/gameStateReducer'
+import { Cog6ToothIcon } from '@heroicons/react/24/solid'
+import { toggleShipyard, openShipyardDialog } from '../../../redux/gameStateReducer/gameStateReducer'
 import { ResourceDetail } from '../../resource/ResourceDetail';
 import { Toggle } from '../../Toggle';
 
@@ -36,10 +37,13 @@ export const ShipyardNode = ({ data, isConnectable, id }) => {
         <ResourceDetail resource={input} positive={false} />
         <ResourceDetail resource={output} positive={true} />
 
-        {validToggleStates.includes(nodeState) && <Toggle
-          isToggle={isActive}
-          toggle={() => dispatch(toggleFactory(id))}
-          disabled={isToggleDisabled} />}
+        <div className="my-2 flex justify-between">
+          {validToggleStates.includes(nodeState) && <Toggle
+            isToggle={isActive}
+            toggle={() => dispatch(toggleShipyard(id))}
+            disabled={isToggleDisabled} />}
+          <Cog6ToothIcon className="h-6 w-6  text-green-500 inline-flex cursor-pointer" onClick={() => dispatch(openShipyardDialog(id))} />
+        </div>
       </div>
     </div>
   );

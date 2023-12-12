@@ -8,6 +8,10 @@ import { taskProcessor } from './processors/taskProcessor';
 
 import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
 import { changeFactory as changeFactoryAction } from './actions/changeFactory';
+
+import { toggleShipyard as toggleShipyardAction } from './actions/toggleShipyard';
+import { changeShipyard as changeShipyardAction } from './actions/changeShipyard';
+
 import { addEdge as addEdgeAction } from'./actions/addEdge';
 import { deleteEdge as deleteEdgeAction } from'./actions/deleteEdge';
 
@@ -32,8 +36,17 @@ export const gameStateReducer = createSlice({
     closeFactoryDialog: (state) => {
       state.ui.factorySelector.isOpen = false;
     },
+    openShipyardDialog: (state, item) => {
+      state.ui.shipyardSelector.isOpen = true;
+      state.ui.shipyardSelector.nodeId = item.payload;
+    },
+    closeShipyardDialog: (state) => {
+      state.ui.shipyardSelector.isOpen = false;
+    },
     toggleFactory: toggleFactoryAction,
     changeFactory: changeFactoryAction,
+    toggleShipyard: toggleShipyardAction,
+    changeShipyard: changeShipyardAction,
     addEdge: addEdgeAction,
     deleteEdge: deleteEdgeAction
   },
@@ -44,10 +57,14 @@ export const {
   tick, 
   changeFactory, 
   toggleFactory, 
+  changeShipyard, 
+  toggleShipyard, 
   addEdge,
   deleteEdge,
   openFactoryDialog, 
-  closeFactoryDialog 
+  closeFactoryDialog,
+  openShipyardDialog, 
+  closeShipyardDialog 
 } = gameStateReducer.actions
 
 export default gameStateReducer.reducer
