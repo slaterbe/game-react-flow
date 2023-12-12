@@ -8,5 +8,5 @@ export const addShipProcessor = (gameState) => {
         .map(node => shipyards[node.shipyardType].output)
         .reduce(addShips, emptyShipConfigs);
 
-    gameState.globalResources = addShips(gameState.globalResources, newShips);
+    gameState.ships = addShips(gameState.ships, newShips);
 }

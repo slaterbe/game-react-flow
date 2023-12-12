@@ -1,4 +1,4 @@
-const processTask = (task, globalResources) => {
+const processTask = (task, ships) => {
     const {
         corvette,
         frigate,
@@ -6,23 +6,23 @@ const processTask = (task, globalResources) => {
         cruiser
     } = task.requirement;
 
-    if (corvette && globalResources.corvette >= corvette)
+    if (corvette && ships.corvette >= corvette)
         task.claimed = true;
 
-    if (frigate && globalResources.frigate >= frigate)
+    if (frigate && ships.frigate >= frigate)
         task.claimed = true;
 
-    if (destroyer && globalResources.destroyer >= destroyer)
+    if (destroyer && ships.destroyer >= destroyer)
         task.claimed = true;
 
-    if (cruiser && globalResources.cruiser >= cruiser)
+    if (cruiser && ships.cruiser >= cruiser)
         task.claimed = true;
 }
 
 export const taskProcessor = (gameState) => {
-    const { tasks, globalResources } = gameState;
+    const { tasks, ships } = gameState;
 
     tasks
         .filter(t => !t.claimed)
-        .forEach(t => processTask(t, globalResources));
+        .forEach(t => processTask(t, ships));
 }

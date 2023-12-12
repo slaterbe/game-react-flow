@@ -298,7 +298,7 @@ const edges = [
   { source: "6", target: "5", sourceHandle: "sl", targetHandle: "tr", isActive: false, input: buildResourceObject() }, 
 ];
 
-const globalResources = {
+const ships = {
   corvette: 3,
   frigate: 0,
   destroyer: 1,
@@ -329,6 +329,6 @@ export const gameState = {
   edges,
   tickCounter,
   tasks,
-  globalResources,
+  ships,
   ui
 }

@@ -5,8 +5,9 @@ import { FactorySelector } from './FactorySelector/FactorySelector';
 import { ShipyardSelector } from './ShipyardSelector/ShipyardSelector';
 import { closeFactoryDialog, changeFactory } from '../redux/gameStateReducer/gameStateReducer';
 import { closeShipyardDialog, changeShipyard } from '../redux/gameStateReducer/gameStateReducer';
+import { shipConfigs } from '../redux/util/ships/shipConfigs';
 
-export const Overlay = ({ globalResources, tickCounter }) => {
+export const Overlay = ({ ships, tickCounter }) => {
     const [taskLogOpen, setTaskLogOpen] = useState(false);
     const dispatch = useDispatch();
 
@@ -25,18 +26,13 @@ export const Overlay = ({ globalResources, tickCounter }) => {
         <>
             <div className="w-full h-16 absolute bg-blue-400 z-10 flex justify-between">
                 <div>
-                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                        {globalResources.corvette} Corvette
-                    </div>
-                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                        {globalResources.laserCorvette} Laser Corvette
-                    </div>
-                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                        {globalResources.frigate} Frigate
-                    </div>
-                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                        {globalResources.laserFrigate} Laser Frigate
-                    </div>
+                    {
+                        shipConfigs.map((config, index) => (
+                            <div className="inline-block text-left text-lg text-green-900 p-4 font-medium" key={index}>
+                                {ships[config.id]} {config.name}
+                            </div>
+                        ))
+                    }
                 </div>
                 <div>
                     <div className="inline-block text-right text-lg text-black p-4 font-medium">
