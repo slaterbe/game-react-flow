@@ -1,30 +1,12 @@
-const baseValue = {
-    corvette: 0,
-    laserCorvette: 0,
-    frigate: 0,
-    laserFrigate: 0,
-    destroyer: 0,
-    cruiser: 0
-}
+import { addShips, emptyShipConfigs } from '../../util/ships/shipConfigs';
 
 export const addShipProcessor = (gameState) => {
     const { shipyards } = gameState;
 
     const newShips = gameState.nodes
         .filter(n => n.type === "shipyardNode" && n.nodeState === 'active')
-        .reduce((previous, currentValue) => ({
-            corvette: (previous.corvette ?? 0) + (shipyards[currentValue.shipyardType].output.corvette ?? 0),
-            laserCorvette: (previous.laserCorvette ?? 0) + (shipyards[currentValue.shipyardType].output.laserCorvette ?? 0),
-            frigate: (previous.frigate ?? 0) + (shipyards[currentValue.shipyardType].output.frigate ?? 0),
-            laserFrigate: (previous.laserFrigate ?? 0) + (shipyards[currentValue.shipyardType].output.laserFrigate ?? 0),
-            destroyer: (previous.destroyer ?? 0) + (shipyards[currentValue.shipyardType].output.destroyer ?? 0),
-            cruiser: (previous.cruiser ?? 0) + (shipyards[currentValue.shipyardType].output.cruiser ?? 0)
-        }), baseValue);
+        .map(node => shipyards[node.shipyardType].output)
+        .reduce(addShips, emptyShipConfigs);
 
-    gameState.globalResources.corvette += newShips.corvette;
-    gameState.globalResources.laserCorvette += newShips.laserCorvette;
-    gameState.globalResources.frigate += newShips.frigate;
-    gameState.globalResources.laserFrigate += newShips.laserFrigate;
-    gameState.globalResources.destroyer += newShips.destroyer;
-    gameState.globalResources.cruiser += newShips.cruiser;
+    gameState.globalResources = addShips(gameState.globalResources, newShips);
 }
