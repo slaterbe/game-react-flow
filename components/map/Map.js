@@ -1,14 +1,14 @@
 "use client"
 
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import ReactFlow, {
   Controls,
   Background,
 } from "reactflow";
 import "reactflow/dist/style.css";
 
-import { useSelector, useDispatch } from 'react-redux'
-import { tick } from '../../redux/gameStateReducer/gameStateReducer';
+import { useSelector, useDispatch } from 'react-redux';
+import { tick, addEdge } from '../../redux/gameStateReducer/gameStateReducer';
 
 import { nodeTypes } from '../nodes/NodeTypes';
 import { edgeTypes } from '../edges/EdgeTypes';
@@ -25,6 +25,8 @@ export const Map = () => {
   const dispatch = useDispatch()
 
   const { nodes, edges } = viewModelMapper(gameState);
+
+  const onConnect = useCallback((params) => dispatch(addEdge(params)), [])
 
   const { globalResources, tickCounter } = gameState;
 
@@ -45,8 +47,10 @@ export const Map = () => {
         <ReactFlow
           nodes={nodes}
           edges={edges}
+          onConnect={onConnect}
           nodeTypes={nodeTypes}
           edgeTypes={edgeTypes}
+          connectionMode="loose"
           onInit={onInit}
           fitView
           attributionPosition="top-right"

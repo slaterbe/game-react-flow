@@ -1,5 +1,5 @@
 "use client"
-
+import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux'
 import { store } from '../redux/store'
 
@@ -12,6 +12,7 @@ export const GameContainer = () => {
             <Provider store={store}>
                 <Map />
             </Provider>
+            <ToastContainer />
         </>
     )
 }
