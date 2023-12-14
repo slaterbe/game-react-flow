@@ -350,6 +350,35 @@ const tasks = [
   { title: 'Complete 20 Frigates', requirement: { frigate: 20 }, claimed: false },
 ]
 
+const battleMap = {
+  friendlyShips: [
+    {
+      name: "Corvette",
+      healthTotal: 100,
+      healthCurrent: 70,
+      damage: 5,
+      isFriendly: true
+    },
+    {
+      name: "Corvette",
+      healthTotal: 100,
+      healthCurrent: 60,
+      damage: 5,
+      isFriendly: true
+    }
+  ],
+  enemyShips: [
+    {
+      name: "Corvette",
+      healthTotal: 100,
+      healthCurrent: 50,
+      damage: 10,
+      isFriendly: false
+    }
+  ],
+  enemyReserve: []
+}
+
 const ui = {
   factorySelector: {
     isOpen: false,
@@ -370,5 +399,6 @@ export const gameState = {
   tickCounter,
   tasks,
   ships,
+  battleMap,
   ui
 }

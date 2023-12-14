@@ -24,20 +24,25 @@ export const Overlay = ({ ships, tickCounter }) => {
 
     return (
         <>
-            <div className="w-full h-16 absolute bg-blue-400 z-10 flex justify-between">
-                <div>
-                    {
-                        shipConfigs.map((config, index) => (
-                            <div className="inline-block text-left text-lg text-green-900 p-4 font-medium" key={index}>
-                                {ships[config.id]} {config.name}
-                            </div>
-                        ))
-                    }
-                </div>
-                <div>
-                    <div className="inline-block text-right text-lg text-black p-4 font-medium">
-                        Tick: {tickCounter}
+            <div className="w-full h-24 absolute bg-blue-400 z-10 flex flex-col justify-start">
+                <div className="flex justify-between">
+                    <div>
+                        {
+                            shipConfigs.map((config, index) => (
+                                <div className="inline-block text-left text-lg text-green-900 p-4 font-medium" key={index}>
+                                    {ships[config.id]} {config.name}
+                                </div>
+                            ))
+                        }
                     </div>
+                    <div>
+                        <div className="inline-block text-right text-lg text-black p-4 font-medium">
+                            Tick: {tickCounter}
+                        </div>
+                    </div>
+                </div>
+                <div className="flex justify-start">
+                    Tests
                 </div>
             </div>
 

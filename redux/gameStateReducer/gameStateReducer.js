@@ -5,6 +5,7 @@ import { edgeActiveProcessor } from './processors/edgeActive';
 import { addShipProcessor } from './processors/addShips';
 import { nodeStatusUpdater } from './processors/nodeStatusUpdater'
 import { taskProcessor } from './processors/taskProcessor';
+import { battleShips } from './processors/battleShips';
 
 import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
 import { changeFactory as changeFactoryAction } from './actions/changeFactory';
@@ -28,6 +29,10 @@ export const gameStateReducer = createSlice({
       taskProcessor(state);
 
       state.tickCounter = state.tickCounter + 1;
+    },
+    battleTick: (state) => {
+      battleShips(state);
+      return state;
     },
     openFactoryDialog: (state, item) => {
       state.ui.factorySelector.isOpen = true;
@@ -55,6 +60,7 @@ export const gameStateReducer = createSlice({
 // Action creators are generated for each case reducer function
 export const { 
   tick, 
+  battleTick,
   changeFactory, 
   toggleFactory, 
   changeShipyard, 
