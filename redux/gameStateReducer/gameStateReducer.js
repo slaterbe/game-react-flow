@@ -1,10 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { gameState } from './gameStateFactories/sandbox-v3';
 
+// Node Processors
 import { edgeActiveProcessor } from './nodeProcessor/edgeActive';
 import { addShipProcessor } from './nodeProcessor/addShips';
 import { nodeStatusUpdater } from './nodeProcessor/nodeStatusUpdater'
 import { taskProcessor } from './nodeProcessor/taskProcessor';
+
+// Battle Processors
+import { assignShips } from './battleProcessor/assignShips';
 import { battleShips } from './battleProcessor/battleShips';
 
 import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
@@ -31,8 +35,8 @@ export const gameStateReducer = createSlice({
       state.tickCounter = state.tickCounter + 1;
     },
     battleTick: (state) => {
+      assignShips(state);
       battleShips(state);
-      return state;
     },
     openFactoryDialog: (state, item) => {
       state.ui.factorySelector.isOpen = true;

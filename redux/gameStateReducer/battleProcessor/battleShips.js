@@ -1,5 +1,3 @@
-import { addShips, emptyShipConfigs } from '../../util/ships/shipConfigs';
-
 export const battleShips = (gameState) => {
     const { friendlyShips, enemyShips } = gameState.battleMap;
 

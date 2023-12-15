@@ -335,7 +335,7 @@ const edges = [
 ];
 
 const ships = {
-  corvette: 10,
+  corvette: 2,
   laserCorvette: 0,
   frigate: 0,
   laserFrigate: 0
@@ -370,8 +370,8 @@ const battleMap = {
   enemyShips: [
     {
       name: "Corvette",
-      healthTotal: 100,
-      healthCurrent: 50,
+      healthTotal: 30000,
+      healthCurrent: 30000,
       damage: 10,
       isFriendly: false
     }
