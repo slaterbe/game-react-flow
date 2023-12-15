@@ -335,7 +335,7 @@ const edges = [
 ];
 
 const ships = {
-  corvette: 3,
+  corvette: 10,
   laserCorvette: 0,
   frigate: 0,
   laserFrigate: 0
@@ -376,7 +376,10 @@ const battleMap = {
       isFriendly: false
     }
   ],
-  enemyReserve: []
+  enemyReserve: [],
+  config: {
+    battleWidth: 3
+  }
 }
 
 const ui = {

@@ -36,26 +36,28 @@ export const BattleMap = () => {
 
 
     return (
-        <div className="p-4">
-            <div>Battle Map</div>
-            <div className="flex justify-start gap-x-4">
-                {range.map((key, index) => (
-                    <div key={index}>
-                        {friendlyShips[index] && <Ship ship={friendlyShips[index]} />}
-                        {enemyShips[index] && <Ship ship={enemyShips[index]} />}
-                    </div>
-                ))}
-            </div>
-            <div>
-                <div className="text-center text-2xl py-2">Active Reserve</div>
-                <div>
-                    Attack Force 1
+        <div className="pt-24">
+            <div className="m-4">
+                <div>Battle Map</div>
+                <div className="flex justify-start gap-x-4">
+                    {range.map((key, index) => (
+                        <div key={index}>
+                            {friendlyShips[index] && <Ship ship={friendlyShips[index]} />}
+                            {enemyShips[index] && <Ship ship={enemyShips[index]} />}
+                        </div>
+                    ))}
                 </div>
-            </div>
-            <div>
-                <div className="text-center text-2xl py-2">Incoming Reserve</div>
                 <div>
-                    Attack Force 1
+                    <div className="text-center text-2xl py-2">Active Reserve</div>
+                    <div>
+                        Attack Force 1
+                    </div>
+                </div>
+                <div>
+                    <div className="text-center text-2xl py-2">Incoming Reserve</div>
+                    <div>
+                        Attack Force 1
+                    </div>
                 </div>
             </div>
         </div>

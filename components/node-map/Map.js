@@ -28,8 +28,6 @@ export const Map = () => {
 
   const onConnect = useCallback((params) => dispatch(addEdge(params)), [])
 
-  const { ships, tickCounter } = gameState;
-
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(tick())
@@ -42,7 +40,6 @@ export const Map = () => {
 
   return (
     <div className="w-full h-full">
-      <Overlay ships={ships} tickCounter={tickCounter} />
       <div className="w-full h-full">
         <ReactFlow
           nodes={nodes}
