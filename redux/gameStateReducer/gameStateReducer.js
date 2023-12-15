@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { gameState } from './gameStateFactories/sandbox-v3';
 
-import { edgeActiveProcessor } from './processors/edgeActive';
-import { addShipProcessor } from './processors/addShips';
-import { nodeStatusUpdater } from './processors/nodeStatusUpdater'
-import { taskProcessor } from './processors/taskProcessor';
-import { battleShips } from './processors/battleShips';
+import { edgeActiveProcessor } from './nodeProcessor/edgeActive';
+import { addShipProcessor } from './nodeProcessor/addShips';
+import { nodeStatusUpdater } from './nodeProcessor/nodeStatusUpdater'
+import { taskProcessor } from './nodeProcessor/taskProcessor';
+import { battleShips } from './battleProcessor/battleShips';
 
 import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
 import { changeFactory as changeFactoryAction } from './actions/changeFactory';

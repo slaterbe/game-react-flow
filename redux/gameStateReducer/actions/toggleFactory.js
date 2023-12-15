@@ -1,7 +1,7 @@
 import { activateNode, handleDeactivatingNode } from '../../util/node';
 
-import { edgeActiveProcessor } from '../processors/edgeActive';
-import { nodeStatusUpdater } from '../processors/nodeStatusUpdater';
+import { edgeActiveProcessor } from '../nodeProcessor/edgeActive';
+import { nodeStatusUpdater } from '../nodeProcessor/nodeStatusUpdater';
 
 const handleActivatingNode = (state, node) => {
     const { nodes, edges } = state;

@@ -1,7 +1,7 @@
 import { handleDeactivatingNode } from '../../util/node';
 
-import { edgeActiveProcessor } from '../processors/edgeActive';
-import { nodeStatusUpdater } from '../processors/nodeStatusUpdater';
+import { edgeActiveProcessor } from '../nodeProcessor/edgeActive';
+import { nodeStatusUpdater } from '../nodeProcessor/nodeStatusUpdater';
 
 export const changeFactory = (gameState, item) => {
     const { nodes } = gameState;
