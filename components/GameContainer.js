@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { store } from '../redux/store'
 import { battleTick, tick } from '../redux/gameStateReducer/gameStateReducer';
 
-import { Map } from './NodeMap/Map';
+import { NodeMap } from './NodeMap/NodeMap';
 import { BattleMap } from './BattleMap/BattleMap';
 import { Overlay } from './Overlay';
 
@@ -31,7 +31,7 @@ const Container = () => {
     return (
         <>
             <Overlay ships={ships} tickCounter={tickCounter} />
-            {activeTab === "node-map" && <Map />}
+            {activeTab === "node-map" && <NodeMap />}
             {activeTab === "battle-map" && <BattleMap />}
         </>
     )

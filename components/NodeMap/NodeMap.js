@@ -20,7 +20,7 @@ import { Overlay } from '../Overlay';
 const onInit = (reactFlowInstance) =>
   console.log("flow loaded:", reactFlowInstance);
 
-export const Map = () => {
+export const NodeMap = () => {
   const gameState = useSelector((state) => state.gameState)
   const dispatch = useDispatch()
 
