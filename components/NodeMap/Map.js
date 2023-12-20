@@ -28,16 +28,6 @@ export const Map = () => {
 
   const onConnect = useCallback((params) => dispatch(addEdge(params)), [])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      dispatch(tick())
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
   return (
     <div className="w-full h-full">
       <div className="w-full h-full">

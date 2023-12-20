@@ -38,6 +38,12 @@ export const gameStateReducer = createSlice({
       assignShips(state);
       battleShips(state);
     },
+    openBattleMap: (state) => {
+      state.ui.activeTab = "battle-map";
+    },
+    openNodeMap: (state) => {
+      state.ui.activeTab = "node-map";
+    },
     openFactoryDialog: (state, item) => {
       state.ui.factorySelector.isOpen = true;
       state.ui.factorySelector.nodeId = item.payload;
@@ -74,7 +80,9 @@ export const {
   openFactoryDialog, 
   closeFactoryDialog,
   openShipyardDialog, 
-  closeShipyardDialog 
+  closeShipyardDialog,
+  openBattleMap,
+  openNodeMap
 } = gameStateReducer.actions
 
 export default gameStateReducer.reducer

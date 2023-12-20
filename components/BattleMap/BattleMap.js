@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { battleTick } from '../../redux/gameStateReducer/gameStateReducer';
 
 const Ship = ({ ship }) => {
     const backgroundColour = ship.isFriendly ? "bg-blue-500" : "bg-red-500";
@@ -24,17 +23,6 @@ export const BattleMap = () => {
 
     const range = [...Array(maxLength).keys()];
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            dispatch(battleTick())
-        }, 1000);
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, []);
-
-
     return (
         <div className="pt-24">
             <div className="m-4">
@@ -46,12 +34,6 @@ export const BattleMap = () => {
                             {enemyShips[index] && <Ship ship={enemyShips[index]} />}
                         </div>
                     ))}
-                </div>
-                <div>
-                    <div className="text-center text-2xl py-2">Active Reserve</div>
-                    <div>
-                        Attack Force 1
-                    </div>
                 </div>
                 <div>
                     <div className="text-center text-2xl py-2">Incoming Reserve</div>

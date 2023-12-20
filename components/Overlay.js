@@ -3,8 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { TaskLog } from "./TaskLog";
 import { FactorySelector } from './FactorySelector/FactorySelector';
 import { ShipyardSelector } from './ShipyardSelector/ShipyardSelector';
-import { closeFactoryDialog, changeFactory } from '../redux/gameStateReducer/gameStateReducer';
-import { closeShipyardDialog, changeShipyard } from '../redux/gameStateReducer/gameStateReducer';
+import {
+    closeFactoryDialog,
+    changeFactory,
+    closeShipyardDialog,
+    changeShipyard,
+    openBattleMap,
+    openNodeMap
+} from '../redux/gameStateReducer/gameStateReducer';
 import { shipConfigs } from '../redux/util/ships/shipConfigs';
 
 export const Overlay = ({ ships, tickCounter }) => {
@@ -29,7 +35,7 @@ export const Overlay = ({ ships, tickCounter }) => {
                     <div>
                         {
                             shipConfigs.map((config, index) => (
-                                <div className="inline-block text-left text-lg text-green-900 p-4 font-medium" key={index}>
+                                <div className="inline-block text-left text-lg text-green-900 px-4 font-medium" key={index}>
                                     {ships[config.id]} {config.name}
                                 </div>
                             ))
@@ -42,7 +48,16 @@ export const Overlay = ({ ships, tickCounter }) => {
                     </div>
                 </div>
                 <div className="flex justify-start">
-                    Tests
+                    <button
+                        onClick={() => dispatch(openNodeMap())}
+                        className="bg-green-500 hover:bg-green-700 text-white font-bold px-4 rounded m-2">
+                        Resource Nodes
+                    </button>
+                    <button
+                        onClick={() => dispatch(openBattleMap())}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold px-4 rounded m-2">
+                        Battle Map
+                    </button>
                 </div>
             </div>
 

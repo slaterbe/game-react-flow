@@ -3,8 +3,8 @@ export const shipConfigs = [
     { id: "laserCorvette", name: "Laser Corvette" },
     { id: "frigate", name: "Standard Frigate" },
     { id: "laserFrigate", name: "Laser Frigate" },
-    { id: "destroyer", name: "Destroyer" },
-    { id: "cruiser", name: "Cruiser" },
+    // { id: "destroyer", name: "Destroyer" },
+    // { id: "cruiser", name: "Cruiser" },
 ];
 
 export const emptyShipConfigs = shipConfigs

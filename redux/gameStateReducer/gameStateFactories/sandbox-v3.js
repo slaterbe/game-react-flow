@@ -390,7 +390,8 @@ const ui = {
   shipyardSelector: {
     isOpen: false,
     nodeId: "3"
-  }
+  },
+  activeTab: "node-map"
 }
 
 export const gameState = {
