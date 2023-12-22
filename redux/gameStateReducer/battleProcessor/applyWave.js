@@ -1,6 +1,6 @@
 const fillLineWithShipType = (gameState, shipType) => {
-    const { battleMap, reserveEnemyShips, shipTypes } = gameState;
-    const { enemyShips, config } = battleMap;
+    const { battleMap, shipTypes } = gameState;
+    const { enemyShips, reserveEnemyShips, config } = battleMap;
 
     // if(enemyShips.length === 0){
         
@@ -20,9 +20,6 @@ const fillLineWithShipType = (gameState, shipType) => {
 
     const chosenWidth = Math.min(missingWidth, remainingShips);
 
-    console.log(missingWidth);
-    console.log(remainingShips);
-    console.log(chosenWidth);
     const newShips = [...Array(chosenWidth).keys()].map(ship => ({
         ...shipTypeModel,
         healthCurrent: shipTypeModel.healthTotal,

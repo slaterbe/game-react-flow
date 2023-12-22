@@ -9,12 +9,14 @@ import { battleTick, tick } from '../redux/gameStateReducer/gameStateReducer';
 import { NodeMap } from './NodeMap/NodeMap';
 import { BattleMap } from './BattleMap/BattleMap';
 import { Overlay } from './Overlay';
+import { battleMap } from '@/redux/gameStateReducer/sandbox/battleMap';
 
 const Container = () => {
     const dispatch = useDispatch();
     const gameState = useSelector((state) => state.gameState)
 
-    const { ships, tickCounter } = gameState;
+    const { battleMap, tickCounter } = gameState;
+    const { reserveFriendlyShips } = battleMap;
     const { activeTab } = gameState.ui;
 
     useEffect(() => {
@@ -30,7 +32,7 @@ const Container = () => {
 
     return (
         <>
-            <Overlay ships={ships} tickCounter={tickCounter} />
+            <Overlay ships={reserveFriendlyShips} tickCounter={tickCounter} />
             <div className={`w-full h-full absolute bg-black
                 ${activeTab === "node-map" ? "z-20" : "z-0"}`}>
                 <NodeMap />

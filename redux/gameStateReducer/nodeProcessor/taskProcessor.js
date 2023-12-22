@@ -20,9 +20,10 @@ const processTask = (task, ships) => {
 }
 
 export const taskProcessor = (gameState) => {
-    const { tasks, ships } = gameState;
+    const { tasks, battleMap } = gameState;
+    const { reserveFriendlyShips } = battleMap;
 
     tasks
         .filter(t => !t.claimed)
-        .forEach(t => processTask(t, ships));
+        .forEach(t => processTask(t, reserveFriendlyShips));
 }

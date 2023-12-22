@@ -1,6 +1,6 @@
 const fillLineWithShipType = (gameState, shipType) => {
-    const { battleMap, ships, shipTypes } = gameState;
-    const { friendlyShips, config } = battleMap;
+    const { battleMap, shipTypes } = gameState;
+    const { friendlyShips, reserveFriendlyShips, config } = battleMap;
 
     const shipTypeModel = shipTypes[shipType];
 
@@ -9,7 +9,7 @@ const fillLineWithShipType = (gameState, shipType) => {
     if(missingWidth === 0)
         return;
 
-    const remainingShips = ships[shipType];
+    const remainingShips = reserveFriendlyShips[shipType];
 
     if(remainingShips <= 0)
         return;
@@ -22,7 +22,7 @@ const fillLineWithShipType = (gameState, shipType) => {
         isFriendly: true
     }));
 
-    ships[shipType] = ships[shipType] - chosenWidth;
+    reserveFriendlyShips[shipType] = reserveFriendlyShips[shipType] - chosenWidth;
 
     friendlyShips.push(...newShips);   
 }

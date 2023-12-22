@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { gameState } from './factories/sandbox-v3';
+import { gameState } from './sandbox/sandbox-v3';
 
 // Node Processors
 import { edgeActiveProcessor } from './nodeProcessor/edgeActive';
