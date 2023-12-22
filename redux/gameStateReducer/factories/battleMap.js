@@ -15,16 +15,29 @@ export const battleMap = {
         isFriendly: true
       }
     ],
-    enemyShips: [
+    enemyShips: [],
+    enemyWaves: [
       {
-        name: "Corvette",
-        healthTotal: 30000,
-        healthCurrent: 30000,
-        damage: 10,
-        isFriendly: false
+        name: "Asteroid",
+        ships: { startingAsteroid: 2 },
+        reward: { type: "more-common-ore", params: {} }
+      },
+      {
+        name: "Enemy Wave 1",
+        ships: { corvette: 6 },
+        reward: { type: "increase-battle-width", params: {} }
+      },
+      {
+        name: "Asteroid",
+        ships: { startingAsteroid: 2 },
+        reward: { type: "more-common-ore", params: {} }
+      },
+      {
+        name: "Enemy Wave 3",
+        ships: { corvette: 6 },
+        reward: { type: "increase-battle-width", params: {} }
       }
     ],
-    enemyReserve: [],
     config: {
       battleWidth: 3
     }

@@ -1,4 +1,9 @@
 export const shipTypes = {
+    startingAsteroid: {
+        name: "Asteroid",
+        healthTotal: 2000,
+        damage: 0
+    },
     corvette: {
         name: "Corvette",
         healthTotal: 100,

@@ -19,6 +19,8 @@ import { changeShipyard as changeShipyardAction } from './actions/changeShipyard
 
 import { addEdge as addEdgeAction } from'./actions/addEdge';
 import { deleteEdge as deleteEdgeAction } from'./actions/deleteEdge';
+import { applyWave } from './battleProcessor/applyWave';
+import { applyRewards } from './battleProcessor/applyRewards';
 
 const initialState = gameState;
 
@@ -35,6 +37,8 @@ export const gameStateReducer = createSlice({
       state.tickCounter = state.tickCounter + 1;
     },
     battleTick: (state) => {
+      applyWave(state);
+      applyRewards(state);
       assignShips(state);
       battleShips(state);
     },
