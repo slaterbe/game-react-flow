@@ -58,17 +58,7 @@ export const activateNode = (node, nodes, edges) => {
 
     downstreamNodes.reduce((accum, current) =>
         updateEdge(accum, current.edge, current.adjustedOutput),
-        requiredInput);    
-
-    const test = downstreamNodes
-        .map(n => n.node)
-        .flatMap(n => edges.filter(e => e.source === n.id))
-        .map(e => e.target)
-        .map(targetNode => nodes.find(n => n.id === targetNode))
-        .filter(n => n.nodeState === "valid")    
-        .forEach(node => {
-            updateNodeState(node, nodes, edges);
-        });
+        requiredInput);
 }
 
 export const handleDeactivatingNode = (state, node) => {

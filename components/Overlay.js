@@ -30,7 +30,7 @@ export const Overlay = ({ ships, tickCounter }) => {
 
     return (
         <>
-            <div className="w-full h-24 absolute bg-blue-400 z-10 flex flex-col justify-start">
+            <div className="w-full h-24 absolute bg-blue-400 z-40 flex flex-col justify-start">
                 <div className="flex justify-between">
                     <div>
                         {
@@ -77,7 +77,7 @@ export const Overlay = ({ ships, tickCounter }) => {
 
             {taskLogOpen && <TaskLog close={() => setTaskLogOpen(false)} tasks={tasks} />}
 
-            <div className="absolute bottom-0 right-0 z-10">
+            <div className="absolute bottom-0 right-0 z-50">
                 <div className="w-16 h-16 text-xs p-2 m-4 bg-blue-400 cursor-pointer"
                     onClick={() => setTaskLogOpen(true)}>
                     Task Log

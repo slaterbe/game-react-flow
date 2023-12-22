@@ -31,15 +31,19 @@ const Container = () => {
     return (
         <>
             <Overlay ships={ships} tickCounter={tickCounter} />
-            {activeTab === "node-map" && <NodeMap />}
-            {activeTab === "battle-map" && <BattleMap />}
+            <div className={`w-full h-full absolute bg-black
+                ${activeTab === "node-map" ? "z-20" : "z-0"}`}>
+                <NodeMap />
+            </div>
+            <div className={`w-full h-full absolute bg-black
+                ${activeTab === "battle-map" ? "z-20" : "z-0"}`}>
+                <BattleMap />
+            </div>
         </>
     )
 }
 
 export const GameContainer = () => {
-
-
     return (
         <>
             <Provider store={store}>
