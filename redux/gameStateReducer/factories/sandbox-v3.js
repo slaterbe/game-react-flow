@@ -5,7 +5,7 @@ import { battleMap } from './battleMap';
 import { nodes, edges } from './nodes';
 import { tasks } from './tasks'
 import { ui } from './ui'
-import { ships } from './ships'
+import { ships, reserveEnemyShips } from './ships'
 import { resourceNodes } from './resourceNodes';
 
 export const gameState = {
@@ -17,8 +17,9 @@ export const gameState = {
   edges,
   tickCounter: 0,
   tasks,
-  ships,
   shipTypes,
+  ships,
+  reserveEnemyShips,
   battleMap,
   ui
 }

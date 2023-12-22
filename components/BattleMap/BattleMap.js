@@ -40,8 +40,8 @@ export const BattleMap = () => {
                 <div>
                     <div className="text-center text-2xl py-2">Incoming Reserve</div>
                     {
-                        enemyWaves.map(wave => (
-                            <div className="p-2">
+                        enemyWaves.map((wave, index) => (
+                            <div className="p-2" key={index}>
                                 <div className="font-bold">{wave.name}</div>
                                 <WaveDetail detail={wave} shipTypes={shipTypes} />
                             </div>
