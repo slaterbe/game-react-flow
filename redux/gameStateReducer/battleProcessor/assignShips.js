@@ -1,8 +1,10 @@
+import { shipConfigs } from '../../util/ships/shipConfigs';
+
 const fillLineWithShipType = (gameState, shipType) => {
-    const { battleMap, shipTypes } = gameState;
+    const { battleMap } = gameState;
     const { friendlyShips, reserveFriendlyShips, config } = battleMap;
 
-    const shipTypeModel = shipTypes[shipType];
+    const shipTypeModel = shipConfigs[shipType];
 
     const missingWidth = config.battleWidth - friendlyShips.length;
 
@@ -28,7 +30,7 @@ const fillLineWithShipType = (gameState, shipType) => {
 }
 
 export const assignShips = (gameState) => {
-    const shipTypes = ['corvette'];
+    const shipTypes = Object.keys(shipConfigs);
 
     shipTypes.forEach(shipType => fillLineWithShipType(gameState, shipType))
 }

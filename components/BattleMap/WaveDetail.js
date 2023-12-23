@@ -4,15 +4,13 @@ export const WaveDetail = ({ detail, shipTypes }) => {
         name: shipTypes[shipTypeKey].name,
         count: detail.ships[shipTypeKey]
     }))
-    .filter(s => s.count >= 0);
-
-    const test = Object.values(shipTypes);
+    .filter(s => s.count > 0);
 
     return (
         <div>
             {
-                detailsMap.map(s => (
-                    <span>
+                detailsMap.map((s, index) => (
+                    <span key={index}>
                         {s.name} {s.count}
                     </span>
                 ))

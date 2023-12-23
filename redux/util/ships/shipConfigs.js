@@ -1,20 +1,19 @@
-export const shipConfigs = [
-    { id: "corvette", name: "Standard Corvette" },
-    { id: "laserCorvette", name: "Laser Corvette" },
-    { id: "frigate", name: "Standard Frigate" },
-    { id: "laserFrigate", name: "Laser Frigate" },
-    // { id: "destroyer", name: "Destroyer" },
-    // { id: "cruiser", name: "Cruiser" },
-];
+export const shipConfigs = {
+    startingAsteroid: { name: "Asteroid", healthTotal: 200, damage: 0 },
+    corvette: { name: "Standard Corvette", healthTotal: 100, damage: 5 },
+    laserCorvette: { name: "Laser Corvette", healthTotal: 100, damage: 30 },
+    frigate: { name: "Standard Frigate", healthTotal: 300, damage: 15 },
+    laserFrigate: { name: "Laser Frigate", healthTotal: 300, damage: 45 }
+};
 
-export const emptyShipConfigs = shipConfigs
+export const emptyShipConfigs = Object.keys(shipConfigs)
     .reduce((accum, current) => {
-        accum[current.id] = 0
+        accum[current] = 0
         return accum;
     }, {})
 
-export const addShips = (ships1, ships2) => shipConfigs
+export const addShips = (ships1, ships2) => Object.keys(shipConfigs)
     .reduce((accum, current) => {
-        accum[current.id] = ships1[current.id] + ships2[current.id]
+        accum[current] = ships1[current] + ships2[current]
         return accum;
     }, {})

@@ -1,4 +1,3 @@
-import { shipTypes } from './shipTypes';
 import { factories } from './factories';
 import { shipyards } from './shipyards';
 import { battleMap } from './battleMap';
@@ -16,6 +15,5 @@ export const gameState = {
   edges,
   tickCounter: 0,
   tasks,
-  shipTypes,
   ui
 }

@@ -1,17 +1,13 @@
+import { emptyShipConfigs } from '../../util/ships/shipConfigs';
+
 const reserveFriendlyShips = {
-  startingAsteroid: 2,
-  corvette: 0,
-  laserCorvette: 0,
-  frigate: 0,
-  laserFrigate: 0
+  ...emptyShipConfigs,
+  corvette: 2
 };
 
 const reserveEnemyShips = {
-  startingAsteroid: 2,
-  corvette: 0,
-  laserCorvette: 0,
-  frigate: 0,
-  laserFrigate: 0
+  ...emptyShipConfigs,
+  startingAsteroid: 2
 }
 
 export const battleMap = {
@@ -19,30 +15,31 @@ export const battleMap = {
   enemyShips: [],
   reserveFriendlyShips,
   reserveEnemyShips,
+  currentWave: null,
   enemyWaves: [
     {
       name: "Asteroid",
-      ships: { startingAsteroid: 2 },
+      ships: { ...emptyShipConfigs, startingAsteroid: 2 },
       reward: { type: "more-common-ore", params: {} },
-      params: { combatWidth: 1 }
+      battleWidth: 1
     },
     {
       name: "Enemy Wave 1",
-      ships: { corvette: 6 },
+      ships: { ...emptyShipConfigs, corvette: 6 },
       reward: { type: "increase-battle-width", params: {} },
-      params: { combatWidth: 2 }
+      battleWidth: 2
     },
     {
       name: "Asteroid",
-      ships: { startingAsteroid: 2 },
+      ships: { ...emptyShipConfigs, startingAsteroid: 2 },
       reward: { type: "more-common-ore", params: {} },
-      params: { combatWidth: 1 }
+      battleWidth: 1
     },
     {
       name: "Enemy Wave 3",
-      ships: { corvette: 6 },
+      ships: { ...emptyShipConfigs, corvette: 6 },
       reward: { type: "increase-battle-width", params: {} },
-      params: { combatWidth: 3 }
+      battleWidth: 3
     }
   ],
   config: {

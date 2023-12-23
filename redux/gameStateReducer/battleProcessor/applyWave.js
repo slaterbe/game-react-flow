@@ -1,19 +1,19 @@
+import { shipConfigs } from '../../util/ships/shipConfigs';
+import { gameState } from '../sandbox/sandbox-v3';
+
 const fillLineWithShipType = (gameState, shipType) => {
-    const { battleMap, shipTypes } = gameState;
-    const { enemyShips, reserveEnemyShips, config } = battleMap;
+    const { battleMap } = gameState;
+    const { enemyShips, enemyWaves, reserveEnemyShips, config, currentWave } = battleMap;
+    const { battleWidth } = battleMap.currentWave;
 
-    // if(enemyShips.length === 0){
-        
-    // }
+    const shipTypeModel = shipConfigs[shipType];
 
-    const shipTypeModel = shipTypes[shipType];
-
-    const missingWidth = config.battleWidth - enemyShips.length;
+    const missingWidth = battleWidth - enemyShips.length;
 
     if(missingWidth === 0)
         return;
 
-    const remainingShips = reserveEnemyShips[shipType];
+    const remainingShips = battleMap.reserveEnemyShips[shipType];
 
     if(remainingShips <= 0)
         return;
@@ -26,14 +26,25 @@ const fillLineWithShipType = (gameState, shipType) => {
         isFriendly: false
     }));
 
-    reserveEnemyShips[shipType] = reserveEnemyShips[shipType] - chosenWidth;
+    battleMap.reserveEnemyShips[shipType] = battleMap.reserveEnemyShips[shipType] - chosenWidth;
 
     enemyShips.push(...newShips);   
 }
 
+const replaceWaveIfDepleted = (gameState) => {
+    const { battleMap } = gameState;
+
+    if(battleMap.enemyShips.length === 0 && battleMap.enemyWaves.length !== 0){
+        battleMap.reserveEnemyShips = battleMap.enemyWaves[0].ships;    
+        battleMap.currentWave = battleMap.enemyWaves[0];    
+        battleMap.enemyWaves = battleMap.enemyWaves.slice(1);
+    }
+}
+
 export const applyWave = (gameState) => {
-    const { shipTypes } = gameState;
-    const shipTypeKeys = Object.keys(shipTypes);
+    const shipTypeKeys = Object.keys(shipConfigs);
+
+    replaceWaveIfDepleted(gameState);
 
     shipTypeKeys.forEach(shipType => fillLineWithShipType(gameState, shipType))
 }

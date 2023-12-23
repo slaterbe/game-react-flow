@@ -34,9 +34,9 @@ export const Overlay = ({ ships, tickCounter }) => {
                 <div className="flex justify-between">
                     <div>
                         {
-                            shipConfigs.map((config, index) => (
+                            Object.keys(shipConfigs).map((key, index) => (
                                 <div className="inline-block text-left text-lg text-green-900 px-4 font-medium" key={index}>
-                                    {ships[config.id]} {config.name}
+                                    {ships[key]} {shipConfigs[key].name}
                                 </div>
                             ))
                         }

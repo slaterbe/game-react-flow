@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { WaveDetail } from './WaveDetail';
+import { shipConfigs } from '@/redux/util/ships/shipConfigs';
 
 const Ship = ({ ship }) => {
     const backgroundColour = ship.isFriendly ? "bg-blue-500" : "bg-red-500";
@@ -15,11 +16,9 @@ const Ship = ({ ship }) => {
 }
 
 export const BattleMap = () => {
-    const dispatch = useDispatch()
     const gameState = useSelector((state) => state.gameState)
 
-    const { shipTypes } = gameState;
-    const { friendlyShips, enemyShips, enemyWaves } = gameState.battleMap;
+    const { friendlyShips, enemyShips, enemyWaves, currentWave } = gameState.battleMap;
 
     const maxLength = Math.max(friendlyShips.length, enemyShips.length);
 
@@ -37,13 +36,20 @@ export const BattleMap = () => {
                         </div>
                     ))}
                 </div>
+                {currentWave && <div>
+                    <div className="text-center text-2xl py-2">Current Wave: {currentWave.name}</div>
+                    <div className="p-2">
+                        <WaveDetail detail={currentWave} shipTypes={shipConfigs} />
+                    </div>
+                </div>}
+
                 <div>
-                    <div className="text-center text-2xl py-2">Incoming Reserve</div>
+                    <div className="text-center text-2xl py-2">Incoming Waves</div>
                     {
                         enemyWaves.map((wave, index) => (
                             <div className="p-2" key={index}>
                                 <div className="font-bold">{wave.name}</div>
-                                <WaveDetail detail={wave} shipTypes={shipTypes} />
+                                <WaveDetail detail={wave} shipTypes={shipConfigs} />
                             </div>
                         ))
                     }
