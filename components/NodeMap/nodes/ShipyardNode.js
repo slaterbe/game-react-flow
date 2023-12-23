@@ -22,7 +22,7 @@ export const ShipyardNode = ({ data, isConnectable, id }) => {
   const isActive = nodeState === "active";
 
   return (
-    <div className={`w-32 h-32 background border-blue-800 p-2 rounded-md border-4 
+    <div className={`w-64 h-64 background border-blue-800 p-2 rounded-md border-4 
       ${getNodeStateStyles(nodeState)}
       ${isVisible ? "" : "hidden"}`}>
       <Handle type="target" position={Position.Right} isConnectable={true} id="tr" style={{ padding: 10, background: "rgb(30 64 175)" }} />

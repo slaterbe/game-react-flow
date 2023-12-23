@@ -15,6 +15,7 @@ export const resourceConfigs = [
     // Modules
     { id: "laserModule", name: "Laser Module" },
     // Ships
+    // { id: "startingAsteroid", name: "Starting Asteroid" },
     { id: "corvette", name: "Standard Corvette" },
     { id: "laserCorvette", name: "Laser Corvette" },
     { id: "frigate", name: "Standard Frigate" },
