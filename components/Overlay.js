@@ -34,7 +34,7 @@ export const Overlay = ({ ships, tickCounter }) => {
                 <div className="flex justify-between">
                     <div>
                         {
-                            Object.keys(shipConfigs).map((key, index) => (
+                            Object.keys(shipConfigs).filter(s => shipConfigs[s].isPlayer).map((key, index) => (
                                 <div className="inline-block text-left text-lg text-green-900 px-4 font-medium" key={index}>
                                     {ships[key]} {shipConfigs[key].name}
                                 </div>
@@ -51,7 +51,7 @@ export const Overlay = ({ ships, tickCounter }) => {
                     <button
                         onClick={() => dispatch(openNodeMap())}
                         className="bg-green-500 hover:bg-green-700 text-white font-bold px-4 rounded m-2">
-                        Resource Nodes
+                        Resource Map
                     </button>
                     <button
                         onClick={() => dispatch(openBattleMap())}

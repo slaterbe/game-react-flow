@@ -38,7 +38,8 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
             position: buildPosition(node),
             data: {
                 ...shipyards[node.shipyardType],
-                nodeState: node.nodeState
+                nodeState: node.nodeState,
+                completePercentage: Math.floor((node.counterTick ?? 0) * 100 / shipyards[node.shipyardType].requiredTicks)
             }
         }));
 

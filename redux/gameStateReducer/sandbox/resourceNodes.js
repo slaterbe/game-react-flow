@@ -2,7 +2,7 @@ import { buildResourceObject } from '../../util/resource';
 
 export const resourceNodes = {
     commonOre: {
-      name: "commonOre",
+      name: "Common Ore",
       output: buildResourceObject({
         commonOre: 15
       })

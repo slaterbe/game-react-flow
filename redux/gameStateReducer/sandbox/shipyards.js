@@ -8,7 +8,8 @@ export const shipyards = {
         }),
         output: buildResourceObject({
             corvette: 1
-        })
+        }),
+        requiredTicks: 3
     },
     laserCorvetteShipyard: {
         name: "Laser Corvette",
@@ -19,6 +20,7 @@ export const shipyards = {
         output: buildResourceObject({
             laserCorvette: 1
         }),
+        requiredTicks: 3
     },
     frigateShipyard: {
         name: "Standard Frigate",
@@ -28,6 +30,7 @@ export const shipyards = {
         output: buildResourceObject({
             frigate: 1
         }),
+        requiredTicks: 8
     },
     laserFrigateShipyard: {
         name: "Laser Frigate",
@@ -38,5 +41,6 @@ export const shipyards = {
         output: buildResourceObject({
             laserFrigate: 1
         }),
+        requiredTicks: 8
     }
 }

@@ -1,9 +1,16 @@
+const shipBuilder = (name, healthTotal, damage, isPlayer) => ({
+    name,
+    healthTotal,
+    damage,
+    isPlayer
+})
+
 export const shipConfigs = {
-    startingAsteroid: { name: "Asteroid", healthTotal: 200, damage: 0, isPlayer: false },
-    corvette: { name: "Standard Corvette", healthTotal: 100, damage: 5, isPlayer: true },
-    laserCorvette: { name: "Laser Corvette", healthTotal: 100, damage: 30, isPlayer: true },
-    frigate: { name: "Standard Frigate", healthTotal: 300, damage: 15, isPlayer: true },
-    laserFrigate: { name: "Laser Frigate", healthTotal: 300, damage: 45, isPlayer: true }
+    startingAsteroid: shipBuilder("Asteroid", 200, 0, false),
+    corvette: shipBuilder("Standard Corvette", 100, 5, true),
+    laserCorvette: shipBuilder("Laser Corvette", 100, 30, true),
+    frigate: shipBuilder("Standard Frigate", 300, 15, true),
+    laserFrigate: shipBuilder("Laser Frigate", 300, 45, true)
 };
 
 export const emptyShipConfigs = Object.keys(shipConfigs)

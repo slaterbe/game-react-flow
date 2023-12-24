@@ -13,7 +13,7 @@ export const nodes = [
         type: 'factoryNode',
         position: { x: 2, y: 0 },
         factoryType: 'empty',
-        nodeState: 'invalid'
+        nodeState: 'invalid',
     },
     {
         id: "3",
@@ -62,7 +62,8 @@ export const nodes = [
         type: "shipyardNode",
         position: { x: 3, y: 2 },
         shipyardType: 'corvetteShipyard',
-        nodeState: 'invalid'
+        nodeState: 'invalid',
+        counterTick: 0
     },
     {
         id: "10",
