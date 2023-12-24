@@ -31,19 +31,19 @@ export const battleMap = {
     {
       name: "Enemy Wave 1",
       ships: { ...emptyShipConfigs, corvette: 6 },
-      reward: null,
+      reward: { type: REWARD_TYPES.UNLOCK_NEXT_NODE },
       battleWidth: 2
     },
     {
       name: "Asteroid",
       ships: { ...emptyShipConfigs, startingAsteroid: 2 },
-      reward: null,
+      reward: { type: REWARD_TYPES.UNLOCK_NEXT_NODE },
       battleWidth: 1
     },
     {
       name: "Enemy Wave 3",
       ships: { ...emptyShipConfigs, corvette: 6 },
-      reward: null,
+      reward: { type: REWARD_TYPES.UNLOCK_NEXT_NODE },
       battleWidth: 3
     }
   ],

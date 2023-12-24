@@ -9,7 +9,7 @@ const buildPosition = (node) => ({
 
 export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNodes }) => {
     const vmResourceNodes = nodes
-        .filter(n => n.type === "resourceNode")
+        .filter(n => n.type === "resourceNode" && n.nodeState !== "hidden")
         .map((node) => ({
             ...node,
             position: buildPosition(node),
@@ -20,7 +20,7 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
         }));
 
     const vmFactoryNodes = nodes
-        .filter(n => n.type === "factoryNode")
+        .filter(n => n.type === "factoryNode" && n.nodeState !== "hidden")
         .map((node) => ({
             ...node,
             position: buildPosition(node),
@@ -32,7 +32,7 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
         }));
 
     const vmShipyardNodes = nodes
-        .filter(n => n.type === "shipyardNode")
+        .filter(n => n.type === "shipyardNode" && n.nodeState !== "hidden")
         .map((node) => ({
             ...node,
             position: buildPosition(node),
