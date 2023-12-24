@@ -1,8 +1,8 @@
 export const battleMothership = (gameState) => {
     const { battleMap, mothership, ui } = gameState;
-    const { friendlyShips, enemyShips } = battleMap;
+    const { playerShips, enemyShips } = battleMap;
 
-    if(friendlyShips.length !== 0)
+    if(playerShips.length !== 0)
         return
 
     const result = enemyShips.reduce((accum, ship) => accum + ship.damage, 0);

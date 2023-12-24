@@ -22,5 +22,5 @@ export const addShipProcessor = (gameState) => {
     const newShips = outputs
         .reduce(addShips, emptyShipConfigs);
 
-    gameState.battleMap.reserveFriendlyShips = addShips(gameState.battleMap.reserveFriendlyShips, newShips);
+    gameState.battleMap.reservePlayerShips = addShips(gameState.battleMap.reservePlayerShips, newShips);
 }

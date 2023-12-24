@@ -1,6 +1,6 @@
 import { emptyShipConfigs } from '../../util/ships/shipConfigs';
 
-const reserveFriendlyShips = {
+const reservePlayerShips = {
   ...emptyShipConfigs,
   corvette: 2
 };
@@ -11,9 +11,9 @@ const reserveEnemyShips = {
 }
 
 export const battleMap = {
-  friendlyShips: [],
+  playerShips: [],
   enemyShips: [],
-  reserveFriendlyShips,
+  reservePlayerShips,
   reserveEnemyShips,
   currentWave: null,
   enemyWaves: [

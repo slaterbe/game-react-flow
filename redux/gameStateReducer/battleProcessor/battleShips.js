@@ -1,9 +1,9 @@
 export const battleShips = (gameState) => {
-    const { friendlyShips, enemyShips } = gameState.battleMap;
-    const lastFriendlyShip = friendlyShips[friendlyShips.length - 1];
+    const { playerShips, enemyShips } = gameState.battleMap;
+    const lastPlayerShip = playerShips[playerShips.length - 1];
     const lastEnemyShip = enemyShips[enemyShips.length - 1];
 
-    friendlyShips.forEach((ship, index) => {
+    playerShips.forEach((ship, index) => {
         const enemyShip = enemyShips[index] ?? lastEnemyShip;
         if(!enemyShip) return;
 
@@ -11,12 +11,12 @@ export const battleShips = (gameState) => {
     })
 
     enemyShips.forEach((ship, index) => {
-        const friendlyShip = friendlyShips[index] ?? lastFriendlyShip;
-        if(!friendlyShip) return;
+        const playerShip = playerShips[index] ?? lastPlayerShip;
+        if(!playerShip) return;
 
-        friendlyShip.healthCurrent = friendlyShip.healthCurrent - ship.damage;
+        playerShip.healthCurrent = playerShip.healthCurrent - ship.damage;
     })
 
-    gameState.battleMap.friendlyShips = friendlyShips.filter(ship => ship.healthCurrent > 0);
+    gameState.battleMap.playerShips = playerShips.filter(ship => ship.healthCurrent > 0);
     gameState.battleMap.enemyShips = enemyShips.filter(ship => ship.healthCurrent > 0);
 }

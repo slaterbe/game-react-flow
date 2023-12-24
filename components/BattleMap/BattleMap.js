@@ -4,7 +4,7 @@ import { WaveDetail } from './WaveDetail';
 import { shipConfigs } from '@/redux/util/ships/shipConfigs';
 
 const Ship = ({ ship }) => {
-    const backgroundColour = ship.isFriendly ? "bg-blue-500" : "bg-red-500";
+    const backgroundColour = ship.isPlayer ? "bg-blue-500" : "bg-red-500";
 
     return (
         <div className={`${backgroundColour} h-32 w-32 my-4 rounded-full flex flex-col justify-center text-center`}>
@@ -18,10 +18,10 @@ const Ship = ({ ship }) => {
 export const BattleMap = () => {
     const gameState = useSelector((state) => state.gameState)
 
-    const { friendlyShips, enemyShips, enemyWaves, currentWave } = gameState.battleMap;
+    const { playerShips, enemyShips, enemyWaves, currentWave } = gameState.battleMap;
     const { currentHealth, totalHealth } = gameState.mothership;
 
-    const maxLength = Math.max(friendlyShips.length, enemyShips.length);
+    const maxLength = Math.max(playerShips.length, enemyShips.length);
 
     const range = [...Array(maxLength).keys()];
 
@@ -36,7 +36,7 @@ export const BattleMap = () => {
                 <div className="flex justify-start gap-x-4">
                     {range.map((key, index) => (
                         <div key={index}>
-                            {friendlyShips[index] && <Ship ship={friendlyShips[index]} />}
+                            {playerShips[index] && <Ship ship={playerShips[index]} />}
                             {enemyShips[index] && <Ship ship={enemyShips[index]} />}
                         </div>
                     ))}

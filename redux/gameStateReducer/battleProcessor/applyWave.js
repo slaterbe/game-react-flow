@@ -23,7 +23,7 @@ const fillLineWithShipType = (gameState, shipType) => {
     const newShips = [...Array(chosenWidth).keys()].map(ship => ({
         ...shipTypeModel,
         healthCurrent: shipTypeModel.healthTotal,
-        isFriendly: false
+        isPlayer: false
     }));
 
     battleMap.reserveEnemyShips[shipType] = battleMap.reserveEnemyShips[shipType] - chosenWidth;

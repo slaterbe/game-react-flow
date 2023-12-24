@@ -16,7 +16,7 @@ const Container = () => {
     const gameState = useSelector((state) => state.gameState)
 
     const { battleMap, tickCounter } = gameState;
-    const { reserveFriendlyShips } = battleMap;
+    const { reservePlayerShips } = battleMap;
     const { activeTab } = gameState.ui;
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const Container = () => {
 
     return (
         <>
-            <Overlay ships={reserveFriendlyShips} tickCounter={tickCounter} />
+            <Overlay ships={reservePlayerShips} tickCounter={tickCounter} />
             <div className={`w-full h-full absolute bg-black
                 ${activeTab === "node-map" ? "z-20" : "z-0"}`}>
                 <NodeMap />

@@ -2,16 +2,16 @@ import { shipConfigs } from '../../util/ships/shipConfigs';
 
 const fillLineWithShipType = (gameState, shipType) => {
     const { battleMap } = gameState;
-    const { friendlyShips, reserveFriendlyShips, config } = battleMap;
+    const { playerShips, reservePlayerShips, config } = battleMap;
 
     const shipTypeModel = shipConfigs[shipType];
 
-    const missingWidth = config.battleWidth - friendlyShips.length;
+    const missingWidth = config.battleWidth - playerShips.length;
 
     if(missingWidth === 0)
         return;
 
-    const remainingShips = reserveFriendlyShips[shipType];
+    const remainingShips = reservePlayerShips[shipType];
 
     if(remainingShips <= 0)
         return;
@@ -21,12 +21,12 @@ const fillLineWithShipType = (gameState, shipType) => {
     const newShips = [...Array(chosenWidth).keys()].map(ship => ({
         ...shipTypeModel,
         healthCurrent: shipTypeModel.healthTotal,
-        isFriendly: true
+        isPlayer: true
     }));
 
-    reserveFriendlyShips[shipType] = reserveFriendlyShips[shipType] - chosenWidth;
+    reservePlayerShips[shipType] = reservePlayerShips[shipType] - chosenWidth;
 
-    friendlyShips.push(...newShips);   
+    playerShips.push(...newShips);   
 }
 
 export const assignShips = (gameState) => {
