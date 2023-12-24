@@ -5,11 +5,13 @@ import { nodes, edges } from './nodes';
 import { tasks } from './tasks'
 import { ui } from './ui'
 import { resourceNodes } from './resourceNodes';
+import { mothership } from './mothership';
 
 export const gameState = {
   factories,
   battleMap,
   shipyards,
+  mothership,
   resourceNodes,
   nodes,
   edges,

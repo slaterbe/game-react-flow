@@ -10,6 +10,9 @@ import { taskProcessor } from './nodeProcessor/taskProcessor';
 // Battle Processors
 import { assignShips } from './battleProcessor/assignShips';
 import { battleShips } from './battleProcessor/battleShips';
+import { applyWave } from './battleProcessor/applyWave';
+import { applyRewards } from './battleProcessor/applyRewards';
+import { battleMothership } from './battleProcessor/battleMothership';
 
 import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
 import { changeFactory as changeFactoryAction } from './actions/changeFactory';
@@ -19,8 +22,6 @@ import { changeShipyard as changeShipyardAction } from './actions/changeShipyard
 
 import { addEdge as addEdgeAction } from'./actions/addEdge';
 import { deleteEdge as deleteEdgeAction } from'./actions/deleteEdge';
-import { applyWave } from './battleProcessor/applyWave';
-import { applyRewards } from './battleProcessor/applyRewards';
 
 const initialState = gameState;
 
@@ -40,6 +41,7 @@ export const gameStateReducer = createSlice({
       applyWave(state);
       applyRewards(state);
       assignShips(state);
+      battleMothership(state);
       battleShips(state);
     },
     openBattleMap: (state) => {

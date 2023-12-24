@@ -9,7 +9,7 @@ import { battleTick, tick } from '../redux/gameStateReducer/gameStateReducer';
 import { NodeMap } from './NodeMap/NodeMap';
 import { BattleMap } from './BattleMap/BattleMap';
 import { Overlay } from './Overlay';
-import { battleMap } from '@/redux/gameStateReducer/sandbox/battleMap';
+import { GameOver } from './GameOver/GameOver';
 
 const Container = () => {
     const dispatch = useDispatch();
@@ -40,6 +40,10 @@ const Container = () => {
             <div className={`w-full h-full absolute bg-black
                 ${activeTab === "battle-map" ? "z-20" : "z-0"}`}>
                 <BattleMap />
+            </div>
+            <div className={`w-full h-full absolute bg-black
+                ${activeTab === "game-over" ? "z-20" : "z-0"}`}>
+                <GameOver />
             </div>
         </>
     )

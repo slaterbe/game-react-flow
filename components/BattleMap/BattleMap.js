@@ -19,6 +19,7 @@ export const BattleMap = () => {
     const gameState = useSelector((state) => state.gameState)
 
     const { friendlyShips, enemyShips, enemyWaves, currentWave } = gameState.battleMap;
+    const { currentHealth, totalHealth } = gameState.mothership;
 
     const maxLength = Math.max(friendlyShips.length, enemyShips.length);
 
@@ -27,6 +28,10 @@ export const BattleMap = () => {
     return (
         <div className="pt-24">
             <div className="m-4">
+                <div className="bg-blue-500 rounded-full text-center py-8 text-xl mb-4">
+                    <div>Mothership</div>
+                    <div className="text-xs">{currentHealth} / {totalHealth}  HP</div>
+                </div>
                 <div>Battle Map</div>
                 <div className="flex justify-start gap-x-4">
                     {range.map((key, index) => (
