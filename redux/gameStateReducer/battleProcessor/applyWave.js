@@ -1,9 +1,14 @@
-import { shipConfigs } from '../../util/ships/shipConfigs';
+import { emptyShipConfigs, shipConfigs } from '../../util/ships/shipConfigs';
 import { gameState } from '../sandbox/sandbox-v3';
+import { rewardApplier } from '@/redux/util/reward/rewardApplier';
 
 const fillLineWithShipType = (gameState, shipType) => {
     const { battleMap } = gameState;
     const { enemyShips, enemyWaves, reserveEnemyShips, config, currentWave } = battleMap;
+
+    if(currentWave === null)
+        return;
+    
     const { battleWidth } = battleMap.currentWave;
 
     const shipTypeModel = shipConfigs[shipType];
@@ -34,11 +39,21 @@ const fillLineWithShipType = (gameState, shipType) => {
 const replaceWaveIfDepleted = (gameState) => {
     const { battleMap } = gameState;
 
-    if(battleMap.enemyShips.length === 0 && battleMap.enemyWaves.length !== 0){
-        battleMap.reserveEnemyShips = battleMap.enemyWaves[0].ships;    
-        battleMap.currentWave = battleMap.enemyWaves[0];    
-        battleMap.enemyWaves = battleMap.enemyWaves.slice(1);
+    if(battleMap.enemyShips.length !== 0)
+        return;
+
+    rewardApplier(battleMap?.currentWave?.reward, gameState);
+
+    if(battleMap.enemyWaves.length === 0){
+        battleMap.reserveEnemyShips = emptyShipConfigs;
+        battleMap.currentWave = null;    
+        battleMap.enemyWaves = [];
+        return;
     }
+
+    battleMap.reserveEnemyShips = battleMap.enemyWaves[0]?.ships;
+    battleMap.currentWave = battleMap.enemyWaves[0];    
+    battleMap.enemyWaves = battleMap.enemyWaves?.slice(1);
 }
 
 export const applyWave = (gameState) => {
