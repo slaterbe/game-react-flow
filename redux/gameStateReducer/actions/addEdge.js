@@ -34,5 +34,5 @@ export const addEdge = (gameState, payload) => {
         input: buildResourceObject()
     });
 
-    updateNodeState(targetNode, nodes, edges);
+    updateNodeState(targetNode, gameState);
 }

@@ -3,11 +3,9 @@ import { activateNode, handleDeactivatingNode } from '../../util/node';
 import { edgeActiveProcessor } from '../nodeProcessor/edgeActive';
 import { nodeStatusUpdater } from '../nodeProcessor/nodeStatusUpdater';
 
-const handleActivatingNode = (state, node) => {
-    const { nodes, edges } = state;
+const handleActivatingNode = (gameState, node) => {
     node.nodeState = 'active';
-
-    activateNode(node, nodes, edges);
+    activateNode(node, gameState);
 }
 
 export const toggleFactory = (gameState, item) => {

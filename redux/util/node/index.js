@@ -1,6 +1,3 @@
-import { factories } from '../../gameStateReducer/sandbox/factories';
-import { resourceNodes } from '../../gameStateReducer/sandbox/resourceNodes';
-import { shipyards } from '../../gameStateReducer/sandbox/shipyards';
 import { 
     buildResourceObject, 
     calculateDelta, 
@@ -9,7 +6,7 @@ import {
     isResourcesGreater  
 } from '../resource';
 
-const getRequiredInput = (node) => {
+const getRequiredInput = (node, factories, shipyards) => {
     if (node.factoryType)
         return { ...factories[node.factoryType].input };
     else if (node.shipyardType)
@@ -18,7 +15,7 @@ const getRequiredInput = (node) => {
     return null;
 }
 
-const getRequiredOutput = (node) => {
+const getRequiredOutput = (factories, resourceNodes) => (node) => {
     if (node.factoryType)
         return { ...factories[node.factoryType].output };
     else if (node.resourceType)
@@ -40,8 +37,11 @@ const updateEdge = (requiredInput, edge, adjustedOutput) => {
     return subtractResources(requiredInput, newEdgeInput);
 }
 
-export const activateNode = (node, nodes, edges) => {
-    const requiredInput = getRequiredInput(node);
+export const activateNode = (node, gameState) => {
+    const { nodes, edges, factories, shipyards, resourceNodes } = gameState;
+    const requiredInput = getRequiredInput(node, factories, shipyards);
+
+    const getRequiredOutputFunc = getRequiredOutput(factories, resourceNodes);
 
     const downstreamNodes = edges
         .filter(e => e.target === node.id)
@@ -49,7 +49,7 @@ export const activateNode = (node, nodes, edges) => {
         .map(e => ({
             edge: e,
             node: nodes.find(n => n.id === e.source),
-            rawOutput: getRequiredOutput(nodes.find(n => n.id === e.source))
+            rawOutput: getRequiredOutputFunc(nodes.find(n => n.id === e.source))
         }))
         .map(n => ({
             ...n,
@@ -89,8 +89,10 @@ export const handleDeactivatingNode = (state, node) => {
     node.nodeState = "valid";
 }
 
-export const updateNodeState = (node, nodes, edges) => {
-    const requiredInput = getRequiredInput(node);
+export const updateNodeState = (node, gameState) => {
+    const { nodes, edges, factories, shipyards, resourceNodes } = gameState;
+    const requiredInput = getRequiredInput(node, factories, shipyards);
+    const getRequiredOutputFunc = getRequiredOutput(factories, resourceNodes);
 
     const downstreamNodes = edges
         .filter(e => e.target === node.id)
@@ -98,7 +100,7 @@ export const updateNodeState = (node, nodes, edges) => {
         .map(e => ({
             edge: e,
             node: nodes.find(n => n.id === e.source),
-            rawOutput: getRequiredOutput(nodes.find(n => n.id === e.source))
+            rawOutput: getRequiredOutputFunc(nodes.find(n => n.id === e.source))
         }))
         .map(n => ({
             ...n,

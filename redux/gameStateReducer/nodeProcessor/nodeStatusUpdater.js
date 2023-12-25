@@ -1,12 +1,12 @@
-import { updateNodeState  } from '../../util/node';
+import { updateNodeState } from '../../util/node';
 
 export const nodeStatusUpdater = (gameState) => {
-    const { nodes, edges } = gameState;
+    const { nodes } = gameState;
 
     const relevantNodes = nodes.filter(n => n.type !== 'resourceNode')
         .filter(n => n.nodeState === 'valid' || n.nodeState === 'invalid');
 
     relevantNodes.forEach(n => {
-        updateNodeState(n, nodes, edges);
+        updateNodeState(n, gameState);
     })   
 }
