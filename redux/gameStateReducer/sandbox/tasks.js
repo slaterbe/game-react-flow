@@ -1,4 +1,7 @@
-import { unlockNextNode } from '../../util/reward/rewardFactory';
+import { 
+    unlockNextNode,
+    unlockFactory
+} from '../../util/reward/rewardFactory';
 
 export const tasks = [
     { 
@@ -10,7 +13,7 @@ export const tasks = [
         title: 'Build 5 Corvettes', 
         requirement: { corvette: 5 }, 
         claimed: false,
-        rewards: [unlockNextNode()]
+        rewards: [unlockFactory("commonForge")]
     },{ 
         title: 'Build 10 Corvettes', 
         requirement: { corvette: 10 }, 
