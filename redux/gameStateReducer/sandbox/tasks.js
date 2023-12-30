@@ -1,6 +1,38 @@
+import { unlockNextNode } from '../../util/reward/rewardFactory';
+
 export const tasks = [
-    { title: 'Complete 1 Corvettes', requirement: { corvette: 1 }, claimed: true },
-    { title: 'Complete 20 Corvettes', requirement: { corvette: 20 }, claimed: false },
-    { title: 'Complete 100 Corvettes', requirement: { corvette: 100 }, claimed: false },
-    { title: 'Complete 20 Frigates', requirement: { frigate: 20 }, claimed: false },
+    { 
+        title: 'Build 1 Corvettes', 
+        requirement: { corvette: 1 }, 
+        claimed: false,
+        rewards: [unlockNextNode()]
+    },{ 
+        title: 'Build 5 Corvettes', 
+        requirement: { corvette: 5 }, 
+        claimed: false,
+        rewards: [unlockNextNode()]
+    },{ 
+        title: 'Build 10 Corvettes', 
+        requirement: { corvette: 10 }, 
+        claimed: false,
+        rewards: [unlockNextNode()]
+    },
+    {
+        title: 'Build 20 Corvettes',
+        requirement: { corvette: 20 },
+        claimed: false,
+        rewards: [unlockNextNode()]
+    },
+    { 
+        title: 'Build 100 Corvettes', 
+        requirement: { corvette: 100 }, 
+        claimed: false, 
+        rewards: [unlockNextNode()] 
+    },
+    { 
+        title: 'Build 20 Frigates', 
+        requirement: { frigate: 20 }, 
+        claimed: false, 
+        rewards: [unlockNextNode()] 
+    },
 ]
