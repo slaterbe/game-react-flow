@@ -1,5 +1,6 @@
 import { Handle, Position } from 'reactflow';
 import { ResourceDetail } from '../../resource/ResourceDetail';
+import { BlockedNode } from './BlockedNode';
 
 export const ResourceNode = ({ data, id }) => {
   const { name, output, nodeState } = data;
@@ -13,12 +14,15 @@ export const ResourceNode = ({ data, id }) => {
       <Handle type="source" position={Position.Left} isConnectable={true} id="sl" style={{ padding: 10, background: "rgb(30 64 175)" }} />
       <Handle type="source" position={Position.Top} isConnectable={true} id="st" style={{ padding: 10, background: "rgb(30 64 175)" }} />
       <Handle type="source" position={Position.Bottom} isConnectable={true} id="sb" style={{ padding: 10, background: "rgb(30 64 175)" }} />
-      <div>
-        <div className="text-center text-sm">
-          {name} {id}
+      
+      <BlockedNode {...data} id={id}>
+        <div>
+          <div className="text-center text-sm">
+            {name} {id}
+          </div>
+          <ResourceDetail resource={output} positive={true} />
         </div>
-        <ResourceDetail resource={output} positive={true} />
-      </div>
+      </BlockedNode>
     </div>
   );
 }

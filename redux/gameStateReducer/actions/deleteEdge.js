@@ -1,4 +1,4 @@
-import { handleDeactivatingNode } from '../../util/node';
+import { handleDeactivatingNode } from '../../util/node/standardNode';
 
 export const deleteEdge = (gameState, payload) => {
     const { edges, nodes } = gameState;

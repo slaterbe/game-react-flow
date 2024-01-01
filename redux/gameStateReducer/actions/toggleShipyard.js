@@ -1,4 +1,4 @@
-import { activateNode, handleDeactivatingNode } from '../../util/node';
+import { activateNode, handleDeactivatingNode } from '../../util/node/standardNode';
 
 import { edgeActiveProcessor } from '../nodeProcessor/edgeActive';
 import { nodeStatusUpdater } from '../nodeProcessor/nodeStatusUpdater';

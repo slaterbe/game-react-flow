@@ -1,4 +1,4 @@
-import { updateNodeState } from '../../util/node';
+import { updateNodeState } from '../../util/node/standardNode';
 
 export const nodeStatusUpdater = (gameState) => {
     const { nodes } = gameState;

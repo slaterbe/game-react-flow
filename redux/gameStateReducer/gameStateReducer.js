@@ -14,6 +14,7 @@ import { applyWave } from './battleProcessor/applyWave';
 import { applyRewards } from './battleProcessor/applyRewards';
 import { battleMothership } from './battleProcessor/battleMothership';
 
+// Actions
 import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
 import { changeFactory as changeFactoryAction } from './actions/changeFactory';
 
@@ -22,6 +23,8 @@ import { changeShipyard as changeShipyardAction } from './actions/changeShipyard
 
 import { addEdge as addEdgeAction } from'./actions/addEdge';
 import { deleteEdge as deleteEdgeAction } from'./actions/deleteEdge';
+
+import { toggleBlocked as toggleBlockedAction } from './actions/toggleBlocked';
 
 const initialState = gameState;
 
@@ -69,7 +72,8 @@ export const gameStateReducer = createSlice({
     toggleShipyard: toggleShipyardAction,
     changeShipyard: changeShipyardAction,
     addEdge: addEdgeAction,
-    deleteEdge: deleteEdgeAction
+    deleteEdge: deleteEdgeAction,
+    toggleBlocked: toggleBlockedAction
   },
 })
 
@@ -88,7 +92,8 @@ export const {
   openShipyardDialog, 
   closeShipyardDialog,
   openBattleMap,
-  openNodeMap
+  openNodeMap,
+  toggleBlocked
 } = gameStateReducer.actions
 
 export default gameStateReducer.reducer

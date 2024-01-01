@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { edgeIntersection } from '../../util/node/edgeIntersection';
 import { buildResourceObject } from '../../util/resource';
-import { updateNodeState } from '../../util/node';
+import { updateNodeState } from '../../util/node/standardNode';
 import { getEdgeValidErrorMessage } from '../../util/node/getEdgeValidErrorMessage';
 
 export const addEdge = (gameState, payload) => {

@@ -15,7 +15,8 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
             position: buildPosition(node),
             data: {
                 ...resourceNodes[node.resourceType],
-                nodeState: node.nodeState
+                nodeState: node.nodeState,
+                blockedResource: node.blockedResource
             }
         }));
 
@@ -27,7 +28,8 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
             data: {
                 ...factories[node.factoryType],
                 nodeState: node.nodeState,
-                factoryType: node.factoryType
+                factoryType: node.factoryType,
+                blockedResource: node.blockedResource
             }
         }));
 
@@ -39,7 +41,8 @@ export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNo
             data: {
                 ...shipyards[node.shipyardType],
                 nodeState: node.nodeState,
-                completePercentage: Math.floor((node.counterTick ?? 0) * 100 / shipyards[node.shipyardType].requiredTicks)
+                completePercentage: Math.floor((node.counterTick ?? 0) * 100 / shipyards[node.shipyardType].requiredTicks),
+                blockedResource: node.blockedResource
             }
         }));
 
