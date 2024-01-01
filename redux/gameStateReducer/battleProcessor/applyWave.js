@@ -1,5 +1,4 @@
 import { emptyShipConfigs, shipConfigs } from '../../util/ships/shipConfigs';
-import { gameState } from '../sandbox/sandbox-v3';
 import { rewardsApplier } from '@/redux/util/reward/rewardApplier';
 
 const fillLineWithShipType = (gameState, shipType) => {

@@ -28,7 +28,6 @@ export const ShipyardSelector = ({ close, select, shipyards, node }) => (
                         </thead>
                         <tbody>
                             {Object.entries(shipyards)
-                                .filter(([key]) => key !== 'empty')
                                 .map(([key, value], index) => (
                                 <tr className="font-semibold" key={index}>
                                     <td className="p-2">

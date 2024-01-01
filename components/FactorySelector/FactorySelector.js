@@ -28,7 +28,6 @@ export const FactorySelector = ({ close, select, factories, node }) => (
                         </thead>
                         <tbody>
                             {Object.entries(factories)
-                                .filter(([key]) => key !== 'empty')
                                 .map(([key, value], index) => (
                                 <tr className="font-semibold" key={index}>
                                     <td className="p-2">

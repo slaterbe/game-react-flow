@@ -6,56 +6,64 @@ export const nodes = [
         type: 'resourceNode',
         position: { x: 1, y: 0 },
         resourceType: 'commonOre',
-        nodeState: 'active'
+        nodeState: 'active',
+        requiredResource: buildResourceObject()
     },
     {
         id: "2",
         type: 'factoryNode',
         position: { x: 2, y: 0 },
-        factoryType: 'empty',
+        factoryType: null,
         nodeState: 'invalid',
+        requiredResource: buildResourceObject({ commonOre: 100 })
     },
     {
         id: "3",
         type: 'factoryNode',
         position: { x: 3, y: 0 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "4",
         type: 'factoryNode',
         position: { x: 6, y: 0 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "5",
         type: 'factoryNode',
         position: { x: 2, y: 1 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "6",
         type: 'factoryNode',
         position: { x: 3, y: 1 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "7",
         type: 'factoryNode',
         position: { x: 5, y: 1 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "8",
         type: 'factoryNode',
         position: { x: 0, y: 2 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "9",
@@ -63,81 +71,91 @@ export const nodes = [
         position: { x: 3, y: 2 },
         shipyardType: 'corvetteShipyard',
         nodeState: 'invalid',
-        counterTick: 0
+        counterTick: 0,
+        requiredResource: buildResourceObject()
     },
     {
         id: "10",
         type: 'factoryNode',
         position: { x: 4, y: 2 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "11",
         type: 'factoryNode',
         position: { x: 2, y: 3 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "12",
         type: 'factoryNode',
         position: { x: 6, y: 3 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "13",
         type: 'resourceNode',
         position: { x: 1, y: 4 },
         resourceType: 'silicon',
-        nodeState: 'hidden'
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "14",
         type: 'factoryNode',
         position: { x: 3, y: 4 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "15",
         type: 'factoryNode',
         position: { x: 3, y: 4 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "16",
         type: 'resourceNode',
         position: { x: 5, y: 4 },
         resourceType: 'rareOre',
-        nodeState: 'hidden'
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "17",
         type: 'factoryNode',
         position: { x: 2, y: 5 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "18",
         type: 'factoryNode',
         position: { x: 3, y: 5 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
     {
         id: "19",
         type: 'factoryNode',
         position: { x: 3, y: 6 },
-        factoryType: 'empty',
-        nodeState: 'hidden'
+        factoryType: null,
+        nodeState: 'hidden',
+        requiredResource: buildResourceObject()
     },
 ];
 
 export const edges = [
-    { source: "1", target: "2", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: buildResourceObject() },
-    { source: "1", target: "5", sourceHandle: "sb", targetHandle: "tl", isActive: false, input: buildResourceObject() },
+    { source: "1", target: "2", sourceHandle: "sr", targetHandle: "tl", isActive: false, input: buildResourceObject() }
 ];

@@ -3,7 +3,7 @@ import {
     calculateDelta, 
     subtractResources, 
     addResources, 
-    isResourcesGreater  
+    isResourcesGreater
 } from '../resource';
 
 const getRequiredInput = (node, factories, shipyards) => {
@@ -12,7 +12,7 @@ const getRequiredInput = (node, factories, shipyards) => {
     else if (node.shipyardType)
         return { ...shipyards[node.shipyardType].input };
 
-    return null;
+    return buildResourceObject();
 }
 
 const getRequiredOutput = (factories, resourceNodes) => (node) => {
@@ -21,7 +21,7 @@ const getRequiredOutput = (factories, resourceNodes) => (node) => {
     else if (node.resourceType)
         return { ...resourceNodes[node.resourceType].output };
 
-    return null;
+    return buildResourceObject();
 }
 
 const calculateAdjustedOutput = (rawOutput, nodeId, edges) => {

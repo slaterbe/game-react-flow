@@ -123,10 +123,5 @@ export const baseFactories = {
     output: buildResourceObject({
       laserModule: 3
     })
-  },
-  empty: {
-    name: "",
-    input: buildResourceObject(),
-    output: buildResourceObject()
   }
 }

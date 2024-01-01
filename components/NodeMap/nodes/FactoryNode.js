@@ -7,7 +7,7 @@ import { Toggle } from '../../Toggle';
 
 const getNodeStateStyles = (nodeState, factoryType) => {
   if (nodeState === 'active') return 'bg-green-900'
-  else if (factoryType === 'empty') return 'bg-gray-600'
+  else if (factoryType === null) return 'bg-gray-600'
   else if (nodeState === 'valid') return 'bg-red-900'
   else return 'bg-gray-600'
 }
@@ -21,7 +21,7 @@ export const FactoryNode = ({ data, isConnectable, id }) => {
   const isVisible = nodeState !== "hidden";
   const isActive = nodeState === "active";
   const isToggleDisabled = nodeState === 'invalid';
-  const isEmpty = factoryType === 'empty'
+  const isEmpty = factoryType === null;
 
   return (
     <div className={`w-32 h-32 background border-blue-800 p-2 rounded-md border-4 
