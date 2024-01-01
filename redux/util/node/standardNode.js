@@ -59,7 +59,7 @@ export const handleDeactivatingNode = (state, node) => {
     node.nodeState = "valid";
 }
 
-export const updateNodeState = (node, gameState) => {
+export const updateNodeState = (gameState, node) => {
     const { nodes, edges, factories, shipyards, resourceNodes } = gameState;
     const requiredInput = getRequiredInput(node, factories, shipyards);
     const getRequiredOutputFunc = getRequiredOutput(factories, resourceNodes);

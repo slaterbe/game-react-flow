@@ -7,6 +7,6 @@ export const nodeStatusUpdater = (gameState) => {
         .filter(n => n.nodeState === 'valid' || n.nodeState === 'invalid');
 
     relevantNodes.forEach(n => {
-        updateNodeState(n, gameState);
+        updateNodeState(gameState, n);
     })   
 }

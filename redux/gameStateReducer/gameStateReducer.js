@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { gameState } from './sandbox/sandbox-v3';
 
 // Node Processors
+import { blockedNodeProcessor } from './nodeProcessor/blockedNode';
 import { edgeActiveProcessor } from './nodeProcessor/edgeActive';
 import { addShipProcessor } from './nodeProcessor/addShips';
 import { nodeStatusUpdater } from './nodeProcessor/nodeStatusUpdater'
@@ -33,6 +34,7 @@ export const gameStateReducer = createSlice({
   initialState,
   reducers: {
     tick: (state) => {
+      blockedNodeProcessor(state);
       addShipProcessor(state);
       edgeActiveProcessor(state);
       nodeStatusUpdater(state);
