@@ -1,39 +1,30 @@
-import { rewardsApplier } from "@/redux/util/reward/rewardApplier";
+import { rewardsApplier } from "../../reward/rewardApplier";
 
-const processTask = (task, ships, gameState) => {
+export const shipsCreated = (gameState, task) => {
     const {
         corvette,
         frigate,
         destroyer,
         cruiser
-    } = task.requirement;
-
+    } = task.params;
+    
     if (corvette && ships.corvette >= corvette){
         rewardsApplier(task.rewards, gameState);
         task.claimed = true;
     }
-
+    
     if (frigate && ships.frigate >= frigate){
         rewardsApplier(task.rewards, gameState);
         task.claimed = true;
     }
-
+    
     if (destroyer && ships.destroyer >= destroyer){
         rewardsApplier(task.rewards, gameState);
         task.claimed = true;
     }
-
+    
     if (cruiser && ships.cruiser >= cruiser){
         rewardsApplier(task.rewards, gameState);
         task.claimed = true;
     }
-}
-
-export const taskProcessor = (gameState) => {
-    const { tasks, battleMap } = gameState;
-    const { reservePlayerShips } = battleMap;
-
-    tasks
-        .filter(t => !t.claimed)
-        .forEach(t => processTask(t, reservePlayerShips, gameState));
 }

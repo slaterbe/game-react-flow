@@ -6,7 +6,7 @@ import { blockedNodeProcessor } from './nodeProcessor/blockedNode';
 import { edgeActiveProcessor } from './nodeProcessor/edgeActive';
 import { addShipProcessor } from './nodeProcessor/addShips';
 import { nodeStatusUpdater } from './nodeProcessor/nodeStatusUpdater'
-import { taskProcessor } from './nodeProcessor/taskProcessor';
+import { taskProcessor } from '../util/task/taskProcessor';
 
 // Battle Processors
 import { assignShips } from './battleProcessor/assignShips';
