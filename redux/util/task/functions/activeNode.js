@@ -4,7 +4,7 @@ export const activeNode = (gameState, task) => {
     const { nodes } = gameState;
     const { id } = task.params;
 
-    const match = nodes.find(n => n.id === id)
+    const match = nodes.find(n => n.id === id);
 
     if(!match) return;
 
@@ -12,5 +12,5 @@ export const activeNode = (gameState, task) => {
         return;
 
     task.claimed = true;
-    rewardsApplier(task.reward, gameState);
+    rewardsApplier(task.rewards, gameState);
 }

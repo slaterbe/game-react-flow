@@ -9,5 +9,5 @@ export const createEdge = (gameState, task) => {
     if(!match) return;
 
     task.claimed = true;
-    rewardsApplier(task.reward, gameState);
+    rewardsApplier(task.rewards, gameState);
 }

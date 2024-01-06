@@ -12,5 +12,5 @@ export const assignFactoryNode = (gameState, task) => {
         return;
 
     task.claimed = true;
-    rewardsApplier(task.reward, gameState);
+    rewardsApplier(task.rewards, gameState);
 }

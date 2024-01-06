@@ -8,9 +8,10 @@ export const unblockNode = (gameState, task) => {
 
     if(!match) return;
 
-    if(match.nodeState === "blocked" || match.nodeState === "blocked-active")
+    if(match.nodeState === "blocked" || match.nodeState === "blocked-active" || match.nodeState === "hidden")
         return;
 
     task.claimed = true;
-    rewardsApplier(task.reward, gameState);
+
+    rewardsApplier(task.rewards, gameState);
 }

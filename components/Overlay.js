@@ -47,7 +47,7 @@ export const Overlay = ({ ships, tickCounter }) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-start">
+                {/* <div className="flex justify-start">
                     <button
                         onClick={() => dispatch(openNodeMap())}
                         className="bg-green-500 hover:bg-green-700 text-white font-bold px-4 rounded m-2">
@@ -58,7 +58,7 @@ export const Overlay = ({ ships, tickCounter }) => {
                         className="bg-red-500 hover:bg-red-700 text-white font-bold px-4 rounded m-2">
                         Battle Map
                     </button>
-                </div>
+                </div> */}
             </div>
 
             {factorySelector.isOpen &&
