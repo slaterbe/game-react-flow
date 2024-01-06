@@ -7,6 +7,13 @@ import { TASK_TYPE } from '../../util/task/task';
 
 export const tasks = [
     {
+        title: 'Assign Common Forge to Node 2',
+        type: TASK_TYPE.ASSIGN_FACTORY_NODE,
+        params: { id: "2", factoryType: "commonForge" },
+        claimed: false,
+        rewards: [unlockNextNode()]
+    },
+    {
         title: 'Activate Node 2',
         type: TASK_TYPE.ACTIVATE_NODE,
         params: { id: "2" },
@@ -22,7 +29,7 @@ export const tasks = [
     },  
     {
         title: 'Unblock Node 3',
-        type: TASK_TYPE.ACTIVATE_NODE,
+        type: TASK_TYPE.UNBLOCK_NODE,
         params: { id: "3" },
         claimed: false,
         rewards: [unlockNextNode()]

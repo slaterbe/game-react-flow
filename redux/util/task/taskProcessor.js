@@ -2,6 +2,7 @@ import { activeNode } from "./functions/activeNode";
 import { createEdge } from "./functions/createEdge";
 import { shipsCreated } from "./functions/shipsCreated";
 import { unblockNode } from "./functions/unblockNode";
+import { assignFactoryNode } from "./functions/assignFactoryNode";
 import { TASK_TYPE } from "./task";
 
 const processTask = (gameState, task) => {
@@ -19,6 +20,9 @@ const processTask = (gameState, task) => {
             break;
         case TASK_TYPE.UNBLOCK_NODE:
             unblockNode(gameState, task);
+            break;
+        case TASK_TYPE.ASSIGN_FACTORY_NODE:
+            assignFactoryNode(gameState, task);
             break;
     }
 }
