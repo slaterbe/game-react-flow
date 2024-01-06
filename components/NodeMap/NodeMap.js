@@ -34,6 +34,7 @@ export const NodeMap = () => {
         <ReactFlow
           nodes={nodes}
           edges={edges}
+          connectionLineType="straight"
           onConnect={onConnect}
           nodeTypes={nodeTypes}
           edgeTypes={edgeTypes}
