@@ -1,5 +1,6 @@
 import { updateNodeState } from '../../util/node/standardNode';
 
+// Disconnected as will be managed on an event basis
 export const nodeStatusUpdater = (gameState) => {
     const { nodes } = gameState;
 

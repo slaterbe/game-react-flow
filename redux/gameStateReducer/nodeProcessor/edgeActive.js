@@ -1,3 +1,4 @@
+// Disconnected as will be managed on an event basis
 export const edgeActiveProcessor = (gameState) => {
     const { nodes } = gameState;
 

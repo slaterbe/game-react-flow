@@ -5,7 +5,7 @@ import { nodeStatusUpdater } from '../nodeProcessor/nodeStatusUpdater';
 
 const handleActivatingNode = (gameState, node) => {
     node.nodeState = 'active';
-    activateNode(node, gameState);
+    activateNode(gameState, node);
 }
 
 export const toggleShipyard = (gameState, item) => {

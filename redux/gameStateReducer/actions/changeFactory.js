@@ -1,7 +1,7 @@
 import { handleDeactivatingNode } from '../../util/node/standardNode';
+import { updateNodeState } from '../../util/node/standardNode';
 
 import { edgeActiveProcessor } from '../nodeProcessor/edgeActive';
-import { nodeStatusUpdater } from '../nodeProcessor/nodeStatusUpdater';
 
 export const changeFactory = (gameState, item) => {
     const { nodes } = gameState;
@@ -21,5 +21,5 @@ export const changeFactory = (gameState, item) => {
     factorySelector.nodeId = null;
 
     edgeActiveProcessor(gameState);
-    nodeStatusUpdater(gameState);
+    updateNodeState(gameState, node);
 }

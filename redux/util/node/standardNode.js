@@ -1,7 +1,7 @@
 import { buildResourceObject, hasResource, addResources, isResourcesGreater } from '../resource';
 import { getRequiredInput, getRequiredOutput, calculateAdjustedOutput, updateEdge } from './index';
 
-export const activateNode = (node, gameState) => {
+export const activateNode = (gameState, node) => {
     const { nodes, edges, factories, shipyards, resourceNodes } = gameState;
     const requiredInput = getRequiredInput(node, factories, shipyards);
 
@@ -25,8 +25,8 @@ export const activateNode = (node, gameState) => {
         requiredInput);
 }
 
-export const handleDeactivatingNode = (state, node) => {
-    const { nodes, edges } = state;
+export const handleDeactivatingNode = (gameState, node) => {
+    const { nodes, edges } = gameState;
 
     //Abort if Node has blocked resources on it
     if(hasResource(node.blockedResource)){
@@ -53,10 +53,10 @@ export const handleDeactivatingNode = (state, node) => {
 
     upstreamNodes.forEach(n => {
         n.nodeState = 'invalid';
-        handleDeactivatingNode(state, n);
+        handleDeactivatingNode(gameState, n);
     });
 
-    node.nodeState = "valid";
+    updateNodeState(gameState, node);
 }
 
 export const updateNodeState = (gameState, node) => {

@@ -36,8 +36,6 @@ export const gameStateReducer = createSlice({
     tick: (state) => {
       blockedNodeProcessor(state);
       addShipProcessor(state);
-      edgeActiveProcessor(state);
-      nodeStatusUpdater(state);
       taskProcessor(state);
 
       state.tickCounter = state.tickCounter + 1;

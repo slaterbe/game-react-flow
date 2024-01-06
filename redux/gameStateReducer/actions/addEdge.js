@@ -6,6 +6,7 @@ import { getEdgeValidErrorMessage } from '../../util/node/getEdgeValidErrorMessa
 
 export const addEdge = (gameState, payload) => {
     const { nodes, edges } = gameState;
+    const sourceNode = nodes.find(n => n.id === payload.payload.source);
     const targetNode = nodes.find(n => n.id === payload.payload.target);
 
     const newEdge = { 
@@ -30,7 +31,7 @@ export const addEdge = (gameState, payload) => {
 
     gameState.edges.push({
         ...payload.payload,
-        isActive: false,
+        isActive: sourceNode.nodeState === 'active',
         input: buildResourceObject()
     });
 

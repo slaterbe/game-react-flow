@@ -1,6 +1,7 @@
 import { rewardsApplier } from "../../reward/rewardApplier";
 
 export const shipsCreated = (gameState, task) => {
+    const ships = gameState.battleMap.reservePlayerShips;
     const {
         corvette,
         frigate,
