@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { rewardsApplier } from "../../reward/rewardApplier";
 
 export const createEdge = (gameState, task) => {
@@ -10,4 +11,7 @@ export const createEdge = (gameState, task) => {
 
     task.claimed = true;
     rewardsApplier(task.rewards, gameState);
+
+    if(task.completeMessage)
+        toast.success(task.completeMessage, { position: toast.POSITION.TOP_RIGHT });
 }

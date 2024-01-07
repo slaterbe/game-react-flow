@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { rewardsApplier } from "../../reward/rewardApplier";
 
 export const unblockNode = (gameState, task) => {
@@ -6,12 +7,15 @@ export const unblockNode = (gameState, task) => {
 
     const match = nodes.find(n => n.id === id)
 
-    if(!match) return;
+    if (!match) return;
 
-    if(match.nodeState === "blocked" || match.nodeState === "blocked-active" || match.nodeState === "hidden")
+    if (match.nodeState === "blocked" || match.nodeState === "blocked-active" || match.nodeState === "hidden")
         return;
 
     task.claimed = true;
 
     rewardsApplier(task.rewards, gameState);
+
+    if (task.completeMessage)
+        toast.success(task.completeMessage, { position: toast.POSITION.TOP_RIGHT });
 }

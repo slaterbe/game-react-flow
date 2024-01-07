@@ -19,14 +19,14 @@ export const baseFactories = {
       commonPlate: 3
     })
   },
-  commonForgev2: {
+  commonForgeV2: {
     name: "Common Forge v2",
     input: buildResourceObject({
       commonOre: 2,
       commonPlate: 3
     }),
     output: buildResourceObject({
-      commonPlate: 6
+      commonPlate: 10
     })
   },
   refinery: {
@@ -48,10 +48,10 @@ export const baseFactories = {
       corvetteHull: 2
     })
   },
-  basicHullv2: {
-    name: "Basic Hull v2",
+  startingCorvetteFactory: {
+    name: "Hull Manufacturer",
     input: buildResourceObject({
-      commonPlate: 5
+      commonPlate: 8
     }),
     output: buildResourceObject({
       corvetteHull: 1
