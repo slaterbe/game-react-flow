@@ -16,6 +16,7 @@ export const addEdge = (gameState, payload) => {
         targetHandle: payload.payload.targetHandle
     };
 
+    // 1. Edge valid message
     const errorMessage = getEdgeValidErrorMessage(newEdge, edges, nodes);
 
     if (errorMessage) {
@@ -23,6 +24,7 @@ export const addEdge = (gameState, payload) => {
         return;
     }
 
+    // 2. Edge intersection
     const intersection = edgeIntersection(newEdge, edges, nodes);
     if(intersection){
         toast.error('Lines cannot intersect', { position: toast.POSITION.TOP_RIGHT });

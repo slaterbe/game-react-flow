@@ -30,7 +30,7 @@ export const Overlay = ({ ships, tickCounter }) => {
 
     return (
         <>
-            <div className="w-full h-24 absolute bg-blue-400 z-40 flex flex-col justify-start">
+            <div className="w-full h-8 absolute bg-blue-400 z-40 flex flex-col justify-start">
                 <div className="flex justify-between">
                     <div>
                         {
@@ -42,7 +42,7 @@ export const Overlay = ({ ships, tickCounter }) => {
                         }
                     </div>
                     <div>
-                        <div className="inline-block text-right text-lg text-black p-4 font-medium">
+                        <div className="inline-block text-right text-lg text-black px-4 font-medium">
                             Tick: {tickCounter}
                         </div>
                     </div>

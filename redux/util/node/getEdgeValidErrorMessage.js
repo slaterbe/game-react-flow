@@ -34,11 +34,16 @@ export const getEdgeValidErrorMessage = (newEdge, edges, nodes) => {
 
     if(conflictingEdge) return 'Circular reference with nodes';
 
-    //2. Target is a resource node
+    //2. Detect and prevent duplicate edges
+    const duplicateEdge = edges.find(e => e.source === newEdge.source && e.target === newEdge.target);
+
+    if(duplicateEdge) return 'An edge between these 2 nodes already exist';
+
+    //3. Target is a resource node
     const targetNode = nodes.find(n => n.id === newEdge.target);
     if(targetNode.type === "resourceNode") return 'Can not connect TO resource node';
 
-    //3. Some overlap in node tree graph
+    //4. Some overlap in node tree graph
     const upstreamNodes = getAllUpStreamNodes(newEdge.target, edges);
     const downstreamNodes = getAllDownStreamNodes(newEdge.source, edges);
 
