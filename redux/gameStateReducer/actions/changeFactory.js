@@ -1,7 +1,4 @@
-import { handleDeactivatingNode } from '../../util/node/standardNode';
-import { updateNodeState } from '../../util/node/standardNode';
-
-import { edgeActiveProcessor } from '../nodeProcessor/edgeActive';
+import { computeNodeChange } from '../../util/nodeV2/computeNodeChange';
 
 export const changeFactory = (gameState, item) => {
     const { nodes } = gameState;
@@ -9,17 +6,10 @@ export const changeFactory = (gameState, item) => {
     const { nodeId, newFactoryType } = item.payload;
     const node = nodes.find(n => n.id === nodeId);
 
-    if(node.nodeState === 'active'){
-        node.factoryType = newFactoryType;
-        handleDeactivatingNode(gameState, node);
-    }
-    else{
-        node.factoryType = newFactoryType;
-    }
+    node.factoryType = newFactoryType;
+    computeNodeChange(gameState, node);
 
+    // Updating UI State
     factorySelector.isOpen = false;
     factorySelector.nodeId = null;
-
-    edgeActiveProcessor(gameState);
-    updateNodeState(gameState, node);
 }

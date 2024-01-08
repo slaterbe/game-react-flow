@@ -1,4 +1,4 @@
-import { handleDeactivatingNode } from '../../util/node/standardNode';
+import { computeNodeChange } from '../../util/nodeV2/computeNodeChange';
 
 export const deleteEdge = (gameState, payload) => {
     const { edges, nodes } = gameState;
@@ -9,5 +9,5 @@ export const deleteEdge = (gameState, payload) => {
 
     const targetNode = nodes.find(n => n.id === target);
 
-    handleDeactivatingNode(gameState, targetNode);
+    computeNodeChange(gameState, targetNode);
 }

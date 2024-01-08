@@ -1,4 +1,4 @@
-import { handleDeactivatingNode } from '../../util/node/standardNode';
+import { computeNodeChange } from '../../util/nodeV2/computeNodeChange';
 
 export const changeShipyard = (gameState, item) => {
     const { nodes } = gameState;
@@ -6,13 +6,8 @@ export const changeShipyard = (gameState, item) => {
     const { nodeId, newShipyardType } = item.payload;
     const node = nodes.find(n => n.id === nodeId);
 
-    if(node.nodeState === 'active'){
-        node.shipyardType = newShipyardType;
-        handleDeactivatingNode(gameState, node);
-    }
-    else{
-        node.shipyardType = newShipyardType;
-    }
+    node.shipyardType = newShipyardType;
+    computeNodeChange(gameState, node);
 
     shipyardSelector.isOpen = false;
     shipyardSelector.nodeId = null;

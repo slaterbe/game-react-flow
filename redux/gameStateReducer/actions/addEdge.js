@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
-import { edgeIntersection } from '../../util/node/edgeIntersection';
+import { edgeIntersection } from '../../util/edge/edgeIntersection';
 import { buildResourceObject } from '../../util/resource';
-import { updateNodeState } from '../../util/node/standardNode';
-import { getEdgeValidErrorMessage } from '../../util/node/getEdgeValidErrorMessage';
+import { computeNodeChange } from '../../util/nodeV2/computeNodeChange';
+import { getEdgeValidErrorMessage } from '../../util/edge/getEdgeValidErrorMessage';
 
 export const addEdge = (gameState, payload) => {
     const { nodes, edges } = gameState;
@@ -37,5 +37,5 @@ export const addEdge = (gameState, payload) => {
         input: buildResourceObject()
     });
 
-    updateNodeState(gameState, targetNode);
+    computeNodeChange(gameState, targetNode);
 }

@@ -9,7 +9,7 @@ export const unblockNode = (gameState, task) => {
 
     if (!match) return;
 
-    if (match.nodeState === "blocked" || match.nodeState === "blocked-active" || match.nodeState === "hidden")
+    if (match.nodeState === "blocked" || match.nodeState === "hidden")
         return;
 
     task.claimed = true;

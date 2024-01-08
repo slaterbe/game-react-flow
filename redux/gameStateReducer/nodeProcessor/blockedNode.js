@@ -28,10 +28,10 @@ const updateBlockedNodeState = (gameState, node) => {
 export const blockedNodeProcessor = (gameState) => {
     const { nodes } = gameState;
 
-    nodes.filter(n => n.nodeState === "blocked" || n.nodeState === "blocked-active")
+    nodes.filter(n => n.nodeState === "blocked")
         .forEach(node => updateBlockedResources(gameState, node));
 
-    nodes.filter(n => n.nodeState === "blocked" || n.nodeState === "blocked-active")
+    nodes.filter(n => n.nodeState === "blocked")
         .filter(n => !hasResource(n.blockedResource))
         .forEach(node => updateBlockedNodeState(gameState, node));
 }

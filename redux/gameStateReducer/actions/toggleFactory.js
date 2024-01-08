@@ -1,12 +1,5 @@
-import { activateNode, handleDeactivatingNode } from '../../util/node/standardNode';
-
-import { edgeActiveProcessor } from '../nodeProcessor/edgeActive';
-import { nodeStatusUpdater } from '../nodeProcessor/nodeStatusUpdater';
-
-const handleActivatingNode = (gameState, node) => {
-    node.nodeState = 'active';
-    activateNode(gameState, node);
-}
+import { activateNode } from '../../util/nodeV2/activateNode';
+import { computeNodeChange } from '../../util/nodeV2/computeNodeChange';
 
 export const toggleFactory = (gameState, item) => {
     const { nodes } = gameState;
@@ -14,10 +7,10 @@ export const toggleFactory = (gameState, item) => {
     const node = nodes.find(n => n.id === nodeId);
 
     if(node.nodeState === 'active')
-        handleDeactivatingNode(gameState, node);
+        node.nodeState = 'valid';
     else
-        handleActivatingNode(gameState, node);
+        node.nodeState = 'active';
 
-    edgeActiveProcessor(gameState);
-    nodeStatusUpdater(gameState);
+    activateNode(gameState, node);
+    computeNodeChange(gameState, node);
 }

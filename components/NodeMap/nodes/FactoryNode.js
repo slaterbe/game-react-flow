@@ -11,7 +11,6 @@ const getNodeStateStyles = (nodeState, factoryType) => {
   else if (factoryType === null) return 'bg-gray-600'
   else if (nodeState === 'valid') return 'bg-red-900'
   else if (nodeState === 'blocked') return 'bg-yellow-600'
-  else if (nodeState === 'blocked-active') return 'bg-yellow-600'
   else return 'bg-gray-600'
 }
 
