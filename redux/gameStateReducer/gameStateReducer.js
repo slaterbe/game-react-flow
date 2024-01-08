@@ -3,9 +3,7 @@ import { gameState } from './sandbox/sandbox-v3';
 
 // Node Processors
 import { blockedNodeProcessor } from './nodeProcessor/blockedNode';
-import { edgeActiveProcessor } from './nodeProcessor/edgeActive';
 import { addShipProcessor } from './nodeProcessor/addShips';
-import { nodeStatusUpdater } from './nodeProcessor/nodeStatusUpdater'
 import { taskProcessor } from '../util/task/taskProcessor';
 
 // Battle Processors
@@ -22,10 +20,8 @@ import { changeFactory as changeFactoryAction } from './actions/changeFactory';
 import { toggleShipyard as toggleShipyardAction } from './actions/toggleShipyard';
 import { changeShipyard as changeShipyardAction } from './actions/changeShipyard';
 
-import { addEdge as addEdgeAction } from'./actions/addEdge';
-import { deleteEdge as deleteEdgeAction } from'./actions/deleteEdge';
-
-import { toggleBlocked as toggleBlockedAction } from './actions/toggleBlocked';
+import { addEdge as addEdgeAction } from './actions/addEdge';
+import { deleteEdge as deleteEdgeAction } from './actions/deleteEdge';
 
 const initialState = gameState;
 
@@ -72,24 +68,23 @@ export const gameStateReducer = createSlice({
     toggleShipyard: toggleShipyardAction,
     changeShipyard: changeShipyardAction,
     addEdge: addEdgeAction,
-    deleteEdge: deleteEdgeAction,
-    toggleBlocked: toggleBlockedAction
+    deleteEdge: deleteEdgeAction
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { 
-  tick, 
+export const {
+  tick,
   battleTick,
-  changeFactory, 
-  toggleFactory, 
-  changeShipyard, 
-  toggleShipyard, 
+  changeFactory,
+  toggleFactory,
+  changeShipyard,
+  toggleShipyard,
   addEdge,
   deleteEdge,
-  openFactoryDialog, 
+  openFactoryDialog,
   closeFactoryDialog,
-  openShipyardDialog, 
+  openShipyardDialog,
   closeShipyardDialog,
   openBattleMap,
   openNodeMap,

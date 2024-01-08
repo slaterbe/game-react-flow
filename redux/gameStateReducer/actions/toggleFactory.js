@@ -6,11 +6,13 @@ export const toggleFactory = (gameState, item) => {
     const nodeId = item.payload;
     const node = nodes.find(n => n.id === nodeId);
 
-    if(node.nodeState === 'active')
-        node.nodeState = 'valid';
-    else
+    if(node.nodeState === 'active'){
+        node.nodeState = 'valid';        
+    }
+    else{
+        activateNode(gameState, node);
         node.nodeState = 'active';
+    }
 
-    activateNode(gameState, node);
     computeNodeChange(gameState, node);
 }

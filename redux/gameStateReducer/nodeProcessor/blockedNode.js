@@ -1,5 +1,5 @@
 import { addResources, subtractResourcesToZero, buildResourceObject, hasResource } from "../../../redux/util/resource";
-import { updateNodeState } from "../../../redux/util/node/standardNode";
+import { computeNodeChange } from "../../../redux/util/nodeV2/computeNodeChange";
 
 const updateBlockedResources = (gameState, node) => {
     const { edges } = gameState;
@@ -22,7 +22,7 @@ const updateBlockedNodeState = (gameState, node) => {
         .forEach(e=> e.input = buildResourceObject());
 
     node.nodeState = "invalid";
-    updateNodeState(gameState, node);
+    computeNodeChange(gameState, node);
 }
 
 export const blockedNodeProcessor = (gameState) => {

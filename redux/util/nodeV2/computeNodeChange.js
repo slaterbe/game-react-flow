@@ -1,6 +1,6 @@
 import { computeBlockNodeConfiguration } from './helper/blockedNode';
 import { isNodeValid } from './helper/isNodeValid';
-import { setInvalidNode } from './helper/setInvalidNode';
+import { clearNodeInputs } from './helper/clearNodeInputs';
 
 const computeDownstreamNodes = (gameState, node) => {
     const { edges, nodes } = gameState;
@@ -23,23 +23,30 @@ const computeBlockedNodes = (gameState) => {
     });
 };
 
-export const computeNodeChange = (gameState, node) => {
-    const isValid = isNodeValid(gameState, node)
+const getNextNodeState = (gameState, node) => {
+    const isValid = isNodeValid(gameState, node);
 
-    if(!isValid) setInvalidNode(gameState, node);
+    if (node.nodeState === 'blocked') return 'blocked';
+
+    if (node.nodeState === 'active' && isValid) return 'active';
+
+    return isValid ? "valid" : "invalid";
+}
+
+export const computeNodeChange = (gameState, node) => {
+    node.nodeState = getNextNodeState(gameState, node);
 
     if (node.nodeState === "active") {
-        node.nodeState = isValid ? "active" : "invalid";
         computeDownstreamNodes(gameState, node);
         computeBlockedNodes(gameState, node);
     }
     else if (node.nodeState === "valid") {
-        node.nodeState = isValid ? "valid" : "invalid";
+        clearNodeInputs(gameState, node);
         computeDownstreamNodes(gameState, node);
         computeBlockedNodes(gameState, node);
     }
     else if (node.nodeState === "invalid") {
-        node.nodeState = isValid ? "valid" : "invalid";
+        clearNodeInputs(gameState, node);
         computeDownstreamNodes(gameState, node);
         computeBlockedNodes(gameState, node);
     }
