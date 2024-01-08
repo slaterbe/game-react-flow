@@ -1,4 +1,4 @@
-import { computeNodeChange } from '../../util/nodeV2/computeNodeChange';
+import { computeNodeChange } from '../../util/node/computeNodeChange';
 
 export const changeFactory = (gameState, item) => {
     const { nodes } = gameState;

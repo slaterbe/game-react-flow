@@ -1,5 +1,5 @@
-import { activateNode } from '../../util/nodeV2/activateNode';
-import { computeNodeChange } from '../../util/nodeV2/computeNodeChange';
+import { activateNode } from '../../util/node/activateNode';
+import { computeNodeChange } from '../../util/node/computeNodeChange';
 
 export const toggleShipyard = (gameState, item) => {
     const { nodes } = gameState;

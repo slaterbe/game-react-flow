@@ -1,5 +1,5 @@
 import { addResources, subtractResourcesToZero, buildResourceObject, hasResource } from "../../../redux/util/resource";
-import { computeNodeChange } from "../../../redux/util/nodeV2/computeNodeChange";
+import { computeNodeChange } from "../../../redux/util/node/computeNodeChange";
 
 const updateBlockedResources = (gameState, node) => {
     const { edges } = gameState;
