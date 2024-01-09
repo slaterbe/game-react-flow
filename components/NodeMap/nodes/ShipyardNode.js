@@ -33,13 +33,11 @@ export const ShipyardNode = ({ data, id }) => {
 
       <BlockedNode {...data} id={id}>
         <div className="flex justify-between flex-col h-full p-2">
-          <div className="text-center text-sm">
+          {/* <div className="text-center text-sm">
             {name} {id}
-          </div>
-          <div>
-            <ResourceDetail resource={input} positive={false} />
-            <ResourceDetail resource={output} positive={true} />
-          </div>
+          </div> */}
+          <ResourceDetail resource={input} positive={false} />
+          <ResourceDetail resource={output} positive={true} />
 
           <div className="my-2 flex justify-between">
             {validToggleStates.includes(nodeState) && <Toggle

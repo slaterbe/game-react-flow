@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { getBezierPath, EdgeLabelRenderer, BaseEdge } from 'reactflow';
 import { ResourceDetail } from '../../resource/ResourceDetail';
 import { deleteEdge } from '../../../redux/gameStateReducer/gameStateReducer'
- 
+
 export const EdgeLabel = ({ id, data, source, target, ...props }) => {
   const [edgePath, labelX, labelY] = getBezierPath(props);
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export const EdgeLabel = ({ id, data, source, target, ...props }) => {
             position: 'absolute',
             transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
             background: '#2c5282',
-            padding: 10,
+            padding: 5,
             borderRadius: 5,
             fontSize: 12,
             fontWeight: 700,
@@ -25,10 +25,10 @@ export const EdgeLabel = ({ id, data, source, target, ...props }) => {
           }}
           className="nodrag nopan"
         >
-          <ResourceDetail resource={data.input}/>
-            <button 
-              className="text-xs rounded bg-red-500 p-1 inline-block mx-4 z-10"
-              onClick={() => dispatch(deleteEdge({ source: source, target: target }))}>Delete</button>
+          <ResourceDetail resource={data.input} />
+          <button
+            className="text-xs rounded bg-red-500 mt-1 p-1 inline-block mx-4 z-10"
+            onClick={() => dispatch(deleteEdge({ source: source, target: target }))}>Delete</button>
         </div>
       </EdgeLabelRenderer>
     </>

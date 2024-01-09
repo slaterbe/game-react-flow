@@ -3,7 +3,7 @@ import { ResourceDetail } from '../../resource/ResourceDetail';
 import { BlockedNode } from './BlockedNode';
 
 export const ResourceNode = ({ data, id }) => {
-  const { name, output, nodeState } = data;
+  const { name, output, nodeState, adjustedOutput } = data;
 
   const isVisible = nodeState !== "hidden";
 
@@ -16,11 +16,11 @@ export const ResourceNode = ({ data, id }) => {
       <Handle type="source" position={Position.Bottom} isConnectable={true} id="sb" style={{ padding: 10, background: "rgb(30 64 175)" }} />
       
       <BlockedNode {...data} id={id}>
-        <div>
-          <div className="text-center text-sm">
+        <div className='pt-4'>
+          {/* <div className="text-center text-sm">
             {name} {id}
-          </div>
-          <ResourceDetail resource={output} positive={true} />
+          </div> */}
+          <ResourceDetail resource={adjustedOutput} positive={true} />
         </div>
       </BlockedNode>
     </div>

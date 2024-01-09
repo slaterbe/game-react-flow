@@ -28,6 +28,12 @@ export const calculateAdjustedOutput = (rawOutput, nodeId, edges) => {
         .reduce((accum, currentValue) => subtractResources(accum, currentValue), rawOutput);
 }
 
+export const calculateAdjustedInput = (rawInput, nodeId, edges) => {
+    return edges.filter(e => e.target == nodeId)
+        .map(e => e.input)
+        .reduce((accum, currentValue) => subtractResources(accum, currentValue), rawInput);
+}
+
 export const updateEdge = (requiredInput, edge, adjustedOutput) => {
     const newEdgeInput = calculateDelta(adjustedOutput, requiredInput);
     edge.input = newEdgeInput;

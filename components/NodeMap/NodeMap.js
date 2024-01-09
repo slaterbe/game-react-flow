@@ -13,9 +13,7 @@ import { tick, addEdge } from '../../redux/gameStateReducer/gameStateReducer';
 import { nodeTypes } from './nodes/NodeTypes';
 import { edgeTypes } from './edges/EdgeTypes';
 
-import { viewModelMapper } from "./view-model-mapper";
-
-import { Overlay } from '../Overlay';
+import { viewModelMapper } from "./viewModelMapper";
 
 const onInit = (reactFlowInstance) =>
   console.log("flow loaded:", reactFlowInstance);

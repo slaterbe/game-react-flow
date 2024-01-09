@@ -1,37 +1,17 @@
 import { MarkerType } from "@reactflow/core";
+import { buildPosition } from "./buildPosition";
+import { resourceNodeMapper } from './resourceNodeMapper';
+import { factoryNodeMapper } from './factoryNodeMapper';
 
-const SPACING = 350;
-
-const buildPosition = (node) => ({ 
-    x: node.position.x * SPACING, 
-    y: node.position.y * SPACING 
-})
-
-export const viewModelMapper = ({ nodes, edges, factories, shipyards, resourceNodes }) => {
+export const viewModelMapper = (gameState) => {
+    const { nodes, edges, shipyards } = gameState;
     const vmResourceNodes = nodes
         .filter(n => n.type === "resourceNode" && n.nodeState !== "hidden")
-        .map((node) => ({
-            ...node,
-            position: buildPosition(node),
-            data: {
-                ...resourceNodes[node.resourceType],
-                nodeState: node.nodeState,
-                blockedResource: node.blockedResource
-            }
-        }));
+        .map((node) => resourceNodeMapper(gameState, node));
 
     const vmFactoryNodes = nodes
         .filter(n => n.type === "factoryNode" && n.nodeState !== "hidden")
-        .map((node) => ({
-            ...node,
-            position: buildPosition(node),
-            data: {
-                ...factories[node.factoryType],
-                nodeState: node.nodeState,
-                factoryType: node.factoryType,
-                blockedResource: node.blockedResource
-            }
-        }));
+        .map((node) => factoryNodeMapper(gameState, node));
 
     const vmShipyardNodes = nodes
         .filter(n => n.type === "shipyardNode" && n.nodeState !== "hidden")

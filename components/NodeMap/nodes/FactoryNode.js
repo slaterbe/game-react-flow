@@ -19,7 +19,7 @@ const validToggleStates = ['active', 'valid'];
 export const FactoryNode = ({ data, isConnectable, id }) => {
   const dispatch = useDispatch()
 
-  const { name, input, output, nodeState, factoryType } = data;
+  const { name, input, adjustedOutput, nodeState, factoryType } = data;
   const isVisible = nodeState !== "hidden";
   const isActive = nodeState === "active";
   const isToggleDisabled = nodeState === 'invalid';
@@ -42,12 +42,12 @@ export const FactoryNode = ({ data, isConnectable, id }) => {
       <BlockedNode {...data} id={id}>
         
         <div>
-          <div className="text-center text-sm">
+          {/* <div className="text-center text-sm">
             {name} {id}
-          </div>
+          </div> */}
 
           <ResourceDetail resource={input} positive={false} />
-          <ResourceDetail resource={output} positive={true} />
+          <ResourceDetail resource={adjustedOutput} positive={true} />
 
           <div className="my-2 flex justify-between">
             {!isEmpty && validToggleStates.includes(nodeState) && <Toggle
