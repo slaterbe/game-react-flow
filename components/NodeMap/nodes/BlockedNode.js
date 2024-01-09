@@ -8,7 +8,7 @@ export const BlockedNode = ({ nodeState, blockedResource, id, children }) => {
 
     const isBlocked = nodeState === "blocked";
 
-    if (!isBlocked) return <div>{children}</div>
+    if (!isBlocked) return <div className='h-full'>{children}</div>
 
     return (
         <div>
