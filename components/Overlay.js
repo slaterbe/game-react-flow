@@ -2,54 +2,83 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { TaskLog } from "./TaskLog";
 import { FactorySelector } from './FactorySelector/FactorySelector';
-import { closeFactoryDialog, changeFactory } from '../redux/gameStateReducer/gameStateReducer';
+import { ShipyardSelector } from './ShipyardSelector/ShipyardSelector';
+import {
+    closeFactoryDialog,
+    changeFactory,
+    closeShipyardDialog,
+    changeShipyard,
+    openBattleMap,
+    openNodeMap
+} from '../redux/gameStateReducer/gameStateReducer';
+import { shipConfigs } from '../redux/util/ships/shipConfigs';
 
-export const Overlay = ({ globalResources, tickCounter }) => {
+export const Overlay = ({ ships, tickCounter }) => {
     const [taskLogOpen, setTaskLogOpen] = useState(false);
     const dispatch = useDispatch();
 
     const tasks = useSelector(state => state.gameState.tasks);
 
     const factorySelector = useSelector(state => state.gameState.ui.factorySelector);
+    const shipyardSelector = useSelector(state => state.gameState.ui.shipyardSelector);
     const factories = useSelector(state => state.gameState.factories);
+    const shipyards = useSelector(state => state.gameState.shipyards);
     const nodes = useSelector(state => state.gameState.nodes);
 
-    const selectedNode = nodes.find(n => n.id === factorySelector.nodeId);
+    const factorySelectedNode = nodes.find(n => n.id === factorySelector.nodeId);
+    const shipyardSelectedNode = nodes.find(n => n.id === shipyardSelector.nodeId);
 
     return (
         <>
-            <div className="w-full h-16 absolute bg-blue-400 z-10 flex justify-between">
-                <div>
-                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                        {globalResources.corvette} Corvette
+            <div className="w-full h-8 absolute bg-blue-400 z-40 flex flex-col justify-start">
+                <div className="flex justify-between">
+                    <div>
+                        {
+                            Object.keys(shipConfigs).filter(s => shipConfigs[s].isPlayer).map((key, index) => (
+                                <div className="inline-block text-left text-lg text-green-900 px-4 font-medium" key={index}>
+                                    {ships[key]} {shipConfigs[key].name}
+                                </div>
+                            ))
+                        }
                     </div>
-                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                        {globalResources.frigate} Frigate
-                    </div>
-                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                        {globalResources.destroyer} Destroyer
-                    </div>
-                    <div className="inline-block text-left text-lg text-green-900 p-4 font-medium">
-                        {globalResources.cruiser} Cruiser
-                    </div>
-                </div>
-                <div>
-                    <div className="inline-block text-right text-lg text-black p-4 font-medium">
-                        Tick: {tickCounter}
+                    <div>
+                        <div className="inline-block text-right text-lg text-black px-4 font-medium">
+                            Tick: {tickCounter}
+                        </div>
                     </div>
                 </div>
+                {/* <div className="flex justify-start">
+                    <button
+                        onClick={() => dispatch(openNodeMap())}
+                        className="bg-green-500 hover:bg-green-700 text-white font-bold px-4 rounded m-2">
+                        Resource Map
+                    </button>
+                    <button
+                        onClick={() => dispatch(openBattleMap())}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold px-4 rounded m-2">
+                        Battle Map
+                    </button>
+                </div> */}
             </div>
-            
-            {factorySelector.isOpen && 
-                <FactorySelector 
-                    close={() => dispatch(closeFactoryDialog())} 
+
+            {factorySelector.isOpen &&
+                <FactorySelector
+                    close={() => dispatch(closeFactoryDialog())}
                     select={(payload) => dispatch(changeFactory(payload))}
-                    node={selectedNode} 
+                    node={factorySelectedNode}
                     factories={factories} />}
+
+            {shipyardSelector.isOpen &&
+                <ShipyardSelector
+                    close={() => dispatch(closeShipyardDialog())}
+                    select={(payload) => dispatch(changeShipyard(payload))}
+                    node={shipyardSelectedNode}
+                    shipyards={shipyards} />}
+
             {taskLogOpen && <TaskLog close={() => setTaskLogOpen(false)} tasks={tasks} />}
 
-            <div className="absolute bottom-0 right-0 z-10">
-                <div className="w-16 h-16 text-xs p-2 m-4 bg-blue-400 cursor-pointer" 
+            <div className="absolute bottom-0 right-0 z-50">
+                <div className="w-16 h-16 text-xs p-2 m-4 bg-blue-400 cursor-pointer"
                     onClick={() => setTaskLogOpen(true)}>
                     Task Log
                 </div>

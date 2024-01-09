@@ -34,6 +34,12 @@ export const subtractResources = (resource1, resource2) => resourceConfigs
         return accum;
     }, {})
 
+export const subtractResourcesToZero = (resource1, resource2) => resourceConfigs
+    .reduce((accum, current) => {
+        accum[current.id] = Math.max(resource1[current.id] - resource2[current.id], 0)
+        return accum;
+    }, {})
+
 export const addResources = (resource1, resource2) => resourceConfigs
     .reduce((accum, current) => {
         accum[current.id] = resource1[current.id] + resource2[current.id]

@@ -1,11 +1,12 @@
 import { toast } from "react-toastify";
-import { edgeIntersection } from '../../util/node/edgeIntersection';
+import { edgeIntersection } from '../../util/edge/edgeIntersection';
 import { buildResourceObject } from '../../util/resource';
-import { updateNodeState } from '../../util/node';
-import { getEdgeValidErrorMessage } from '../../util/node/getEdgeValidErrorMessage';
+import { computeNodeChange } from '../../util/node/computeNodeChange';
+import { getEdgeValidErrorMessage } from '../../util/edge/getEdgeValidErrorMessage';
 
 export const addEdge = (gameState, payload) => {
     const { nodes, edges } = gameState;
+    const sourceNode = nodes.find(n => n.id === payload.payload.source);
     const targetNode = nodes.find(n => n.id === payload.payload.target);
 
     const newEdge = { 
@@ -15,6 +16,7 @@ export const addEdge = (gameState, payload) => {
         targetHandle: payload.payload.targetHandle
     };
 
+    // 1. Edge valid message
     const errorMessage = getEdgeValidErrorMessage(newEdge, edges, nodes);
 
     if (errorMessage) {
@@ -22,6 +24,7 @@ export const addEdge = (gameState, payload) => {
         return;
     }
 
+    // 2. Edge intersection
     const intersection = edgeIntersection(newEdge, edges, nodes);
     if(intersection){
         toast.error('Lines cannot intersect', { position: toast.POSITION.TOP_RIGHT });
@@ -30,9 +33,9 @@ export const addEdge = (gameState, payload) => {
 
     gameState.edges.push({
         ...payload.payload,
-        isActive: false,
+        isActive: sourceNode.nodeState === 'active',
         input: buildResourceObject()
     });
 
-    updateNodeState(targetNode, nodes, edges);
+    computeNodeChange(gameState, targetNode);
 }

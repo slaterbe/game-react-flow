@@ -1,15 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { gameState } from './gameStateFactories/sandbox-v2';
+import { gameState } from './sandbox/sandbox-v3';
 
-import { edgeActiveProcessor } from './processors/edgeActive';
-import { addShipProcessor } from './processors/addShips';
-import { nodeStatusUpdater } from './processors/nodeStatusUpdater'
-import { taskProcessor } from './processors/taskProcessor';
+// Node Processors
+import { blockedNodeProcessor } from './nodeProcessor/blockedNode';
+import { addShipProcessor } from './nodeProcessor/addShips';
+import { taskProcessor } from '../util/task/taskProcessor';
 
+// Battle Processors
+import { assignShips } from './battleProcessor/assignShips';
+import { battleShips } from './battleProcessor/battleShips';
+import { applyWave } from './battleProcessor/applyWave';
+import { applyRewards } from './battleProcessor/applyRewards';
+import { battleMothership } from './battleProcessor/battleMothership';
+
+// Actions
 import { toggleFactory as toggleFactoryAction } from './actions/toggleFactory';
 import { changeFactory as changeFactoryAction } from './actions/changeFactory';
-import { addEdge as addEdgeAction } from'./actions/addEdge';
-import { deleteEdge as deleteEdgeAction } from'./actions/deleteEdge';
+
+import { toggleShipyard as toggleShipyardAction } from './actions/toggleShipyard';
+import { changeShipyard as changeShipyardAction } from './actions/changeShipyard';
+
+import { addEdge as addEdgeAction } from './actions/addEdge';
+import { deleteEdge as deleteEdgeAction } from './actions/deleteEdge';
 
 const initialState = gameState;
 
@@ -18,12 +30,24 @@ export const gameStateReducer = createSlice({
   initialState,
   reducers: {
     tick: (state) => {
+      blockedNodeProcessor(state);
       addShipProcessor(state);
-      edgeActiveProcessor(state);
-      nodeStatusUpdater(state);
       taskProcessor(state);
 
       state.tickCounter = state.tickCounter + 1;
+    },
+    battleTick: (state) => {
+      applyWave(state);
+      applyRewards(state);
+      assignShips(state);
+      battleMothership(state);
+      battleShips(state);
+    },
+    openBattleMap: (state) => {
+      state.ui.activeTab = "battle-map";
+    },
+    openNodeMap: (state) => {
+      state.ui.activeTab = "node-map";
     },
     openFactoryDialog: (state, item) => {
       state.ui.factorySelector.isOpen = true;
@@ -32,22 +56,39 @@ export const gameStateReducer = createSlice({
     closeFactoryDialog: (state) => {
       state.ui.factorySelector.isOpen = false;
     },
+    openShipyardDialog: (state, item) => {
+      state.ui.shipyardSelector.isOpen = true;
+      state.ui.shipyardSelector.nodeId = item.payload;
+    },
+    closeShipyardDialog: (state) => {
+      state.ui.shipyardSelector.isOpen = false;
+    },
     toggleFactory: toggleFactoryAction,
     changeFactory: changeFactoryAction,
+    toggleShipyard: toggleShipyardAction,
+    changeShipyard: changeShipyardAction,
     addEdge: addEdgeAction,
     deleteEdge: deleteEdgeAction
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { 
-  tick, 
-  changeFactory, 
-  toggleFactory, 
+export const {
+  tick,
+  battleTick,
+  changeFactory,
+  toggleFactory,
+  changeShipyard,
+  toggleShipyard,
   addEdge,
   deleteEdge,
-  openFactoryDialog, 
-  closeFactoryDialog 
+  openFactoryDialog,
+  closeFactoryDialog,
+  openShipyardDialog,
+  closeShipyardDialog,
+  openBattleMap,
+  openNodeMap,
+  toggleBlocked
 } = gameStateReducer.actions
 
 export default gameStateReducer.reducer
