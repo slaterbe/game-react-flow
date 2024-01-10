@@ -50,11 +50,32 @@ body {
   }
 
   50% {
-    box-shadow: 0 0 20px rgb(74 222 128);
+    box-shadow: 0 0 40px rgb(74 222 128);
   }
 
   100% {
     box-shadow: 0 0 10px rgb(74 222 128);
+  }
+}
+
+.glowing-invalid {
+  border-width: 5px;
+  border-color: rgb(239 68 68);
+  box-shadow: 0 0 10px rgb(239 68 68);
+  animation: pulsateInvalid 1s ease-out infinite;
+}
+
+@keyframes pulsateInvalid {
+  0% {
+    box-shadow: 0 0 10px rgb(239 68 68);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgb(239 68 68);
+  }
+
+  100% {
+    box-shadow: 0 0 10px rgb(239 68 68);
   }
 }
 
@@ -107,7 +128,7 @@ body {
   padding: 5px;
 
   box-sizing: border-box;
-  background: rgb(29 78 216);
+  background: inherit;
   background-clip: content-box;
 
   -webkit-animation: opacityChange 3s infinite alternate;

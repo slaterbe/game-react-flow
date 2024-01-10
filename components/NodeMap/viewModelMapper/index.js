@@ -1,7 +1,7 @@
-import { MarkerType } from "@reactflow/core";
 import { buildPosition } from "./buildPosition";
 import { resourceNodeMapper } from './resourceNodeMapper';
 import { factoryNodeMapper } from './factoryNodeMapper';
+import { edgeMapper } from "./edgeMapper";
 
 export const viewModelMapper = (gameState) => {
     const { nodes, edges, shipyards } = gameState;
@@ -26,19 +26,7 @@ export const viewModelMapper = (gameState) => {
             }
         }));
 
-    const vmEdges = edges.map(e => ({
-        ...e,
-        id: `e${e.source}-${e.target}`,
-        animated: e.isActive,
-        markerEnd: { type: MarkerType.ArrowClosed, width: 20, height: 20 },
-        type: 'edgeLabel',
-        style: {
-            strokeWidth: 3
-        },
-        data: {
-            input: e.input
-        }
-    }));
+    const vmEdges = edges.map(e => edgeMapper(gameState, e));
 
     return {
         nodes: [

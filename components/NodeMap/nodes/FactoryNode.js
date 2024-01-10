@@ -19,12 +19,15 @@ const validToggleStates = ['active', 'valid'];
 export const FactoryNode = ({ data, isConnectable, id }) => {
   const dispatch = useDispatch()
 
-  const { name, input, adjustedOutput, nodeState, factoryType } = data;
+  const { name, input, adjustedOutput, nodeState, factoryType, isActive } = data;
   const isVisible = nodeState !== "hidden";
-  const isActive = nodeState === "active";
-  const isValid = nodeState === "valid"
+  const isValid = nodeState === "valid";
+  const isInvalid = nodeState === "invalid";
+  const isBlocked = nodeState === "blocked" && !isActive;
   const isToggleDisabled = nodeState === 'invalid';
   const isEmpty = factoryType === null;
+
+  const showToggle = !isEmpty && validToggleStates.includes(nodeState);
 
   return (
     <div>
@@ -41,8 +44,10 @@ export const FactoryNode = ({ data, isConnectable, id }) => {
       <div className={`
       ${isVisible ? "" : "hidden"}
       ${isActive ? "active-animation-2" : ""}
+      ${isInvalid ? "glowing-invalid" : ""}
+      ${isBlocked ? "glowing-invalid" : ""}
       ${isValid ? "glowing-valid" : ""}
-      w-44 h-44 m-4 border-blue-800 rounded-md relative ${getNodeStateStyles(nodeState)}`}>
+      w-44 h-44 m-4 rounded-md relative ${getNodeStateStyles(nodeState)}`}>
         <BlockedNode {...data} id={id}>
           <div className='flex flex-col justify-between h-full'>
             <div>
@@ -51,7 +56,7 @@ export const FactoryNode = ({ data, isConnectable, id }) => {
             </div>
 
             <div className="my-2 flex justify-between">
-              {!isEmpty && validToggleStates.includes(nodeState) && <Toggle
+              {showToggle && <Toggle
                 isToggle={isActive} toggle={() => dispatch(toggleFactory(id))}
                 disabled={isToggleDisabled} />}
               <Cog6ToothIcon className="h-6 w-6  text-green-500 inline-flex cursor-pointer" onClick={() => dispatch(openFactoryDialog(id))} />

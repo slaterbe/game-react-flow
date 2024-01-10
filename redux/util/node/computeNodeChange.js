@@ -28,6 +28,10 @@ const getNextNodeState = (gameState, node) => {
 
     if (node.nodeState === 'blocked') return 'blocked';
 
+    if(node.type === "factoryNode" && node.factoryType === null) return 'invalid';
+    
+    if(node.type === "shipyardNode" && node.shipyardType === null) return 'invalid';
+
     if (node.nodeState === 'active' && isValid) return 'active';
 
     return isValid ? "valid" : "invalid";
