@@ -18,23 +18,12 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
-.active-animation{
-  animation: rotate 4s linear infinite;
-  background-repeat: no-repeat;
-  background-size: 50% 50%, 50% 50%;
-  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-  background-image: linear-gradient(#399953, #399953), linear-gradient(#000000, #399953), linear-gradient(#399953, #399953), linear-gradient(#399953, #000000);
-}
-
-.invalid-animation{
+.invalid-animation {
   animation: rotate 4s linear infinite;
   background-repeat: no-repeat;
   background-size: 50% 50%, 50% 50%;
@@ -44,6 +33,83 @@ body {
 
 @keyframes rotate {
   100% {
-      transform: rotate(1turn);
+    transform: rotate(1turn);
   }
+}
+
+.glowing-valid {
+  border-width: 5px;
+  border-color: rgb(74 222 128);
+  box-shadow: 0 0 10px rgb(74 222 128);
+  animation: pulsate 1s ease-out infinite;
+}
+
+@keyframes pulsate {
+  0% {
+    box-shadow: 0 0 10px rgb(74 222 128);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgb(74 222 128);
+  }
+
+  100% {
+    box-shadow: 0 0 10px rgb(74 222 128);
+  }
+}
+
+
+@-webkit-keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.active-animation-2 {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  padding: 5px;
+}
+
+.active-animation-2::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: #399953;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: linear-gradient(#399953, #399953), linear-gradient(#000000, #399953), linear-gradient(#399953, #399953), linear-gradient(#399953, #000000);
+  -webkit-animation: rotate 4s linear infinite;
+  animation: rotate 4s linear infinite;
+}
+
+.active-animation-2::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+
+  box-sizing: border-box;
+  background: rgb(29 78 216);
+  background-clip: content-box;
+
+  -webkit-animation: opacityChange 3s infinite alternate;
+  animation: opacityChange 3s infinite alternate;
 }

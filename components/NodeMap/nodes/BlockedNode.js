@@ -12,7 +12,7 @@ export const BlockedNode = ({ nodeState, blockedResource, id, children }) => {
 
     return (
         <div>
-            <div>Blocked</div>
+            <div className='m-2'>Blocked</div>
             <ResourceDetail resource={blockedResource} />
         </div>
     )
