@@ -1,6 +1,6 @@
-import { buildPosition } from "./buildPosition";
 import { resourceNodeMapper } from './resourceNodeMapper';
 import { factoryNodeMapper } from './factoryNodeMapper';
+import { shipyardNodeMapper } from './shipyardNodeMapper';
 import { edgeMapper } from "./edgeMapper";
 
 export const viewModelMapper = (gameState) => {
@@ -15,16 +15,7 @@ export const viewModelMapper = (gameState) => {
 
     const vmShipyardNodes = nodes
         .filter(n => n.type === "shipyardNode" && n.nodeState !== "hidden")
-        .map((node) => ({
-            ...node,
-            position: buildPosition(node),
-            data: {
-                ...shipyards[node.shipyardType],
-                nodeState: node.nodeState,
-                completePercentage: Math.floor((node.counterTick ?? 0) * 100 / shipyards[node.shipyardType].requiredTicks),
-                blockedResource: node.blockedResource
-            }
-        }));
+        .map((node) => shipyardNodeMapper(gameState, node));
 
     const vmEdges = edges.map(e => edgeMapper(gameState, e));
 

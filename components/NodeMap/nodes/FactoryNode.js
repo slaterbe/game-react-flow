@@ -16,7 +16,7 @@ const getNodeStateStyles = (nodeState, factoryType) => {
 
 const validToggleStates = ['active', 'valid'];
 
-export const FactoryNode = ({ data, isConnectable, id }) => {
+export const FactoryNode = ({ data, id }) => {
   const dispatch = useDispatch()
 
   const { name, input, adjustedOutput, nodeState, factoryType, isActive } = data;

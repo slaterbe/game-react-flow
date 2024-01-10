@@ -27,7 +27,8 @@ export const ResourceDetail = ({ resource, positive }) => {
                     .filter(resourceConfig => resource[resourceConfig.id] !== 0)
                     .map((resourceConfig, index) => (
                         <div className={`inline-block m-1 px-2 py-1 rounded-full text-black font-semibold text-base
-                            ${isGreen ? 'bg-green-500' : 'bg-red-300'}`}>
+                            ${isGreen ? 'bg-green-500' : 'bg-red-300'}`}
+                            key={index}>
                             <span>{operator} {resource[resourceConfig.id]}</span>
                             <img className='inline-block w-6 h-6 ml-2' src={resourceConfig.image} />
                         </div>
