@@ -41,6 +41,78 @@ export const nodes = [
         nodeState: 'hidden',
         counterTick: 0,
         blockedResource: buildResourceObject({ commonPlate: 200 })
+    },
+    {
+        id: "6",
+        type: 'resourceNode',
+        position: { x: 0, y: 4 },
+        resourceType: 'rareOre',
+        nodeState: 'hidden',
+        blockedResource: buildResourceObject()
+    },
+    {
+        id: "7",
+        type: 'factoryNode',
+        position: { x: 1, y: 4 },
+        factoryType: null,
+        nodeState: 'hidden',
+        blockedResource: buildResourceObject({ commonPlate: 30 })
+    },
+    {
+        id: "8",
+        type: 'factoryNode',
+        position: { x: 3, y: 5 },
+        factoryType: null,
+        nodeState: 'hidden',
+        blockedResource: buildResourceObject({ commonPlate: 30 })
+    },
+    {
+        id: "9",
+        type: 'factoryNode',
+        position: { x: 0, y: 7 },
+        factoryType: null,
+        nodeState: 'hidden',
+        blockedResource: buildResourceObject({ commonPlate: 30 })
+    },
+    {
+        id: "10",
+        type: 'factoryNode',
+        position: { x: 5, y: 6 },
+        factoryType: null,
+        nodeState: 'hidden',
+        blockedResource: buildResourceObject({ commonPlate: 30 })
+    },
+    {
+        id: "11",
+        type: 'factoryNode',
+        position: { x: 2, y: 7 },
+        factoryType: null,
+        nodeState: 'hidden',
+        blockedResource: buildResourceObject({ commonPlate: 30 })
+    },
+    {
+        id: "12",
+        type: 'factoryNode',
+        position: { x: 4, y: 2 },
+        factoryType: null,
+        nodeState: 'hidden',
+        blockedResource: buildResourceObject({ commonPlate: 30 })
+    },
+    {
+        id: "13",
+        type: 'factoryNode',
+        position: { x: 5, y: 2 },
+        factoryType: null,
+        nodeState: 'hidden',
+        blockedResource: buildResourceObject({ commonPlate: 30 })
+    },
+    {
+        id: "14",
+        type: 'factoryNode',
+        position: { x: 6, y: 3 },
+        factoryType: null,
+        nodeState: 'hidden',
+        blockedResource: buildResourceObject({ commonPlate: 30 })
     }
 ];
 

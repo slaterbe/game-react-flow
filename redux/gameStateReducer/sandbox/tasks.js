@@ -46,43 +46,11 @@ export const tasks = [
         rewards: [unlockFactory("startingCorvetteFactory")]
     },
     {
-        title: 'Build 1 Corvettes',
-        type: TASK_TYPE.SHIP_CREATED,
-        params: { corvette: 1 },
+        title: 'Unblock Node 6',
+        completeMessage: 'Unlocked new node',
+        type: TASK_TYPE.UNBLOCK_NODE,
+        params: { id: "6" },
         claimed: false,
-        rewards: []
+        rewards: [unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode(), unlockNextNode()]
     },
-    {
-        title: 'Build 5 Corvettes',
-        type: TASK_TYPE.SHIP_CREATED,
-        params: { corvette: 5 },
-        claimed: false,
-        rewards: []
-    },
-    {
-        title: 'Build 10 Corvettes',
-        completeMessage: 'Game Complete',
-        type: TASK_TYPE.SHIP_CREATED,
-        params: { corvette: 10 },
-        claimed: false,
-        rewards: []
-    },
-    // {
-    //     title: 'Build 20 Corvettes',
-    //     params: { corvette: 20 },
-    //     claimed: false,
-    //     rewards: [unlockNextNode()]
-    // },
-    // {
-    //     title: 'Build 100 Corvettes',
-    //     params: { corvette: 100 },
-    //     claimed: false,
-    //     rewards: [unlockNextNode()]
-    // },
-    // {
-    //     title: 'Build 20 Frigates',
-    //     params: { frigate: 20 },
-    //     claimed: false,
-    //     rewards: [unlockNextNode()]
-    // },
 ]
